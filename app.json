@@ -98,7 +98,7 @@
       },
       "UPSTREAM_REPO": {
         "description": "~  لاتغيرها أبدا .",
-        "value": "https://github.com/STKR2/RR8R9",
+        "value": "https://github.com/AlmortageLL/Alm",
         "required": true
       }
     },
