@@ -5,6 +5,7 @@ from pyrogram import filters
 from config import BANNED_USERS
 from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from typing import Union
+from AarohiX import app
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message, ChatJoinRequest
 
@@ -13,8 +14,8 @@ REPLY_MESSAGE = "**🧑🏻‍✈️︙اهلا بك بك عزيزي العضو 
 REPLY_MESSAGE_BUTTONS = [
     [
              ("المبرمج"),                   
-             ("سورس")
-
+             ("سورس"),
+             ("مطور البوت")
           ],
           [
              ("ذكاء الاصطناعي"),
@@ -62,7 +63,7 @@ REPLY_MESSAGE_BUTTONS = [
     ]
 ]
 
-@app.on_message(filters.command(["/almortagel"], "") & filters.private & ~BANNED_USERS)
+@app.on_message(filters.command(["almortagel"]) & filters.private & ~BANNED_USERS)
 async def madison(client: Client, message: Message): 
     text = REPLY_MESSAGE
     reply_markup = ReplyKeyboardMarkup(REPLY_MESSAGE_BUTTONS, one_time_keyboard=True, resize_keyboard=True)
@@ -196,4 +197,4 @@ async def upbkgt(client: Client, message: Message):
             ],
             ]
         ),
-    )
+)
