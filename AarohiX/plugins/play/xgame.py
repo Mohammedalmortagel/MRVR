@@ -302,9 +302,8 @@ async def kaompj(client, message):
 
 @app.on_message(
     filters.command(["الالعاب","العاب"], "")
-    & ~filters.edited
 )
-async def zohary(client: Client, message: Message):
+async def almortagel(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/14c7948ad180050fe16e4.jpg",
         caption= GAME_MESSAGE,
