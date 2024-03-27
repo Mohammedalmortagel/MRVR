@@ -83,19 +83,18 @@ font_path = "AarohiX/assets/userdil.ttf"
 
 INFO_TEXT = """
 ┏━━━━━━━━━━━━━━⧫
-┠**<b>ᴜsᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</b>**
+┠**<b>معـلومات الشخـص 🖤🤸‍♂️</b>**
 ┗━━━━━━━━━━━━━━⧫
 
 
-┏━⦿
-┣ɪᴅ ‣ {}
-┣ɴᴀᴍᴇ ‣ {}
-┣ᴜsᴇʀɴᴀᴍᴇ ‣ @{}
-┣ᴍᴇɴᴛɪᴏɴ ‣ {}
-┣ᴜsᴇʀ sᴛᴀᴛᴜs ‣ {}
-┣ᴅᴄ ɪᴅ ‣ {}
-┗━⦿\n
-ʙɪᴏ ‣ {}
+⦿ الايـدي 💎 ‣ {}
+⦿ اسـمك 🐣 ‣ {}
+⦿ يـوزرك ☀️ ‣ @{}
+⦿ منشن 🏮 ‣ {}
+⦿ اخـر ظهور كـان 🤸‍♂️ ‣ {}
+⦿ قاعده البيانات 🧊 ‣ {}
+\n
+⦿ البـايو ‣ {}
 """
 
 # --------------------------------------------------------------------------------- #
@@ -105,24 +104,24 @@ async def userstatus(user_id):
       user = await app.get_users(user_id)
       x = user.status
       if x == enums.UserStatus.RECENTLY:
-         return "Recently."
+         return "حديثا."
       elif x == enums.UserStatus.LAST_WEEK:
-          return "Last week."
+          return "الأسبوع الماضي."
       elif x == enums.UserStatus.LONG_AGO:
-          return "Long time ago."
+          return "منذ وقت طويل."
       elif x == enums.UserStatus.OFFLINE:
-          return "Offline."
+          return "غير متصل."
       elif x == enums.UserStatus.ONLINE:
-         return "Online."
+         return "اونلاين."
    except:
-        return "**sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ʜᴀᴘᴘᴇɴᴇᴅ !**"
+        return "**هنا شي خطا راسل المطور !**"
     
 
 # --------------------------------------------------------------------------------- #
 
 
 
-@app.on_message(filters.command(["info", "userinfo"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
+@app.on_message(filters.command(["ايديك", "كشف"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def userinfo(_, message):
     chat_id = message.chat.id
     user_id = message.from_user.id
