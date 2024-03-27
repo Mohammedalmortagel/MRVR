@@ -1,8 +1,12 @@
-import pyrogram
+import asyncio
 from pyrogram import Client, filters
-from pyrogram.types import ReplyKeyboardMarkup
-from AarohiX.misc import SUDOERS
-from AarohiX import app
+from random import choice
+from pyrogram import filters
+from config import BANNED_USERS
+from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+from typing import Union
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message, ChatJoinRequest
 
 admin_keyboard = ReplyKeyboardMarkup([
     ['تفعيل التواصل', '/broadcast', 'حالة التواصل'],
