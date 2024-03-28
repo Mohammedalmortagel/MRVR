@@ -7,6 +7,8 @@ from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from typing import Union
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message, ChatJoinRequest
+from AarohiX import app
+from random import  choice, randint
 
 @app.on_message(filters.command(["صوره", "🕷", "صورهه", "صور"], ""))
 async def ihd(client: Client, message: Message):
