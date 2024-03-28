@@ -26,7 +26,7 @@ async def cpanel(_, message: Message):
     await message.reply(text=text, reply_markup=admin_keyboard)
 
 # دالة للتعامل مع الأوامر الأخرى
-@app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private & SUDOERS)
+@app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private)
 async def upbkgt(client: Client, message: Message):
     await message.reply_text(
         text="""❎ ¦ تم حذف الكيبورد بنجاح""",
