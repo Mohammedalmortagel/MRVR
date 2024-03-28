@@ -8,6 +8,8 @@ from typing import Union
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message, ChatJoinRequest
 
+REPLY_MESSAGE = "**👋︙مـرحـبـا بـك عـزيـزي الـمـطـور ♥️**\n**✨︙فــي قـائـمـة التحـكـم بـالـبـوت💞**"
+
 admin_keyboard = ReplyKeyboardMarkup([
     ['تفعيل التواصل', '/broadcast', 'حالة التواصل'],
     ['ضع قناة الاشتراك', 'حذف قناة الاشتراك'],
@@ -19,14 +21,15 @@ admin_keyboard = ReplyKeyboardMarkup([
 
 # دالة للتعامل مع أمر /admin
 @app.on_message(filters.regex("^/start"))
-async def cpanel(_, message: Message): 
-    await message.reply("لوحة المفاتيح الخاصة بالمطور", reply_markup=admin_keyboard)
+async def cpanel(_, message: Message):
+    text = REPLY_MESSAGE
+    await message.reply(text=text, reply_markup=admin_keyboard)
 
 # دالة للتعامل مع الأوامر الأخرى
-@app.on_message(filters.command("اخفاء الكيبورد ⚒️"))
+@app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private & SUDOERS)
 async def upbkgt(client: Client, message: Message):
     await message.reply_text(
         text="""❎ ¦ تم حذف الكيبورد بنجاح""",
         reply_markup=ReplyKeyboardRemove()
     )
-    pass
+    
