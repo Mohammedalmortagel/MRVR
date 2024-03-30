@@ -183,7 +183,7 @@ async def almortagel(client: Client, message: Message):
 async def almortagel(client: Client, message: Message):
     rl = random.randint(2,148)
     url = f"https://t.me/yoipopl/{rl}"
-    await client.send_audio(message.chat.id,url,caption="◍ تم اختيار لك استوري \n\n √",
+    await client.send_audio(message.chat.id,url,caption="◍ تم اختيار لك استوري\n\n √",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -199,7 +199,7 @@ async def almortagel(client: Client, message: Message):
 async def almortagel(client: Client, message: Message):
     rl = random.randint(2,1959)
     url = f"https://t.me/kotobeslameah/{rl}"
-    await client.send_document(message.chat.id,url,caption="تـم اختيـار كتاب ديني لـك",
+    await client.send_document(message.chat.id,url,caption="◍ تم اختيار لك كتاب ديني\n\n √",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -214,7 +214,7 @@ async def almortagel(client: Client, message: Message):
 async def almortagel(client: Client, message: Message):
     rl = random.randint(799,1341)
     url = f"https://t.me/dmatrix12/{rl}"
-    await client.send_photo(message.chat.id,url,caption="تـم اختيـار احاديث لـك",
+    await client.send_photo(message.chat.id,url,caption="◍ تم اختيار لك احاديث\n\n √",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -229,7 +229,7 @@ async def almortagel(client: Client, message: Message):
 async def almortagel(client: Client, message: Message):
     rl = random.randint(2,201)
     url = f"https://t.me/fresdewi/{rl}"
-    await client.send_voice(message.chat.id,url,caption="تـم اختيـار خطبه لـك",
+    await client.send_voice(message.chat.id,url,caption="◍ تم اختيار لك خطبه",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
