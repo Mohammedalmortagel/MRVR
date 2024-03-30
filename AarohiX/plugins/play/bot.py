@@ -6,12 +6,11 @@ from AarohiX import app
 # Replace the following line with your actual OWNER_ID
 OWNER_ID = 123456789
 
-@app.on_message(filters.command(['بوت'], prefixes=""))
-async def Italymusic(client: Client, message: Message):
+@app.on_message(filters.command(["بوت"], ""))
+async def almortagelmusic(client: Client, message: Message):
     me = await client.get_me()
     bot_username = me.username
-    bot_name = me.first_name
-    italy = message.from_user.mention
+    almortagel = message.from_user.mention
     button = InlineKeyboardButton("اضف البوت الي مجموعتك🏅", url=f"https://t.me/{bot_username}?startgroup=true")
     keyboard = InlineKeyboardMarkup([[button]])
     user_id = message.from_user.id
@@ -32,4 +31,4 @@ async def Italymusic(client: Client, message: Message):
         print(e)
         rank = "مش عرفنلو مله ده😒"
         await message.reply_text(
-        text=f"""نعم حبيبي : {italy} 🥰❤️\n**انا اسمي القميل : {bot_name} 🥺🙈\n**رتبتك هي : {rank}""", reply_markup=keyboard)
+        text=f"""نعم حبيبي : {almortagel} 🥰❤️\n**انا اسمي القميل : {1} 🥺🙈\n**رتبتك هي : {rank}""", reply_markup=keyboard)
