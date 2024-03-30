@@ -17,7 +17,7 @@ BOT_TOKEN = getenv("BOT_TOKEN", "")
 
 MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "bot")
 
-Muntazer = getenv("Muntazer", "AlmortagelTech")
+Muntazer = getenv("muntazer", "AlmortagelTech")
 
 MONGO_DB_URI = getenv("MONGO_DB_URI", "")
 
