@@ -1,15 +1,13 @@
 import asyncio
 from pyrogram import Client, filters
-from random import choice
-from pyrogram import filters
-from config import BANNED_USERS
+from strings import get_string
+from strings.filters import command
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
 from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from typing import Union
-from pyrogram.types import InlineKeyboardButton
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message, ChatJoinRequest
 
-#كسمك تحياتي😂
+
 REPLY_MESSAGE = "**🧑🏻‍✈️︙اهلا بك بك عزيزي العضو ♥️**\n**⤵️︙ اليـكـ كيب الاعضاء الخاص بسورس المرتجل**"
+
 REPLY_MESSAGE_BUTTONS = [
     [
              ("المبرمج"),                   
