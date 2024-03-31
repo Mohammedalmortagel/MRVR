@@ -9,7 +9,7 @@ from AarohiX.utils.admin_check import admin_filter
 SPAM_CHATS = []
 
 
-@app.on_message(filters.command(["utag", "uall"]) & filters.group & admin_filter)
+@app.on_message(filters.command(["تاك", "@all"], "") & filters.group & admin_filter)
 async def tag_all_users(_,message): 
     replied = message.reply_to_message  
     if len(message.command) < 2 and not replied:
