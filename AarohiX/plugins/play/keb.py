@@ -1,79 +1,76 @@
 import asyncio
 from pyrogram import Client, filters
-from strings import get_string
-from strings.filters import command
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
+from random import choice
+from pyrogram import filters
+from config import BANNED_USERS
 from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+from typing import Union
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message, ChatJoinRequest
 
-
+#كسمك تحياتي😂
 REPLY_MESSAGE = "**🧑🏻‍✈️︙اهلا بك بك عزيزي العضو ♥️**\n**⤵️︙ اليـكـ كيب الاعضاء الخاص بسورس المرتجل**"
 
 REPLY_MESSAGE_BUTTONS = [
     [
-             ("المبرمج"),
-                               
-             ("سورس")
+        ("المبرمج"),
+        ("سورس")
+    ],
 
-          ],
-          [
-             ("ذكاء الاصطناعي"),
-             
-              ("اصدار"),
-              
-              ("افلام")
-          ],
-          [
-             ("لو خيروك"),
-             
-             ("كت تويت") 
-          ],
-          [
-             ("اذكار"),
-             
-             ("صراحه") 
-          ],
-          [
-             ("افاتار شباب"),
-             
-             ("افاتار بنات") 
-          ],
-          [
-             ("استوري"),
-             
-             ("متحركه")
-          ],
-          [
-             ("قران"),
-             
-             ("نقشبندي")
-          ],
-          [
-              ("عبدالباسط"),
-              
-              ("تلاوات")
-          ],
-          [
-             ("غنيلي"),
-             
-             ("سوال")         
-          ], 
-          [
-             ("الالعاب"),
-             
-             ("انمي")
-          ],
-          [
-             ("اقتباس"),
-             
-             ("هيدرات")
-          ],
-          
-          [           
-        ("❎ ¦ حذف الكيبورد")
-    ]
+    [
+        ("اقتباس"),
+        ("شعر")
+    ],
+    [
+        ("اصدار"),
+        ("افلام")
+    ],
+
+    [
+        ("لو خيروك"),
+        ("كت تويت") 
+    ],
+    [
+        ("اذكار"),
+        ("صراحه") 
+    ],
+    [
+        ("افاتار شباب"),
+        ("افاتار بنات") 
+    ],
+    [
+        ("استوري"),
+        ("متحركه")
+    ],
+    [
+        ("قران"),
+        ("نقشبندي")
+    ],
+    [
+        ("عبدالباسط"),
+        ("تلاوات")
+    ],
+    [
+        ("غنيلي"),
+        ("سوال")         
+    ],
+    [
+        ("الالعاب"),
+        ("انمي")
+    ],
+    [
+        ("اقتباس"),
+        ("هيدرات")
+    ],    
+    [
+
+             ("❎ ¦ حذف الكيبورد")
+
+    ],    
+
 ]
 
-@app.on_message(filters.regex("^/start"), group=39)
+@app.on_message(filters.regex("^/start"))
 async def cpanel(_, message: Message):             
         text = REPLY_MESSAGE
         reply_markup = ReplyKeyboardMarkup(REPLY_MESSAGE_BUTTONS, resize_keyboard=True, selective=True)
@@ -207,4 +204,4 @@ async def upbkgt(client: Client, message: Message):
             ],
             ]
         ),
-)
+    )
