@@ -4,7 +4,6 @@ from pyrogram.enums import ChatMembersFilter
 from pyrogram import enums
 import json
 from pyrogram import Client, filters
-from pyrogram import TOM
 from config import *
 from pyrogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, ChatPrivileges, InputMediaPhoto
 from pyrogram.errors.exceptions import ChatAdminRequired
@@ -92,7 +91,7 @@ def save_admins_rights(user_id, chat_id,privileges, type):
 async def promote_admin(client: Client, message: Message):
         global message_type
         message_type = (True if message.chat.type != ChatType.CHANNEL else False)
-        if (message_type and not TOM(client, message, message) and not OWNER_ID(client, message, message) and not basic_dev(client, message, message) and not dev(client, message, message) and not owner(client, message, message) and not is_basic_creator(client, message, message) and not creator(client, message, message)):
+        if (message_type and not OWNER_ID(client, message, message) and not basic_dev(client, message, message) and not dev(client, message, message) and not owner(client, message, message) and not is_basic_creator(client, message, message) and not creator(client, message, message)):
             message.reply_text("""◍ يجب ان تكون منشئ على الاقل لكى تستطيع استخدام الأمر
 √""")
             return
