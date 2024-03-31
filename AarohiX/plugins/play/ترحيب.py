@@ -22,6 +22,6 @@ async def almortagel_bot(client, message):
     ])
 
     await message.reply(
-        f"{a}",
+        f"{bar}",
         reply_markup=keyboard
     )
