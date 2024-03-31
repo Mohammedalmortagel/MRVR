@@ -21,7 +21,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -37,7 +37,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -53,7 +53,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -68,7 +68,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -83,7 +83,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -98,7 +98,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -113,7 +113,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -128,7 +128,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -143,7 +143,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -158,7 +158,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -173,7 +173,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -188,13 +188,13 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
     )
-    
-    
+
+
 @app.on_message(filters.command(["كتب دينية"], ""))
 async def almortagel(client: Client, message: Message):
     rl = random.randint(2,1959)
@@ -204,7 +204,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -219,7 +219,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
@@ -234,7 +234,7 @@ async def almortagel(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/{message.from_user.username}")
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech")
                 ],
             ]
         )
