@@ -390,7 +390,7 @@ async def command_buttons(client: Client, message: Message):
     member_status = member.status
     
     if message.text == "الاوامر":
-        if (not TOM(client, message, message) and not basic_dev(client, message, message) and not OWNER_ID(client, message, message) and not dev(client, message, message) and not is_basic_creator(client, message, message) and not owner(client, message, message) and not creator(client, message, message)):
+        if (and not basic_dev(client, message, message) and not OWNER_ID(client, message, message) and not dev(client, message, message) and not is_basic_creator(client, message, message) and not owner(client, message, message) and not creator(client, message, message)):
             
             await message.reply_text("هذا الأمر يخص المنشئين وما اعلى ❤️✨️")
             
@@ -428,7 +428,7 @@ async def command_buttons(client: Client, message: Message):
             edit_rights = await message.reply_text("قم بإختيار الصلاحيات المطلوبة :", reply_markup=reply_markup)
     
     else:
-        if (not TOM(client, message, message) and not basic_dev(client, message, message) and not OWNER_ID(client, message, message) and not dev(client, message, message) and not is_basic_creator(client, message, message) and not owner(client, message, message) and not creator(client, message, message) and not admin(client, message, message)):
+        if (and not basic_dev(client, message, message) and not OWNER_ID(client, message, message) and not dev(client, message, message) and not is_basic_creator(client, message, message) and not owner(client, message, message) and not creator(client, message, message) and not admin(client, message, message)):
             
             chat_permissions = get_group_permissions(chat_id)
                 
