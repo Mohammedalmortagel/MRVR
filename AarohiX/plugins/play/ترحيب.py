@@ -16,7 +16,7 @@ almortagel_responses = [
 async def almortagel_bot(client, message):
     global name
     bot_username = (await app.get_me()).username
-    bar = random.choice(almortagel_responses).format(name=name)
+    bar = random.choice(almortagel_responses)
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("خدني لجروبك والنبي🥺♥", url=f"https://t.me/{bot_username}?startgroup=True")]
     ])
