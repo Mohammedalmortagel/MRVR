@@ -41,7 +41,7 @@ async def instatus(app, message):
 ➲ MEMBERS : [ {count} ]🫂
 ➖➖➖➖➖➖➖
 ➲ BOTS : {bot}💡
-➲ ZOMBIES : {deleted_acc}🧟
+➲ ALMORTAGEL : {deleted_acc}🧟
 ➲ BANNED : {banned}🚫
 ➲ PREMIUM USERS : {premium_acc}🎁
 ➖➖➖➖➖➖➖
