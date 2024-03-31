@@ -22,6 +22,6 @@ async def almortagel_bot(client, message):
     ])
 
     await message.reply(
-       disable_web_page_preview=True,
+        f"{a}",
         reply_markup=keyboard
     )
