@@ -13,7 +13,7 @@ from pyrogram.errors import FloodWait
 
 @app.on_message(filters.command(["المالك", "صاحب الخرابه", "المنشي"], ""))
 async def gak_owne(client: Client, message: Message):
- if len(message.command) >= 2:
+       if len(message.command) >= 2:
          return 
       else:
             chat_id = message.chat.id
