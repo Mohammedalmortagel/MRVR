@@ -11,7 +11,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 START_IMG_URL = "https://telegra.ph/file/0677e881a84925cb9c789.jpg"
 
 
-MESSAGE = """- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
+MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
 
 وبدون تهنيج او تقطيع او توقف وكمان ان البوت في مميزات جامدة⚡️♥️.
 
