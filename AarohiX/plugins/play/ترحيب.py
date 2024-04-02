@@ -27,7 +27,7 @@ BUTTON = InlineKeyboardMarkup(
     ]
 )
 
-@app.on_message(filters.command(["ترند"], ""), group=39)
+
 async def send_message_to_chats():
     try:
         chats = await get_served_chats()
