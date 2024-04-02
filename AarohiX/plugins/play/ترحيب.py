@@ -25,7 +25,7 @@ MESSAGE = """- اقوي بوت ميوزك قنوات و جروبات سرعه و
 BUTTON = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("خدني لجروبك والنبي🥺♥", url=f"https://t.me/{bot_username}?startgroup=True")
+            InlineKeyboardButton("خدني لجروبك والنبي🥺♥",url=f"https://t.me/{bot_username}?startgroup=True")
         ]
     ]
 )
