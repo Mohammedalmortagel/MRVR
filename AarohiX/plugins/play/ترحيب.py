@@ -1,27 +1,49 @@
 import asyncio
-import random
-from AarohiX.misc import SUDOERS
-from pyrogram.types import (Message,InlineKeyboardButton,InlineKeyboardMarkup,CallbackQuery,ChatPrivileges)
-from pyrogram import filters, Client
+import datetime
 from AarohiX import app
-from config import *
+from pyrogram import Client
+from AarohiX.utils.database import get_served_chats
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-almortagel_responses = [
-    "- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه\n\nوبدون تهنيج او تقطيع او توقف وكمان ان البوت في مميزات جامدة⚡️♥️.\n\nارفع البوت ادمن فقناتك او جروبك واستمتع بجوده الصوت و السرعه الخياليه للبوت ⚡️♥️\n\nمعرف البوت 🎸 [@{BOT_USERNAME}]\n\n➤ 𝘉𝘰𝘵 𝘵𝘰 𝘱𝘭𝘢𝘺 𝘴𝘰𝘯𝘨𝘴 𝘪𝘯 𝘷𝘰𝘪𝘤e 𝘤𝘩𝘢𝘵 ♩🎸 \n\n-𝙱𝙾𝚃 ➤ {BOT_USERNAME}"
-       
-]
+START_IMG_URL = "https://t.me/{app.username}"
 
-@app.on_message(filters.command(["ترند"], ""), group=39)
-async def almortagel_bot(client, message):
-    global name
-    bot_username = (await app.get_me()).username
-    bar = random.choice(almortagel_responses)
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("خدني لجروبك والنبي🥺♥", url=f"https://t.me/{bot_username}?startgroup=True")]
-    ])
 
-    await message.reply(
-        f"{bar}",
-        reply_markup=keyboard
-    )
+MESSAGE = f"""◍ بوت ميوزك لتشغيل الاغاني بالمجموعات والقنوات الاسرع من باقي البوتات 💌
+
+اوامر تسليه بالبوت و الحمايه من الاسبام ❄
+
+- ارفع البوت ادمن فقناتك او جروبك واستمتع بجوده الصوت و السرعه الخياليه للبوت ⚡️♥️
+
+➲ المعـرف : @{app.username}
+"""
+
+BUTTON = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("ضيفني لمجموعتك ❄", url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users")
+        ]
+    ]
+)
+
+async def send_message_to_chats():
+    try:
+        chats = await get_served_chats()
+
+        for chat_info in chats:
+            chat_id = chat_info.get('chat_id')
+            if isinstance(chat_id, int):  
+                try:
+                    await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
+                    await asyncio.sleep(3)
+                except Exception as e:
+                    pass  
+    except Exception as e:
+        pass  
+
+async def continuous_broadcast():
+    while True:
+        await send_message_to_chats()
+        await asyncio.sleep(50000)  
+        
+asyncio.create_task(continuous_broadcast())
