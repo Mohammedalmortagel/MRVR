@@ -13,7 +13,7 @@ from pyrogram.errors import FloodWait
 
 @app.on_message(filters.command(["المالك", "صاحب الخرابه", "المنشي"], ""))
 async def gak_owne(client: Client, message: Message):
-       if len(message.command) >= 2:
+      if len(message.command) >= 2:
          return 
       else:
             chat_id = message.chat.id
@@ -25,7 +25,7 @@ async def gak_owne(client: Client, message: Message):
                  m = await client.get_chat(id)
                  if m.photo:
                        photo = await app.download_media(m.photo.big_file_id)
-                       return await message.reply_photo(photo, caption=f"🧞‍♂️ ¦𝙽𝙰𝙼𝙴 :{m.first_name}\n\n🎯 ¦𝚄𝚂𝙴𝚁 :@{m.username}\n\n🎃 ¦𝙸𝙳 :`{m.id}`\n\n💌 ¦𝙱𝙸𝙾 :{m.bio}\n\n✨ ¦𝙲𝙷𝙰𝚃: {message.chat.title}\n♻️ ¦𝙸𝙳.𝙲𝙷𝙰𝚃 :`{message.chat.id}`",reply_markup=key)
+                       return await message.reply_photo(photo, caption=f"🧞‍♂️ ¦𝙽𝙰𝙼𝙴 :{m.first_name}\n\n🎯 ¦𝚄𝚂𝙴𝚁 :@{m.username}\n\n🎃 ¦𝙸𝙳 :`{m.id}`\n\n💌 ¦𝙱𝙸𝙾 :{m.bio}\n\n✨ ¦𝙲𝙷𝙰𝚃: {message.chat.title}\n\n♻️ ¦𝙸𝙳.𝙲𝙷𝙰𝚃 :`{message.chat.id}`",reply_markup=key)
                  else:
                     return await message.reply("• " + member.user.mention)
                     
