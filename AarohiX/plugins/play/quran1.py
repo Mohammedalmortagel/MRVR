@@ -1,7 +1,9 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
+from AarohiX import app
 
-@Client.on_callback_query(filters.regex(["سور القران"], ""))
+
+@app.on_message(filters.regex(["سور القران"], ""))
 async def quran(c: Client, m: Message):
     global mid
     mid = m.message_id
@@ -23,7 +25,7 @@ async def quran(c: Client, m: Message):
     await m.reply_text("◍ اهلا بك فى القرءان الكريم اختر احدى المقرئين\n√", reply_markup=keyboard)
 
 
-@Client.on_callback_query(filters.regex(["سور القران"], ""))
+@app.on_message(filters.regex(["سور القران"], ""))
 async def quran2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -50,7 +52,7 @@ async def quran2(c: Client, m: CallbackQuery):
 ########################################################################################################################
 ########################################################################################################################
 
-@Client.on_callback_query(filters.regex("^fares (\\d+)$"))
+@app.on_message(filters.regex("^fares (\\d+)$"))
 async def fares(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -118,7 +120,7 @@ async def fares(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ فارس عباد\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^fares2 (\\d+)$"))
+@app.on_message(filters.regex("^fares2 (\\d+)$"))
 async def fares2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -198,7 +200,7 @@ async def fares2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ فارس عباد\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xf1 (\\d+)$"))
+@app.on_message(filters.regex("^xf1 (\\d+)$"))
 async def xf1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -208,7 +210,7 @@ async def xf1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/285", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf2 (\\d+)$"))
+@app.on_message(filters.regex("^xf2 (\\d+)$"))
 async def xf2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -218,7 +220,7 @@ async def xf2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/286", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf3 (\\d+)$"))
+@app.on_message(filters.regex("^xf3 (\\d+)$"))
 async def xf3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -228,7 +230,7 @@ async def xf3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/287", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf4 (\\d+)$"))
+@app.on_message(filters.regex("^xf4 (\\d+)$"))
 async def xf4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -238,7 +240,7 @@ async def xf4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/288", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf5 (\\d+)$"))
+@app.on_message(filters.regex("^xf5 (\\d+)$"))
 async def xf5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -248,7 +250,7 @@ async def xf5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/289", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf6 (\\d+)$"))
+@app.on_message(filters.regex("^xf6 (\\d+)$"))
 async def xf6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -258,7 +260,7 @@ async def xf6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/290", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf7 (\\d+)$"))
+@app.on_message(filters.regex("^xf7 (\\d+)$"))
 async def xf7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -268,7 +270,7 @@ async def xf7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/291", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf8 (\\d+)$"))
+@app.on_message(filters.regex("^xf8 (\\d+)$"))
 async def xf8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -278,7 +280,7 @@ async def xf8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/292", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf9 (\\d+)$"))
+@app.on_message(filters.regex("^xf9 (\\d+)$"))
 async def xf9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -288,7 +290,7 @@ async def xf9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/293", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf10 (\\d+)$"))
+@app.on_message(filters.regex("^xf10 (\\d+)$"))
 async def xf10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -298,7 +300,7 @@ async def xf10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/294", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf11 (\\d+)$"))
+@app.on_message(filters.regex("^xf11 (\\d+)$"))
 async def xf11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -308,7 +310,7 @@ async def xf11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/295", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf12 (\\d+)$"))
+@app.on_message(filters.regex("^xf12 (\\d+)$"))
 async def xf12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -318,7 +320,7 @@ async def xf12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/296", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf13 (\\d+)$"))
+@app.on_message(filters.regex("^xf13 (\\d+)$"))
 async def xf13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -328,7 +330,7 @@ async def xf13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/297", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf14 (\\d+)$"))
+@app.on_message(filters.regex("^xf14 (\\d+)$"))
 async def xf14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -338,7 +340,7 @@ async def xf14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/298", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf15 (\\d+)$"))
+@app.on_message(filters.regex("^xf15 (\\d+)$"))
 async def xf15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -348,7 +350,7 @@ async def xf15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/299", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf16 (\\d+)$"))
+@app.on_message(filters.regex("^xf16 (\\d+)$"))
 async def xf16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -358,7 +360,7 @@ async def xf16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/300", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf17 (\\d+)$"))
+@app.on_message(filters.regex("^xf17 (\\d+)$"))
 async def xf17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -368,7 +370,7 @@ async def xf17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/301", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf18 (\\d+)$"))
+@app.on_message(filters.regex("^xf18 (\\d+)$"))
 async def xf18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -378,7 +380,7 @@ async def xf18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/302", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf19 (\\d+)$"))
+@app.on_message(filters.regex("^xf19 (\\d+)$"))
 async def xf19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -388,7 +390,7 @@ async def xf19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/303", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf20 (\\d+)$"))
+@app.on_message(filters.regex("^xf20 (\\d+)$"))
 async def xf20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -398,7 +400,7 @@ async def xf20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/304", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf21 (\\d+)$"))
+@app.on_message(filters.regex("^xf21 (\\d+)$"))
 async def xf21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -408,7 +410,7 @@ async def xf21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/305", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf22 (\\d+)$"))
+@app.on_message(filters.regex("^xf22 (\\d+)$"))
 async def xf22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -418,7 +420,7 @@ async def xf22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/306", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf23 (\\d+)$"))
+@app.on_message(filters.regex("^xf23 (\\d+)$"))
 async def xf23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -428,7 +430,7 @@ async def xf23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/307", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf24 (\\d+)$"))
+@app.on_message(filters.regex("^xf24 (\\d+)$"))
 async def xf24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -438,7 +440,7 @@ async def xf24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/308", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf25 (\\d+)$"))
+@app.on_message(filters.regex("^xf25 (\\d+)$"))
 async def xf25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -448,7 +450,7 @@ async def xf25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/309", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf26 (\\d+)$"))
+@app.on_message(filters.regex("^xf26 (\\d+)$"))
 async def xf26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -458,7 +460,7 @@ async def xf26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/310", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf27 (\\d+)$"))
+@app.on_message(filters.regex("^xf27 (\\d+)$"))
 async def xf27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -468,7 +470,7 @@ async def xf27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/311", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf28 (\\d+)$"))
+@app.on_message(filters.regex("^xf28 (\\d+)$"))
 async def xf28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -478,7 +480,7 @@ async def xf28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/312", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf29 (\\d+)$"))
+@app.on_message(filters.regex("^xf29 (\\d+)$"))
 async def xf29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -488,7 +490,7 @@ async def xf29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/313", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf30 (\\d+)$"))
+@app.on_message(filters.regex("^xf30 (\\d+)$"))
 async def xf30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -498,7 +500,7 @@ async def xf30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/314", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf31 (\\d+)$"))
+@app.on_message(filters.regex("^xf31 (\\d+)$"))
 async def xf31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -508,7 +510,7 @@ async def xf31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/315", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf32 (\\d+)$"))
+@app.on_message(filters.regex("^xf32 (\\d+)$"))
 async def xf32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -518,7 +520,7 @@ async def xf32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/316", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf33 (\\d+)$"))
+@app.on_message(filters.regex("^xf33 (\\d+)$"))
 async def xf33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -528,7 +530,7 @@ async def xf33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/317", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf34 (\\d+)$"))
+@app.on_message(filters.regex("^xf34 (\\d+)$"))
 async def xf34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -538,7 +540,7 @@ async def xf34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/318", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf35 (\\d+)$"))
+@app.on_message(filters.regex("^xf35 (\\d+)$"))
 async def xf35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -548,7 +550,7 @@ async def xf35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/319", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf36 (\\d+)$"))
+@app.on_message(filters.regex("^xf36 (\\d+)$"))
 async def xf36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -558,7 +560,7 @@ async def xf36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/320", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf37 (\\d+)$"))
+@app.on_message(filters.regex("^xf37 (\\d+)$"))
 async def xf37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -568,7 +570,7 @@ async def xf37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/321", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf38 (\\d+)$"))
+@app.on_message(filters.regex("^xf38 (\\d+)$"))
 async def xf38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -578,7 +580,7 @@ async def xf38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/322", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf39 (\\d+)$"))
+@app.on_message(filters.regex("^xf39 (\\d+)$"))
 async def xf39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -588,7 +590,7 @@ async def xf39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/323", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf40 (\\d+)$"))
+@app.on_message(filters.regex("^xf40 (\\d+)$"))
 async def xf40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -598,7 +600,7 @@ async def xf40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/324", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf41 (\\d+)$"))
+@app.on_message(filters.regex("^xf41 (\\d+)$"))
 async def xf41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -608,7 +610,7 @@ async def xf41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/325", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf42 (\\d+)$"))
+@app.on_message(filters.regex("^xf42 (\\d+)$"))
 async def xf42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -618,7 +620,7 @@ async def xf42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/326", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf43 (\\d+)$"))
+@app.on_message(filters.regex("^xf43 (\\d+)$"))
 async def xf43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -628,7 +630,7 @@ async def xf43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/327", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf44 (\\d+)$"))
+@app.on_message(filters.regex("^xf44 (\\d+)$"))
 async def xf44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -638,7 +640,7 @@ async def xf44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/328", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf45 (\\d+)$"))
+@app.on_message(filters.regex("^xf45 (\\d+)$"))
 async def xf45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -648,7 +650,7 @@ async def xf45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/329", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf46 (\\d+)$"))
+@app.on_message(filters.regex("^xf46 (\\d+)$"))
 async def xf46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -658,7 +660,7 @@ async def xf46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/330", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf47 (\\d+)$"))
+@app.on_message(filters.regex("^xf47 (\\d+)$"))
 async def xf47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -668,7 +670,7 @@ async def xf47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/331", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf48 (\\d+)$"))
+@app.on_message(filters.regex("^xf48 (\\d+)$"))
 async def xf48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -678,7 +680,7 @@ async def xf48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/332", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf49 (\\d+)$"))
+@app.on_message(filters.regex("^xf49 (\\d+)$"))
 async def xf49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -688,7 +690,7 @@ async def xf49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/333", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf50 (\\d+)$"))
+@app.on_message(filters.regex("^xf50 (\\d+)$"))
 async def xf50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -698,7 +700,7 @@ async def xf50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/334", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf51 (\\d+)$"))
+@app.on_message(filters.regex("^xf51 (\\d+)$"))
 async def xf51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -708,7 +710,7 @@ async def xf51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/335", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf52 (\\d+)$"))
+@app.on_message(filters.regex("^xf52 (\\d+)$"))
 async def xf52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -718,7 +720,7 @@ async def xf52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/336", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf53 (\\d+)$"))
+@app.on_message(filters.regex("^xf53 (\\d+)$"))
 async def xf53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -728,7 +730,7 @@ async def xf53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/337", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf54 (\\d+)$"))
+@app.on_message(filters.regex("^xf54 (\\d+)$"))
 async def xf54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -738,7 +740,7 @@ async def xf54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/338", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf55 (\\d+)$"))
+@app.on_message(filters.regex("^xf55 (\\d+)$"))
 async def xf55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -748,7 +750,7 @@ async def xf55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/339", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf56 (\\d+)$"))
+@app.on_message(filters.regex("^xf56 (\\d+)$"))
 async def xf56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -758,7 +760,7 @@ async def xf56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/340", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf57 (\\d+)$"))
+@app.on_message(filters.regex("^xf57 (\\d+)$"))
 async def xf57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -768,7 +770,7 @@ async def xf57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/341", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf58 (\\d+)$"))
+@app.on_message(filters.regex("^xf58 (\\d+)$"))
 async def xf58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -778,7 +780,7 @@ async def xf58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/342", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf59 (\\d+)$"))
+@app.on_message(filters.regex("^xf59 (\\d+)$"))
 async def xf59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -788,7 +790,7 @@ async def xf59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/343", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf60 (\\d+)$"))
+@app.on_message(filters.regex("^xf60 (\\d+)$"))
 async def xf60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -798,7 +800,7 @@ async def xf60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/344", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf61 (\\d+)$"))
+@app.on_message(filters.regex("^xf61 (\\d+)$"))
 async def xf61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -808,7 +810,7 @@ async def xf61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/345", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf62 (\\d+)$"))
+@app.on_message(filters.regex("^xf62 (\\d+)$"))
 async def xf62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -818,7 +820,7 @@ async def xf62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/346", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf63 (\\d+)$"))
+@app.on_message(filters.regex("^xf63 (\\d+)$"))
 async def xf63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -828,7 +830,7 @@ async def xf63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/347", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf64 (\\d+)$"))
+@app.on_message(filters.regex("^xf64 (\\d+)$"))
 async def xf64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -838,7 +840,7 @@ async def xf64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/348", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf65 (\\d+)$"))
+@app.on_message(filters.regex("^xf65 (\\d+)$"))
 async def xf65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -848,7 +850,7 @@ async def xf65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/349", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf66 (\\d+)$"))
+@app.on_message(filters.regex("^xf66 (\\d+)$"))
 async def xf66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -858,7 +860,7 @@ async def xf66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/350", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf67 (\\d+)$"))
+@app.on_message(filters.regex("^xf67 (\\d+)$"))
 async def xf67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -868,7 +870,7 @@ async def xf67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/351", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf68 (\\d+)$"))
+@app.on_message(filters.regex("^xf68 (\\d+)$"))
 async def xf68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -878,7 +880,7 @@ async def xf68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/352", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf69 (\\d+)$"))
+@app.on_message(filters.regex("^xf69 (\\d+)$"))
 async def xf69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -888,7 +890,7 @@ async def xf69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/353", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf70 (\\d+)$"))
+@app.on_message(filters.regex("^xf70 (\\d+)$"))
 async def xf70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -898,7 +900,7 @@ async def xf70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/354", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf71 (\\d+)$"))
+@app.on_message(filters.regex("^xf71 (\\d+)$"))
 async def xf71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -908,7 +910,7 @@ async def xf71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/355", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf72 (\\d+)$"))
+@app.on_message(filters.regex("^xf72 (\\d+)$"))
 async def xf72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -918,7 +920,7 @@ async def xf72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/356", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf73 (\\d+)$"))
+@app.on_message(filters.regex("^xf73 (\\d+)$"))
 async def xf73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -928,7 +930,7 @@ async def xf73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/357", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf74 (\\d+)$"))
+@app.on_message(filters.regex("^xf74 (\\d+)$"))
 async def xf74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -938,7 +940,7 @@ async def xf74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/358", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf75 (\\d+)$"))
+@app.on_message(filters.regex("^xf75 (\\d+)$"))
 async def xf75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -948,7 +950,7 @@ async def xf75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/359", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf76 (\\d+)$"))
+@app.on_message(filters.regex("^xf76 (\\d+)$"))
 async def xf76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -958,7 +960,7 @@ async def xf76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/360", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf77 (\\d+)$"))
+@app.on_message(filters.regex("^xf77 (\\d+)$"))
 async def xf77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -968,7 +970,7 @@ async def xf77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/361", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf78 (\\d+)$"))
+@app.on_message(filters.regex("^xf78 (\\d+)$"))
 async def xf78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -978,7 +980,7 @@ async def xf78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/362", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf79 (\\d+)$"))
+@app.on_message(filters.regex("^xf79 (\\d+)$"))
 async def xf79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -988,7 +990,7 @@ async def xf79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/363", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf80 (\\d+)$"))
+@app.on_message(filters.regex("^xf80 (\\d+)$"))
 async def xf80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -998,7 +1000,7 @@ async def xf80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/364", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf81 (\\d+)$"))
+@app.on_message(filters.regex("^xf81 (\\d+)$"))
 async def xf81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1008,7 +1010,7 @@ async def xf81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/365", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf82 (\\d+)$"))
+@app.on_message(filters.regex("^xf82 (\\d+)$"))
 async def xf82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1018,7 +1020,7 @@ async def xf82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/366", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf83 (\\d+)$"))
+@app.on_message(filters.regex("^xf83 (\\d+)$"))
 async def xf83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1028,7 +1030,7 @@ async def xf83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/367", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf84 (\\d+)$"))
+@app.on_message(filters.regex("^xf84 (\\d+)$"))
 async def xf84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1038,7 +1040,7 @@ async def xf84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/368", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf85 (\\d+)$"))
+@app.on_message(filters.regex("^xf85 (\\d+)$"))
 async def xf85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1048,7 +1050,7 @@ async def xf85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/369", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf86 (\\d+)$"))
+@app.on_message(filters.regex("^xf86 (\\d+)$"))
 async def xf86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1058,7 +1060,7 @@ async def xf86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/370", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf87 (\\d+)$"))
+@app.on_message(filters.regex("^xf87 (\\d+)$"))
 async def xf87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1068,7 +1070,7 @@ async def xf87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/371", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf88 (\\d+)$"))
+@app.on_message(filters.regex("^xf88 (\\d+)$"))
 async def xf88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1078,7 +1080,7 @@ async def xf88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/372", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf89 (\\d+)$"))
+@app.on_message(filters.regex("^xf89 (\\d+)$"))
 async def xf89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1088,7 +1090,7 @@ async def xf89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/373", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf90 (\\d+)$"))
+@app.on_message(filters.regex("^xf90 (\\d+)$"))
 async def xf90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1098,7 +1100,7 @@ async def xf90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/374", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf91 (\\d+)$"))
+@app.on_message(filters.regex("^xf91 (\\d+)$"))
 async def xf91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1108,7 +1110,7 @@ async def xf91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/375", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf92 (\\d+)$"))
+@app.on_message(filters.regex("^xf92 (\\d+)$"))
 async def xf92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1118,7 +1120,7 @@ async def xf92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/376", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf93 (\\d+)$"))
+@app.on_message(filters.regex("^xf93 (\\d+)$"))
 async def xf93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1128,7 +1130,7 @@ async def xf93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/377", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf94 (\\d+)$"))
+@app.on_message(filters.regex("^xf94 (\\d+)$"))
 async def xf94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1138,7 +1140,7 @@ async def xf94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/378", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf95 (\\d+)$"))
+@app.on_message(filters.regex("^xf95 (\\d+)$"))
 async def xf95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1148,7 +1150,7 @@ async def xf95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/379", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf96 (\\d+)$"))
+@app.on_message(filters.regex("^xf96 (\\d+)$"))
 async def xf96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1158,7 +1160,7 @@ async def xf96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/380", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf97 (\\d+)$"))
+@app.on_message(filters.regex("^xf97 (\\d+)$"))
 async def xf97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1168,7 +1170,7 @@ async def xf97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/381", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf98 (\\d+)$"))
+@app.on_message(filters.regex("^xf98 (\\d+)$"))
 async def xf98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1178,7 +1180,7 @@ async def xf98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/382", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf99 (\\d+)$"))
+@app.on_message(filters.regex("^xf99 (\\d+)$"))
 async def xf99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1188,7 +1190,7 @@ async def xf99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/383", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf100 (\\d+)$"))
+@app.on_message(filters.regex("^xf100 (\\d+)$"))
 async def xf100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1198,7 +1200,7 @@ async def xf100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/384", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf101 (\\d+)$"))
+@app.on_message(filters.regex("^xf101 (\\d+)$"))
 async def xf101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1208,7 +1210,7 @@ async def xf101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/385", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf102 (\\d+)$"))
+@app.on_message(filters.regex("^xf102 (\\d+)$"))
 async def xf102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1218,7 +1220,7 @@ async def xf102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/386", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf103 (\\d+)$"))
+@app.on_message(filters.regex("^xf103 (\\d+)$"))
 async def xf103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1228,7 +1230,7 @@ async def xf103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/387", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf104 (\\d+)$"))
+@app.on_message(filters.regex("^xf104 (\\d+)$"))
 async def xf104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1238,7 +1240,7 @@ async def xf104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/388", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf105 (\\d+)$"))
+@app.on_message(filters.regex("^xf105 (\\d+)$"))
 async def xf105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1248,7 +1250,7 @@ async def xf105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/389", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf106 (\\d+)$"))
+@app.on_message(filters.regex("^xf106 (\\d+)$"))
 async def xf106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1258,7 +1260,7 @@ async def xf106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/390", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf107 (\\d+)$"))
+@app.on_message(filters.regex("^xf107 (\\d+)$"))
 async def xf107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1268,7 +1270,7 @@ async def xf107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/391", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf108 (\\d+)$"))
+@app.on_message(filters.regex("^xf108 (\\d+)$"))
 async def xf108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1278,7 +1280,7 @@ async def xf108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/392", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf109 (\\d+)$"))
+@app.on_message(filters.regex("^xf109 (\\d+)$"))
 async def xf109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1288,7 +1290,7 @@ async def xf109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/393", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf110 (\\d+)$"))
+@app.on_message(filters.regex("^xf110 (\\d+)$"))
 async def xf110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1298,7 +1300,7 @@ async def xf110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/394", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf111 (\\d+)$"))
+@app.on_message(filters.regex("^xf111 (\\d+)$"))
 async def xf111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1308,7 +1310,7 @@ async def xf111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/395", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf112 (\\d+)$"))
+@app.on_message(filters.regex("^xf112 (\\d+)$"))
 async def xf112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1318,7 +1320,7 @@ async def xf112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/396", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf113 (\\d+)$"))
+@app.on_message(filters.regex("^xf113 (\\d+)$"))
 async def xf113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1328,7 +1330,7 @@ async def xf113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/397", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xf114 (\\d+)$"))
+@app.on_message(filters.regex("^xf114 (\\d+)$"))
 async def xf114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1342,7 +1344,7 @@ async def xf114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^naser (\\d+)$"))
+@app.on_message(filters.regex("^naser (\\d+)$"))
 async def naser(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1410,7 +1412,7 @@ async def naser(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ناصر القطامي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^naser2 (\\d+)$"))
+@app.on_message(filters.regex("^naser2 (\\d+)$"))
 async def naser2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1490,7 +1492,7 @@ async def naser2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ناصر القطامي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xn1 (\\d+)$"))
+@app.on_message(filters.regex("^xn1 (\\d+)$"))
 async def xn1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1500,7 +1502,7 @@ async def xn1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/762", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn2 (\\d+)$"))
+@app.on_message(filters.regex("^xn2 (\\d+)$"))
 async def xn2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1510,7 +1512,7 @@ async def xn2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/763", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn3 (\\d+)$"))
+@app.on_message(filters.regex("^xn3 (\\d+)$"))
 async def xn3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1520,7 +1522,7 @@ async def xn3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/764", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn4 (\\d+)$"))
+@app.on_message(filters.regex("^xn4 (\\d+)$"))
 async def xn4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1530,7 +1532,7 @@ async def xn4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/765", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn5 (\\d+)$"))
+@app.on_message(filters.regex("^xn5 (\\d+)$"))
 async def xn5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1540,7 +1542,7 @@ async def xn5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/766", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn6 (\\d+)$"))
+@app.on_message(filters.regex("^xn6 (\\d+)$"))
 async def xn6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1550,7 +1552,7 @@ async def xn6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/767", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn7 (\\d+)$"))
+@app.on_message(filters.regex("^xn7 (\\d+)$"))
 async def xn7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1560,7 +1562,7 @@ async def xn7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/768", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn8 (\\d+)$"))
+@app.on_message(filters.regex("^xn8 (\\d+)$"))
 async def xn8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1570,7 +1572,7 @@ async def xn8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/769", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn9 (\\d+)$"))
+@app.on_message(filters.regex("^xn9 (\\d+)$"))
 async def xn9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1580,7 +1582,7 @@ async def xn9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/770", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn10 (\\d+)$"))
+@app.on_message(filters.regex("^xn10 (\\d+)$"))
 async def xn10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1590,7 +1592,7 @@ async def xn10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/771", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn11 (\\d+)$"))
+@app.on_message(filters.regex("^xn11 (\\d+)$"))
 async def xn11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1600,7 +1602,7 @@ async def xn11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/772", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn12 (\\d+)$"))
+@app.on_message(filters.regex("^xn12 (\\d+)$"))
 async def xn12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1610,7 +1612,7 @@ async def xn12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/773", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn13 (\\d+)$"))
+@app.on_message(filters.regex("^xn13 (\\d+)$"))
 async def xn13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1620,7 +1622,7 @@ async def xn13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/774", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn14 (\\d+)$"))
+@app.on_message(filters.regex("^xn14 (\\d+)$"))
 async def xn14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1630,7 +1632,7 @@ async def xn14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/775", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn15 (\\d+)$"))
+@app.on_message(filters.regex("^xn15 (\\d+)$"))
 async def xn15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1640,7 +1642,7 @@ async def xn15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/776", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn16 (\\d+)$"))
+@app.on_message(filters.regex("^xn16 (\\d+)$"))
 async def xn16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1650,7 +1652,7 @@ async def xn16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/777", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn17 (\\d+)$"))
+@app.on_message(filters.regex("^xn17 (\\d+)$"))
 async def xn17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1660,7 +1662,7 @@ async def xn17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/778", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn18 (\\d+)$"))
+@app.on_message(filters.regex("^xn18 (\\d+)$"))
 async def xn18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1670,7 +1672,7 @@ async def xn18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/779", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn19 (\\d+)$"))
+@app.on_message(filters.regex("^xn19 (\\d+)$"))
 async def xn19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1680,7 +1682,7 @@ async def xn19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/780", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn20 (\\d+)$"))
+@app.on_message(filters.regex("^xn20 (\\d+)$"))
 async def xn20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1690,7 +1692,7 @@ async def xn20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/781", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn21 (\\d+)$"))
+@app.on_message(filters.regex("^xn21 (\\d+)$"))
 async def xn21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1700,7 +1702,7 @@ async def xn21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/782", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn22 (\\d+)$"))
+@app.on_message(filters.regex("^xn22 (\\d+)$"))
 async def xn22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1710,7 +1712,7 @@ async def xn22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/783", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn23 (\\d+)$"))
+@app.on_message(filters.regex("^xn23 (\\d+)$"))
 async def xn23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1720,7 +1722,7 @@ async def xn23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/784", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn24 (\\d+)$"))
+@app.on_message(filters.regex("^xn24 (\\d+)$"))
 async def xn24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1730,7 +1732,7 @@ async def xn24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/785", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn25 (\\d+)$"))
+@app.on_message(filters.regex("^xn25 (\\d+)$"))
 async def xn25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1740,7 +1742,7 @@ async def xn25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/786", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn26 (\\d+)$"))
+@app.on_message(filters.regex("^xn26 (\\d+)$"))
 async def xn26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1750,7 +1752,7 @@ async def xn26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/787", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn27 (\\d+)$"))
+@app.on_message(filters.regex("^xn27 (\\d+)$"))
 async def xn27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1760,7 +1762,7 @@ async def xn27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/788", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn28 (\\d+)$"))
+@app.on_message(filters.regex("^xn28 (\\d+)$"))
 async def xn28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1770,7 +1772,7 @@ async def xn28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/789", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn29 (\\d+)$"))
+@app.on_message(filters.regex("^xn29 (\\d+)$"))
 async def xn29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1780,7 +1782,7 @@ async def xn29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/790", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn30 (\\d+)$"))
+@app.on_message(filters.regex("^xn30 (\\d+)$"))
 async def xn30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1790,7 +1792,7 @@ async def xn30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/791", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn31 (\\d+)$"))
+@app.on_message(filters.regex("^xn31 (\\d+)$"))
 async def xn31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1800,7 +1802,7 @@ async def xn31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/792", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn32 (\\d+)$"))
+@app.on_message(filters.regex("^xn32 (\\d+)$"))
 async def xn32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1810,7 +1812,7 @@ async def xn32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/793", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn33 (\\d+)$"))
+@app.on_message(filters.regex("^xn33 (\\d+)$"))
 async def xn33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1820,7 +1822,7 @@ async def xn33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/794", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn34 (\\d+)$"))
+@app.on_message(filters.regex("^xn34 (\\d+)$"))
 async def xn34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1830,7 +1832,7 @@ async def xn34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/795", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn35 (\\d+)$"))
+@app.on_message(filters.regex("^xn35 (\\d+)$"))
 async def xn35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1840,7 +1842,7 @@ async def xn35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/796", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn36 (\\d+)$"))
+@app.on_message(filters.regex("^xn36 (\\d+)$"))
 async def xn36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1850,7 +1852,7 @@ async def xn36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/797", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn37 (\\d+)$"))
+@app.on_message(filters.regex("^xn37 (\\d+)$"))
 async def xn37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1860,7 +1862,7 @@ async def xn37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/798", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn38 (\\d+)$"))
+@app.on_message(filters.regex("^xn38 (\\d+)$"))
 async def xn38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1870,7 +1872,7 @@ async def xn38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/799", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn39 (\\d+)$"))
+@app.on_message(filters.regex("^xn39 (\\d+)$"))
 async def xn39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1880,7 +1882,7 @@ async def xn39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/800", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn40 (\\d+)$"))
+@app.on_message(filters.regex("^xn40 (\\d+)$"))
 async def xn40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1890,7 +1892,7 @@ async def xn40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/801", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn41 (\\d+)$"))
+@app.on_message(filters.regex("^xn41 (\\d+)$"))
 async def xn41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1900,7 +1902,7 @@ async def xn41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/802", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn42 (\\d+)$"))
+@app.on_message(filters.regex("^xn42 (\\d+)$"))
 async def xn42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1910,7 +1912,7 @@ async def xn42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/803", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn43 (\\d+)$"))
+@app.on_message(filters.regex("^xn43 (\\d+)$"))
 async def xn43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1920,7 +1922,7 @@ async def xn43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/804", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn44 (\\d+)$"))
+@app.on_message(filters.regex("^xn44 (\\d+)$"))
 async def xn44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1930,7 +1932,7 @@ async def xn44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/805", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn45 (\\d+)$"))
+@app.on_message(filters.regex("^xn45 (\\d+)$"))
 async def xn45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1940,7 +1942,7 @@ async def xn45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/806", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn46 (\\d+)$"))
+@app.on_message(filters.regex("^xn46 (\\d+)$"))
 async def xn46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1950,7 +1952,7 @@ async def xn46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/807", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn47 (\\d+)$"))
+@app.on_message(filters.regex("^xn47 (\\d+)$"))
 async def xn47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1960,7 +1962,7 @@ async def xn47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/808", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn48 (\\d+)$"))
+@app.on_message(filters.regex("^xn48 (\\d+)$"))
 async def xn48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1970,7 +1972,7 @@ async def xn48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/809", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn49 (\\d+)$"))
+@app.on_message(filters.regex("^xn49 (\\d+)$"))
 async def xn49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1980,7 +1982,7 @@ async def xn49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/810", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn50 (\\d+)$"))
+@app.on_message(filters.regex("^xn50 (\\d+)$"))
 async def xn50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -1990,7 +1992,7 @@ async def xn50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/811", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn51 (\\d+)$"))
+@app.on_message(filters.regex("^xn51 (\\d+)$"))
 async def xn51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2000,7 +2002,7 @@ async def xn51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/812", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn52 (\\d+)$"))
+@app.on_message(filters.regex("^xn52 (\\d+)$"))
 async def xn52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2010,7 +2012,7 @@ async def xn52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/813", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn53 (\\d+)$"))
+@app.on_message(filters.regex("^xn53 (\\d+)$"))
 async def xn53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2020,7 +2022,7 @@ async def xn53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/814", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn54 (\\d+)$"))
+@app.on_message(filters.regex("^xn54 (\\d+)$"))
 async def xn54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2030,7 +2032,7 @@ async def xn54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/815", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn55 (\\d+)$"))
+@app.on_message(filters.regex("^xn55 (\\d+)$"))
 async def xn55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2040,7 +2042,7 @@ async def xn55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/816", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn56 (\\d+)$"))
+@app.on_message(filters.regex("^xn56 (\\d+)$"))
 async def xn56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2050,7 +2052,7 @@ async def xn56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/817", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn57 (\\d+)$"))
+@app.on_message(filters.regex("^xn57 (\\d+)$"))
 async def xn57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2060,7 +2062,7 @@ async def xn57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/818", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn58 (\\d+)$"))
+@app.on_message(filters.regex("^xn58 (\\d+)$"))
 async def xn58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2070,7 +2072,7 @@ async def xn58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/819", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn59 (\\d+)$"))
+@app.on_message(filters.regex("^xn59 (\\d+)$"))
 async def xn59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2080,7 +2082,7 @@ async def xn59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/820", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn60 (\\d+)$"))
+@app.on_message(filters.regex("^xn60 (\\d+)$"))
 async def xn60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2090,7 +2092,7 @@ async def xn60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/821", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn61 (\\d+)$"))
+@app.on_message(filters.regex("^xn61 (\\d+)$"))
 async def xn61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2100,7 +2102,7 @@ async def xn61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/822", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn62 (\\d+)$"))
+@app.on_message(filters.regex("^xn62 (\\d+)$"))
 async def xn62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2110,7 +2112,7 @@ async def xn62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/823", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn63 (\\d+)$"))
+@app.on_message(filters.regex("^xn63 (\\d+)$"))
 async def xn63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2120,7 +2122,7 @@ async def xn63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/824", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn64 (\\d+)$"))
+@app.on_message(filters.regex("^xn64 (\\d+)$"))
 async def xn64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2130,7 +2132,7 @@ async def xn64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/825", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn65 (\\d+)$"))
+@app.on_message(filters.regex("^xn65 (\\d+)$"))
 async def xn65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2140,7 +2142,7 @@ async def xn65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/826", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn66 (\\d+)$"))
+@app.on_message(filters.regex("^xn66 (\\d+)$"))
 async def xn66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2150,7 +2152,7 @@ async def xn66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/827", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn67 (\\d+)$"))
+@app.on_message(filters.regex("^xn67 (\\d+)$"))
 async def xn67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2160,7 +2162,7 @@ async def xn67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/828", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn68 (\\d+)$"))
+@app.on_message(filters.regex("^xn68 (\\d+)$"))
 async def xn68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2170,7 +2172,7 @@ async def xn68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/829", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn69 (\\d+)$"))
+@app.on_message(filters.regex("^xn69 (\\d+)$"))
 async def xn69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2180,7 +2182,7 @@ async def xn69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/830", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn70 (\\d+)$"))
+@app.on_message(filters.regex("^xn70 (\\d+)$"))
 async def xn70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2190,7 +2192,7 @@ async def xn70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/831", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn71 (\\d+)$"))
+@app.on_message(filters.regex("^xn71 (\\d+)$"))
 async def xn71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2200,7 +2202,7 @@ async def xn71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/832", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn72 (\\d+)$"))
+@app.on_message(filters.regex("^xn72 (\\d+)$"))
 async def xn72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2210,7 +2212,7 @@ async def xn72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/833", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn73 (\\d+)$"))
+@app.on_message(filters.regex("^xn73 (\\d+)$"))
 async def xn73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2220,7 +2222,7 @@ async def xn73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/834", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn74 (\\d+)$"))
+@app.on_message(filters.regex("^xn74 (\\d+)$"))
 async def xn74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2230,7 +2232,7 @@ async def xn74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/835", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn75 (\\d+)$"))
+@app.on_message(filters.regex("^xn75 (\\d+)$"))
 async def xn75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2240,7 +2242,7 @@ async def xn75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/836", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn76 (\\d+)$"))
+@app.on_message(filters.regex("^xn76 (\\d+)$"))
 async def xn76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2250,7 +2252,7 @@ async def xn76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/837", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn77 (\\d+)$"))
+@app.on_message(filters.regex("^xn77 (\\d+)$"))
 async def xn77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2260,7 +2262,7 @@ async def xn77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/838", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn78 (\\d+)$"))
+@app.on_message(filters.regex("^xn78 (\\d+)$"))
 async def xn78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2270,7 +2272,7 @@ async def xn78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/839", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn79 (\\d+)$"))
+@app.on_message(filters.regex("^xn79 (\\d+)$"))
 async def xn79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2280,7 +2282,7 @@ async def xn79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/840", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn80 (\\d+)$"))
+@app.on_message(filters.regex("^xn80 (\\d+)$"))
 async def xn80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2290,7 +2292,7 @@ async def xn80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/841", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn81 (\\d+)$"))
+@app.on_message(filters.regex("^xn81 (\\d+)$"))
 async def xn81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2300,7 +2302,7 @@ async def xn81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/842", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn82 (\\d+)$"))
+@app.on_message(filters.regex("^xn82 (\\d+)$"))
 async def xn82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2310,7 +2312,7 @@ async def xn82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/843", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn83 (\\d+)$"))
+@app.on_message(filters.regex("^xn83 (\\d+)$"))
 async def xn83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2320,7 +2322,7 @@ async def xn83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/844", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn84 (\\d+)$"))
+@app.on_message(filters.regex("^xn84 (\\d+)$"))
 async def xn84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2330,7 +2332,7 @@ async def xn84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/845", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn85 (\\d+)$"))
+@app.on_message(filters.regex("^xn85 (\\d+)$"))
 async def xn85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2340,7 +2342,7 @@ async def xn85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/846", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn86 (\\d+)$"))
+@app.on_message(filters.regex("^xn86 (\\d+)$"))
 async def xn86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2350,7 +2352,7 @@ async def xn86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/847", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn87 (\\d+)$"))
+@app.on_message(filters.regex("^xn87 (\\d+)$"))
 async def xn87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2360,7 +2362,7 @@ async def xn87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/848", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn88 (\\d+)$"))
+@app.on_message(filters.regex("^xn88 (\\d+)$"))
 async def xn88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2370,7 +2372,7 @@ async def xn88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/849", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn89 (\\d+)$"))
+@app.on_message(filters.regex("^xn89 (\\d+)$"))
 async def xn89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2380,7 +2382,7 @@ async def xn89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/850", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn90 (\\d+)$"))
+@app.on_message(filters.regex("^xn90 (\\d+)$"))
 async def xn90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2390,7 +2392,7 @@ async def xn90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/851", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn91 (\\d+)$"))
+@app.on_message(filters.regex("^xn91 (\\d+)$"))
 async def xn91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2400,7 +2402,7 @@ async def xn91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/852", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn92 (\\d+)$"))
+@app.on_message(filters.regex("^xn92 (\\d+)$"))
 async def xn92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2410,7 +2412,7 @@ async def xn92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/853", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn93 (\\d+)$"))
+@app.on_message(filters.regex("^xn93 (\\d+)$"))
 async def xn93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2420,7 +2422,7 @@ async def xn93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/854", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn94 (\\d+)$"))
+@app.on_message(filters.regex("^xn94 (\\d+)$"))
 async def xn94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2430,7 +2432,7 @@ async def xn94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/855", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn95 (\\d+)$"))
+@app.on_message(filters.regex("^xn95 (\\d+)$"))
 async def xn95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2440,7 +2442,7 @@ async def xn95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/856", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn96 (\\d+)$"))
+@app.on_message(filters.regex("^xn96 (\\d+)$"))
 async def xn96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2450,7 +2452,7 @@ async def xn96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/857", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn97 (\\d+)$"))
+@app.on_message(filters.regex("^xn97 (\\d+)$"))
 async def xn97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2460,7 +2462,7 @@ async def xn97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/858", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn98 (\\d+)$"))
+@app.on_message(filters.regex("^xn98 (\\d+)$"))
 async def xn98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2470,7 +2472,7 @@ async def xn98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/859", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn99 (\\d+)$"))
+@app.on_message(filters.regex("^xn99 (\\d+)$"))
 async def xn99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2480,7 +2482,7 @@ async def xn99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/860", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn100 (\\d+)$"))
+@app.on_message(filters.regex("^xn100 (\\d+)$"))
 async def xn100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2490,7 +2492,7 @@ async def xn100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/861", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn101 (\\d+)$"))
+@app.on_message(filters.regex("^xn101 (\\d+)$"))
 async def xn101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2500,7 +2502,7 @@ async def xn101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/862", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn102 (\\d+)$"))
+@app.on_message(filters.regex("^xn102 (\\d+)$"))
 async def xn102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2510,7 +2512,7 @@ async def xn102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/863", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn103 (\\d+)$"))
+@app.on_message(filters.regex("^xn103 (\\d+)$"))
 async def xn103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2520,7 +2522,7 @@ async def xn103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/864", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn104 (\\d+)$"))
+@app.on_message(filters.regex("^xn104 (\\d+)$"))
 async def xn104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2530,7 +2532,7 @@ async def xn104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/865", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn105 (\\d+)$"))
+@app.on_message(filters.regex("^xn105 (\\d+)$"))
 async def xn105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2540,7 +2542,7 @@ async def xn105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/866", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn106 (\\d+)$"))
+@app.on_message(filters.regex("^xn106 (\\d+)$"))
 async def xn106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2550,7 +2552,7 @@ async def xn106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/867", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn107 (\\d+)$"))
+@app.on_message(filters.regex("^xn107 (\\d+)$"))
 async def xn107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2560,7 +2562,7 @@ async def xn107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/868", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn108 (\\d+)$"))
+@app.on_message(filters.regex("^xn108 (\\d+)$"))
 async def xn108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2570,7 +2572,7 @@ async def xn108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/869", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn109 (\\d+)$"))
+@app.on_message(filters.regex("^xn109 (\\d+)$"))
 async def xn109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2580,7 +2582,7 @@ async def xn109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/870", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn110 (\\d+)$"))
+@app.on_message(filters.regex("^xn110 (\\d+)$"))
 async def xn110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2590,7 +2592,7 @@ async def xn110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/871", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn111 (\\d+)$"))
+@app.on_message(filters.regex("^xn111 (\\d+)$"))
 async def xn111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2600,7 +2602,7 @@ async def xn111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/872", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn112 (\\d+)$"))
+@app.on_message(filters.regex("^xn112 (\\d+)$"))
 async def xn112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2610,7 +2612,7 @@ async def xn112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/873", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn113 (\\d+)$"))
+@app.on_message(filters.regex("^xn113 (\\d+)$"))
 async def xn113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2620,7 +2622,7 @@ async def xn113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/874", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xn114 (\\d+)$"))
+@app.on_message(filters.regex("^xn114 (\\d+)$"))
 async def xn114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2634,7 +2636,7 @@ async def xn114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^eslam (\\d+)$"))
+@app.on_message(filters.regex("^eslam (\\d+)$"))
 async def eslam(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2665,7 +2667,7 @@ async def eslam(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ اسلام صبحي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^eslam2 (\\d+)$"))
+@app.on_message(filters.regex("^eslam2 (\\d+)$"))
 async def eslam2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2694,7 +2696,7 @@ async def eslam2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ اسلام صبحي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xes13 (\\d+)$"))
+@app.on_message(filters.regex("^xes13 (\\d+)$"))
 async def xes13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2704,7 +2706,7 @@ async def xes13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/241", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes17 (\\d+)$"))
+@app.on_message(filters.regex("^xes17 (\\d+)$"))
 async def xes17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2714,7 +2716,7 @@ async def xes17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/243", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes18 (\\d+)$"))
+@app.on_message(filters.regex("^xes18 (\\d+)$"))
 async def xes18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2724,7 +2726,7 @@ async def xes18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/245", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes26 (\\d+)$"))
+@app.on_message(filters.regex("^xes26 (\\d+)$"))
 async def xes26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2734,7 +2736,7 @@ async def xes26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/247", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes31 (\\d+)$"))
+@app.on_message(filters.regex("^xes31 (\\d+)$"))
 async def xes31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2744,7 +2746,7 @@ async def xes31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/249", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes32 (\\d+)$"))
+@app.on_message(filters.regex("^xes32 (\\d+)$"))
 async def xes32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2754,7 +2756,7 @@ async def xes32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/250", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes41 (\\d+)$"))
+@app.on_message(filters.regex("^xes41 (\\d+)$"))
 async def xes41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2764,7 +2766,7 @@ async def xes41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/252", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes42 (\\d+)$"))
+@app.on_message(filters.regex("^xes42 (\\d+)$"))
 async def xes42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2774,7 +2776,7 @@ async def xes42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/254", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes44 (\\d+)$"))
+@app.on_message(filters.regex("^xes44 (\\d+)$"))
 async def xes44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2784,7 +2786,7 @@ async def xes44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/255", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes50 (\\d+)$"))
+@app.on_message(filters.regex("^xes50 (\\d+)$"))
 async def xes50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2794,7 +2796,7 @@ async def xes50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/256", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes53 (\\d+)$"))
+@app.on_message(filters.regex("^xes53 (\\d+)$"))
 async def xes53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2804,7 +2806,7 @@ async def xes53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/257", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes54 (\\d+)$"))
+@app.on_message(filters.regex("^xes54 (\\d+)$"))
 async def xes54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2814,7 +2816,7 @@ async def xes54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/259", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes55 (\\d+)$"))
+@app.on_message(filters.regex("^xes55 (\\d+)$"))
 async def xes55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2824,7 +2826,7 @@ async def xes55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/260", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes56 (\\d+)$"))
+@app.on_message(filters.regex("^xes56 (\\d+)$"))
 async def xes56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2834,7 +2836,7 @@ async def xes56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/261", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes59 (\\d+)$"))
+@app.on_message(filters.regex("^xes59 (\\d+)$"))
 async def xes59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2844,7 +2846,7 @@ async def xes59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/262", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes64 (\\d+)$"))
+@app.on_message(filters.regex("^xes64 (\\d+)$"))
 async def xes64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2854,7 +2856,7 @@ async def xes64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/263", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes66 (\\d+)$"))
+@app.on_message(filters.regex("^xes66 (\\d+)$"))
 async def xes66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2864,7 +2866,7 @@ async def xes66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/264", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes67 (\\d+)$"))
+@app.on_message(filters.regex("^xes67 (\\d+)$"))
 async def xes67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2874,7 +2876,7 @@ async def xes67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/265", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes68 (\\d+)$"))
+@app.on_message(filters.regex("^xes68 (\\d+)$"))
 async def xes68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2884,7 +2886,7 @@ async def xes68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/266", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes70 (\\d+)$"))
+@app.on_message(filters.regex("^xes70 (\\d+)$"))
 async def xes70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2894,7 +2896,7 @@ async def xes70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/267", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes72 (\\d+)$"))
+@app.on_message(filters.regex("^xes72 (\\d+)$"))
 async def xes72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2904,7 +2906,7 @@ async def xes72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/268", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes76 (\\d+)$"))
+@app.on_message(filters.regex("^xes76 (\\d+)$"))
 async def xes76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2914,7 +2916,7 @@ async def xes76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/269", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes79 (\\d+)$"))
+@app.on_message(filters.regex("^xes79 (\\d+)$"))
 async def xes79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2924,7 +2926,7 @@ async def xes79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/270", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes85 (\\d+)$"))
+@app.on_message(filters.regex("^xes85 (\\d+)$"))
 async def xes85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2934,7 +2936,7 @@ async def xes85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/271", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xes88 (\\d+)$"))
+@app.on_message(filters.regex("^xes88 (\\d+)$"))
 async def xes88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -2948,7 +2950,7 @@ async def xes88(c: Client, m: CallbackQuery):
 ############################################################################################
 
 
-@Client.on_callback_query(filters.regex("^abdelbaset (\\d+)$"))
+@app.on_message(filters.regex("^abdelbaset (\\d+)$"))
 async def abdelbaset(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3016,7 +3018,7 @@ async def abdelbaset(c: Client, m: CallbackQuery):
                               disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^abdelbaset2 (\\d+)$"))
+@app.on_message(filters.regex("^abdelbaset2 (\\d+)$"))
 async def abdelbaset2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3096,7 +3098,7 @@ async def abdelbaset2(c: Client, m: CallbackQuery):
                               disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xabd1 (\\d+)$"))
+@app.on_message(filters.regex("^xabd1 (\\d+)$"))
 async def xabd1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3106,7 +3108,7 @@ async def xabd1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/876", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd2 (\\d+)$"))
+@app.on_message(filters.regex("^xabd2 (\\d+)$"))
 async def xabd2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3116,7 +3118,7 @@ async def xabd2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/877", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd3 (\\d+)$"))
+@app.on_message(filters.regex("^xabd3 (\\d+)$"))
 async def xabd3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3126,7 +3128,7 @@ async def xabd3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/878", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd4 (\\d+)$"))
+@app.on_message(filters.regex("^xabd4 (\\d+)$"))
 async def xabd4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3136,7 +3138,7 @@ async def xabd4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/879", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd5 (\\d+)$"))
+@app.on_message(filters.regex("^xabd5 (\\d+)$"))
 async def xabd5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3146,7 +3148,7 @@ async def xabd5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/880", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd6 (\\d+)$"))
+@app.on_message(filters.regex("^xabd6 (\\d+)$"))
 async def xabd6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3156,7 +3158,7 @@ async def xabd6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/881", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd7 (\\d+)$"))
+@app.on_message(filters.regex("^xabd7 (\\d+)$"))
 async def xabd7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3166,7 +3168,7 @@ async def xabd7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/882", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd8 (\\d+)$"))
+@app.on_message(filters.regex("^xabd8 (\\d+)$"))
 async def xabd8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3176,7 +3178,7 @@ async def xabd8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/883", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd9 (\\d+)$"))
+@app.on_message(filters.regex("^xabd9 (\\d+)$"))
 async def xabd9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3186,7 +3188,7 @@ async def xabd9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/884", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd10 (\\d+)$"))
+@app.on_message(filters.regex("^xabd10 (\\d+)$"))
 async def xabd10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3196,7 +3198,7 @@ async def xabd10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/885", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd11 (\\d+)$"))
+@app.on_message(filters.regex("^xabd11 (\\d+)$"))
 async def xabd11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3206,7 +3208,7 @@ async def xabd11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/886", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd12 (\\d+)$"))
+@app.on_message(filters.regex("^xabd12 (\\d+)$"))
 async def xabd12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3216,7 +3218,7 @@ async def xabd12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/887", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd13 (\\d+)$"))
+@app.on_message(filters.regex("^xabd13 (\\d+)$"))
 async def xabd13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3226,7 +3228,7 @@ async def xabd13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/888", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd14 (\\d+)$"))
+@app.on_message(filters.regex("^xabd14 (\\d+)$"))
 async def xabd14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3236,7 +3238,7 @@ async def xabd14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/889", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd15 (\\d+)$"))
+@app.on_message(filters.regex("^xabd15 (\\d+)$"))
 async def xabd15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3246,7 +3248,7 @@ async def xabd15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/890", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd16 (\\d+)$"))
+@app.on_message(filters.regex("^xabd16 (\\d+)$"))
 async def xabd16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3256,7 +3258,7 @@ async def xabd16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/891", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd17 (\\d+)$"))
+@app.on_message(filters.regex("^xabd17 (\\d+)$"))
 async def xabd17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3266,7 +3268,7 @@ async def xabd17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/892", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd18 (\\d+)$"))
+@app.on_message(filters.regex("^xabd18 (\\d+)$"))
 async def xabd18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3276,7 +3278,7 @@ async def xabd18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/893", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd19 (\\d+)$"))
+@app.on_message(filters.regex("^xabd19 (\\d+)$"))
 async def xabd19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3286,7 +3288,7 @@ async def xabd19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/894", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd20 (\\d+)$"))
+@app.on_message(filters.regex("^xabd20 (\\d+)$"))
 async def xabd20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3296,7 +3298,7 @@ async def xabd20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/895", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd21 (\\d+)$"))
+@app.on_message(filters.regex("^xabd21 (\\d+)$"))
 async def xabd21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3306,7 +3308,7 @@ async def xabd21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/896", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd22 (\\d+)$"))
+@app.on_message(filters.regex("^xabd22 (\\d+)$"))
 async def xabd22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3316,7 +3318,7 @@ async def xabd22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/897", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd23 (\\d+)$"))
+@app.on_message(filters.regex("^xabd23 (\\d+)$"))
 async def xabd23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3326,7 +3328,7 @@ async def xabd23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/898", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd24 (\\d+)$"))
+@app.on_message(filters.regex("^xabd24 (\\d+)$"))
 async def xabd24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3336,7 +3338,7 @@ async def xabd24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/899", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd25 (\\d+)$"))
+@app.on_message(filters.regex("^xabd25 (\\d+)$"))
 async def xabd25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3346,7 +3348,7 @@ async def xabd25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/900", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd26 (\\d+)$"))
+@app.on_message(filters.regex("^xabd26 (\\d+)$"))
 async def xabd26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3356,7 +3358,7 @@ async def xabd26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/901", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd27 (\\d+)$"))
+@app.on_message(filters.regex("^xabd27 (\\d+)$"))
 async def xabd27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3366,7 +3368,7 @@ async def xabd27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/902", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd28 (\\d+)$"))
+@app.on_message(filters.regex("^xabd28 (\\d+)$"))
 async def xabd28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3376,7 +3378,7 @@ async def xabd28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/903", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd29 (\\d+)$"))
+@app.on_message(filters.regex("^xabd29 (\\d+)$"))
 async def xabd29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3386,7 +3388,7 @@ async def xabd29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/904", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd30 (\\d+)$"))
+@app.on_message(filters.regex("^xabd30 (\\d+)$"))
 async def xabd30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3396,7 +3398,7 @@ async def xabd30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/905", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd31 (\\d+)$"))
+@app.on_message(filters.regex("^xabd31 (\\d+)$"))
 async def xabd31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3406,7 +3408,7 @@ async def xabd31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/906", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd32 (\\d+)$"))
+@app.on_message(filters.regex("^xabd32 (\\d+)$"))
 async def xabd32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3416,7 +3418,7 @@ async def xabd32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/907", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd33 (\\d+)$"))
+@app.on_message(filters.regex("^xabd33 (\\d+)$"))
 async def xabd33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3426,7 +3428,7 @@ async def xabd33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/908", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd34 (\\d+)$"))
+@app.on_message(filters.regex("^xabd34 (\\d+)$"))
 async def xabd34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3436,7 +3438,7 @@ async def xabd34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/909", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd35 (\\d+)$"))
+@app.on_message(filters.regex("^xabd35 (\\d+)$"))
 async def xabd35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3446,7 +3448,7 @@ async def xabd35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/910", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd36 (\\d+)$"))
+@app.on_message(filters.regex("^xabd36 (\\d+)$"))
 async def xabd36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3456,7 +3458,7 @@ async def xabd36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/911", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd37 (\\d+)$"))
+@app.on_message(filters.regex("^xabd37 (\\d+)$"))
 async def xabd37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3466,7 +3468,7 @@ async def xabd37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/912", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd38 (\\d+)$"))
+@app.on_message(filters.regex("^xabd38 (\\d+)$"))
 async def xabd38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3476,7 +3478,7 @@ async def xabd38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/913", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd39 (\\d+)$"))
+@app.on_message(filters.regex("^xabd39 (\\d+)$"))
 async def xabd39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3486,7 +3488,7 @@ async def xabd39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/914", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd40 (\\d+)$"))
+@app.on_message(filters.regex("^xabd40 (\\d+)$"))
 async def xabd40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3496,7 +3498,7 @@ async def xabd40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/915", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd41 (\\d+)$"))
+@app.on_message(filters.regex("^xabd41 (\\d+)$"))
 async def xabd41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3506,7 +3508,7 @@ async def xabd41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/916", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd42 (\\d+)$"))
+@app.on_message(filters.regex("^xabd42 (\\d+)$"))
 async def xabd42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3516,7 +3518,7 @@ async def xabd42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/917", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd43 (\\d+)$"))
+@app.on_message(filters.regex("^xabd43 (\\d+)$"))
 async def xabd43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3526,7 +3528,7 @@ async def xabd43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/918", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd44 (\\d+)$"))
+@app.on_message(filters.regex("^xabd44 (\\d+)$"))
 async def xabd44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3536,7 +3538,7 @@ async def xabd44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/919", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd45 (\\d+)$"))
+@app.on_message(filters.regex("^xabd45 (\\d+)$"))
 async def xabd45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3546,7 +3548,7 @@ async def xabd45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/920", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd46 (\\d+)$"))
+@app.on_message(filters.regex("^xabd46 (\\d+)$"))
 async def xabd46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3556,7 +3558,7 @@ async def xabd46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/921", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd47 (\\d+)$"))
+@app.on_message(filters.regex("^xabd47 (\\d+)$"))
 async def xabd47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3566,7 +3568,7 @@ async def xabd47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/922", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd48 (\\d+)$"))
+@app.on_message(filters.regex("^xabd48 (\\d+)$"))
 async def xabd48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3576,7 +3578,7 @@ async def xabd48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/923", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd49 (\\d+)$"))
+@app.on_message(filters.regex("^xabd49 (\\d+)$"))
 async def xabd49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3586,7 +3588,7 @@ async def xabd49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/924", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd50 (\\d+)$"))
+@app.on_message(filters.regex("^xabd50 (\\d+)$"))
 async def xabd50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3596,7 +3598,7 @@ async def xabd50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/925", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd51 (\\d+)$"))
+@app.on_message(filters.regex("^xabd51 (\\d+)$"))
 async def xabd51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3606,7 +3608,7 @@ async def xabd51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/926", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd52 (\\d+)$"))
+@app.on_message(filters.regex("^xabd52 (\\d+)$"))
 async def xabd52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3616,7 +3618,7 @@ async def xabd52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/927", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd53 (\\d+)$"))
+@app.on_message(filters.regex("^xabd53 (\\d+)$"))
 async def xabd53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3626,7 +3628,7 @@ async def xabd53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/928", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd54 (\\d+)$"))
+@app.on_message(filters.regex("^xabd54 (\\d+)$"))
 async def xabd54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3636,7 +3638,7 @@ async def xabd54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/929", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd55 (\\d+)$"))
+@app.on_message(filters.regex("^xabd55 (\\d+)$"))
 async def xabd55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3646,7 +3648,7 @@ async def xabd55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/930", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd56 (\\d+)$"))
+@app.on_message(filters.regex("^xabd56 (\\d+)$"))
 async def xabd56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3656,7 +3658,7 @@ async def xabd56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/931", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd57 (\\d+)$"))
+@app.on_message(filters.regex("^xabd57 (\\d+)$"))
 async def xabd57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3666,7 +3668,7 @@ async def xabd57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/932", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd58 (\\d+)$"))
+@app.on_message(filters.regex("^xabd58 (\\d+)$"))
 async def xabd58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3676,7 +3678,7 @@ async def xabd58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/933", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd59 (\\d+)$"))
+@app.on_message(filters.regex("^xabd59 (\\d+)$"))
 async def xabd59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3686,7 +3688,7 @@ async def xabd59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/934", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd60 (\\d+)$"))
+@app.on_message(filters.regex("^xabd60 (\\d+)$"))
 async def xabd60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3696,7 +3698,7 @@ async def xabd60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/935", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd61 (\\d+)$"))
+@app.on_message(filters.regex("^xabd61 (\\d+)$"))
 async def xabd61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3706,7 +3708,7 @@ async def xabd61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/936", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd62 (\\d+)$"))
+@app.on_message(filters.regex("^xabd62 (\\d+)$"))
 async def xabd62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3716,7 +3718,7 @@ async def xabd62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/937", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd63 (\\d+)$"))
+@app.on_message(filters.regex("^xabd63 (\\d+)$"))
 async def xabd63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3726,7 +3728,7 @@ async def xabd63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/938", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd64 (\\d+)$"))
+@app.on_message(filters.regex("^xabd64 (\\d+)$"))
 async def xabd64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3736,7 +3738,7 @@ async def xabd64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/939", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd65 (\\d+)$"))
+@app.on_message(filters.regex("^xabd65 (\\d+)$"))
 async def xabd65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3746,7 +3748,7 @@ async def xabd65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/940", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd66 (\\d+)$"))
+@app.on_message(filters.regex("^xabd66 (\\d+)$"))
 async def xabd66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3756,7 +3758,7 @@ async def xabd66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/941", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd67 (\\d+)$"))
+@app.on_message(filters.regex("^xabd67 (\\d+)$"))
 async def xabd67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3766,7 +3768,7 @@ async def xabd67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/942", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd68 (\\d+)$"))
+@app.on_message(filters.regex("^xabd68 (\\d+)$"))
 async def xabd68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3776,7 +3778,7 @@ async def xabd68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/943", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd69 (\\d+)$"))
+@app.on_message(filters.regex("^xabd69 (\\d+)$"))
 async def xabd69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3786,7 +3788,7 @@ async def xabd69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/944", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd70 (\\d+)$"))
+@app.on_message(filters.regex("^xabd70 (\\d+)$"))
 async def xabd70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3796,7 +3798,7 @@ async def xabd70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/945", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd71 (\\d+)$"))
+@app.on_message(filters.regex("^xabd71 (\\d+)$"))
 async def xabd71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3806,7 +3808,7 @@ async def xabd71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/946", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd72 (\\d+)$"))
+@app.on_message(filters.regex("^xabd72 (\\d+)$"))
 async def xabd72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3816,7 +3818,7 @@ async def xabd72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/947", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd73 (\\d+)$"))
+@app.on_message(filters.regex("^xabd73 (\\d+)$"))
 async def xabd73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3826,7 +3828,7 @@ async def xabd73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/948", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd74 (\\d+)$"))
+@app.on_message(filters.regex("^xabd74 (\\d+)$"))
 async def xabd74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3836,7 +3838,7 @@ async def xabd74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/949", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd75 (\\d+)$"))
+@app.on_message(filters.regex("^xabd75 (\\d+)$"))
 async def xabd75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3846,7 +3848,7 @@ async def xabd75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/950", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd76 (\\d+)$"))
+@app.on_message(filters.regex("^xabd76 (\\d+)$"))
 async def xabd76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3856,7 +3858,7 @@ async def xabd76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/951", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd77 (\\d+)$"))
+@app.on_message(filters.regex("^xabd77 (\\d+)$"))
 async def xabd77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3866,7 +3868,7 @@ async def xabd77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/952", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd78 (\\d+)$"))
+@app.on_message(filters.regex("^xabd78 (\\d+)$"))
 async def xabd78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3876,7 +3878,7 @@ async def xabd78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/953", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd79 (\\d+)$"))
+@app.on_message(filters.regex("^xabd79 (\\d+)$"))
 async def xabd79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3886,7 +3888,7 @@ async def xabd79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/954", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd80 (\\d+)$"))
+@app.on_message(filters.regex("^xabd80 (\\d+)$"))
 async def xabd80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3896,7 +3898,7 @@ async def xabd80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/955", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd81 (\\d+)$"))
+@app.on_message(filters.regex("^xabd81 (\\d+)$"))
 async def xabd81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3906,7 +3908,7 @@ async def xabd81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/956", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd82 (\\d+)$"))
+@app.on_message(filters.regex("^xabd82 (\\d+)$"))
 async def xabd82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3916,7 +3918,7 @@ async def xabd82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/957", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd83 (\\d+)$"))
+@app.on_message(filters.regex("^xabd83 (\\d+)$"))
 async def xabd83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3926,7 +3928,7 @@ async def xabd83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/958", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd84 (\\d+)$"))
+@app.on_message(filters.regex("^xabd84 (\\d+)$"))
 async def xabd84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3936,7 +3938,7 @@ async def xabd84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/959", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd85 (\\d+)$"))
+@app.on_message(filters.regex("^xabd85 (\\d+)$"))
 async def xabd85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3946,7 +3948,7 @@ async def xabd85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/560", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd86 (\\d+)$"))
+@app.on_message(filters.regex("^xabd86 (\\d+)$"))
 async def xabd86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3956,7 +3958,7 @@ async def xabd86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/961", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd87 (\\d+)$"))
+@app.on_message(filters.regex("^xabd87 (\\d+)$"))
 async def xabd87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3966,7 +3968,7 @@ async def xabd87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/962", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd88 (\\d+)$"))
+@app.on_message(filters.regex("^xabd88 (\\d+)$"))
 async def xabd88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3976,7 +3978,7 @@ async def xabd88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/963", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd89 (\\d+)$"))
+@app.on_message(filters.regex("^xabd89 (\\d+)$"))
 async def xabd89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3986,7 +3988,7 @@ async def xabd89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/964", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd90 (\\d+)$"))
+@app.on_message(filters.regex("^xabd90 (\\d+)$"))
 async def xabd90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -3996,7 +3998,7 @@ async def xabd90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/965", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd91 (\\d+)$"))
+@app.on_message(filters.regex("^xabd91 (\\d+)$"))
 async def xabd91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4006,7 +4008,7 @@ async def xabd91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/966", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd92 (\\d+)$"))
+@app.on_message(filters.regex("^xabd92 (\\d+)$"))
 async def xabd92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4016,7 +4018,7 @@ async def xabd92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/967", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd93 (\\d+)$"))
+@app.on_message(filters.regex("^xabd93 (\\d+)$"))
 async def xabd93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4026,7 +4028,7 @@ async def xabd93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/968", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd94 (\\d+)$"))
+@app.on_message(filters.regex("^xabd94 (\\d+)$"))
 async def xabd94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4036,7 +4038,7 @@ async def xabd94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/969", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd95 (\\d+)$"))
+@app.on_message(filters.regex("^xabd95 (\\d+)$"))
 async def xabd95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4046,7 +4048,7 @@ async def xabd95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/970", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd96 (\\d+)$"))
+@app.on_message(filters.regex("^xabd96 (\\d+)$"))
 async def xabd96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4056,7 +4058,7 @@ async def xabd96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/971", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd97 (\\d+)$"))
+@app.on_message(filters.regex("^xabd97 (\\d+)$"))
 async def xabd97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4066,7 +4068,7 @@ async def xabd97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/972", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd98 (\\d+)$"))
+@app.on_message(filters.regex("^xabd98 (\\d+)$"))
 async def xabd98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4076,7 +4078,7 @@ async def xabd98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/973", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd99 (\\d+)$"))
+@app.on_message(filters.regex("^xabd99 (\\d+)$"))
 async def xabd99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4086,7 +4088,7 @@ async def xabd99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/974", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd100 (\\d+)$"))
+@app.on_message(filters.regex("^xabd100 (\\d+)$"))
 async def xabd100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4096,7 +4098,7 @@ async def xabd100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/975", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd101 (\\d+)$"))
+@app.on_message(filters.regex("^xabd101 (\\d+)$"))
 async def xabd101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4106,7 +4108,7 @@ async def xabd101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/976", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd102 (\\d+)$"))
+@app.on_message(filters.regex("^xabd102 (\\d+)$"))
 async def xabd102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4116,7 +4118,7 @@ async def xabd102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/977", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd103 (\\d+)$"))
+@app.on_message(filters.regex("^xabd103 (\\d+)$"))
 async def xabd103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4126,7 +4128,7 @@ async def xabd103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/978", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd104 (\\d+)$"))
+@app.on_message(filters.regex("^xabd104 (\\d+)$"))
 async def xabd104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4136,7 +4138,7 @@ async def xabd104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/979", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd105 (\\d+)$"))
+@app.on_message(filters.regex("^xabd105 (\\d+)$"))
 async def xabd105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4146,7 +4148,7 @@ async def xabd105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/980", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd106 (\\d+)$"))
+@app.on_message(filters.regex("^xabd106 (\\d+)$"))
 async def xabd106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4156,7 +4158,7 @@ async def xabd106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/981", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd107 (\\d+)$"))
+@app.on_message(filters.regex("^xabd107 (\\d+)$"))
 async def xabd107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4166,7 +4168,7 @@ async def xabd107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/982", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd108 (\\d+)$"))
+@app.on_message(filters.regex("^xabd108 (\\d+)$"))
 async def xabd108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4176,7 +4178,7 @@ async def xabd108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/983", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd109 (\\d+)$"))
+@app.on_message(filters.regex("^xabd109 (\\d+)$"))
 async def xabd109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4186,7 +4188,7 @@ async def xabd109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/984", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd110 (\\d+)$"))
+@app.on_message(filters.regex("^xabd110 (\\d+)$"))
 async def xabd110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4196,7 +4198,7 @@ async def xabd110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/985", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd111 (\\d+)$"))
+@app.on_message(filters.regex("^xabd111 (\\d+)$"))
 async def xabd111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4206,7 +4208,7 @@ async def xabd111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/986", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd112 (\\d+)$"))
+@app.on_message(filters.regex("^xabd112 (\\d+)$"))
 async def xabd112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4216,7 +4218,7 @@ async def xabd112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/987", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd113 (\\d+)$"))
+@app.on_message(filters.regex("^xabd113 (\\d+)$"))
 async def xabd113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4226,7 +4228,7 @@ async def xabd113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/988", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabd114 (\\d+)$"))
+@app.on_message(filters.regex("^xabd114 (\\d+)$"))
 async def xabd114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4240,7 +4242,7 @@ async def xabd114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^eldosary (\\d+)$"))
+@app.on_message(filters.regex("^eldosary (\\d+)$"))
 async def eldosary(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4308,7 +4310,7 @@ async def eldosary(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ياسر الدوسري\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^eldosary2 (\\d+)$"))
+@app.on_message(filters.regex("^eldosary2 (\\d+)$"))
 async def eldosary2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4388,7 +4390,7 @@ async def eldosary2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ياسر الدوسري\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xdos1 (\\d+)$"))
+@app.on_message(filters.regex("^xdos1 (\\d+)$"))
 async def xdos1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4398,7 +4400,7 @@ async def xdos1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/992", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos2 (\\d+)$"))
+@app.on_message(filters.regex("^xdos2 (\\d+)$"))
 async def xdos2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4408,7 +4410,7 @@ async def xdos2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/993", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos3 (\\d+)$"))
+@app.on_message(filters.regex("^xdos3 (\\d+)$"))
 async def xdos3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4418,7 +4420,7 @@ async def xdos3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/994", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos4 (\\d+)$"))
+@app.on_message(filters.regex("^xdos4 (\\d+)$"))
 async def xdos4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4428,7 +4430,7 @@ async def xdos4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/995", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos5 (\\d+)$"))
+@app.on_message(filters.regex("^xdos5 (\\d+)$"))
 async def xdos5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4438,7 +4440,7 @@ async def xdos5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/996", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos6 (\\d+)$"))
+@app.on_message(filters.regex("^xdos6 (\\d+)$"))
 async def xdos6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4448,7 +4450,7 @@ async def xdos6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/997", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos7 (\\d+)$"))
+@app.on_message(filters.regex("^xdos7 (\\d+)$"))
 async def xdos7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4458,7 +4460,7 @@ async def xdos7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/998", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos8 (\\d+)$"))
+@app.on_message(filters.regex("^xdos8 (\\d+)$"))
 async def xdos8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4468,7 +4470,7 @@ async def xdos8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/999", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos9 (\\d+)$"))
+@app.on_message(filters.regex("^xdos9 (\\d+)$"))
 async def xdos9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4478,7 +4480,7 @@ async def xdos9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1000", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos10 (\\d+)$"))
+@app.on_message(filters.regex("^xdos10 (\\d+)$"))
 async def xdos10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4488,7 +4490,7 @@ async def xdos10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1001", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos11 (\\d+)$"))
+@app.on_message(filters.regex("^xdos11 (\\d+)$"))
 async def xdos11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4498,7 +4500,7 @@ async def xdos11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1002", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos12 (\\d+)$"))
+@app.on_message(filters.regex("^xdos12 (\\d+)$"))
 async def xdos12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4508,7 +4510,7 @@ async def xdos12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1003", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos13 (\\d+)$"))
+@app.on_message(filters.regex("^xdos13 (\\d+)$"))
 async def xdos13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4518,7 +4520,7 @@ async def xdos13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1004", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos14 (\\d+)$"))
+@app.on_message(filters.regex("^xdos14 (\\d+)$"))
 async def xdos14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4528,7 +4530,7 @@ async def xdos14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1005", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos15 (\\d+)$"))
+@app.on_message(filters.regex("^xdos15 (\\d+)$"))
 async def xdos15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4538,7 +4540,7 @@ async def xdos15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1006", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos16 (\\d+)$"))
+@app.on_message(filters.regex("^xdos16 (\\d+)$"))
 async def xdos16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4548,7 +4550,7 @@ async def xdos16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1007", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos17 (\\d+)$"))
+@app.on_message(filters.regex("^xdos17 (\\d+)$"))
 async def xdos17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4558,7 +4560,7 @@ async def xdos17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1008", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos18 (\\d+)$"))
+@app.on_message(filters.regex("^xdos18 (\\d+)$"))
 async def xdos18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4568,7 +4570,7 @@ async def xdos18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1009", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos19 (\\d+)$"))
+@app.on_message(filters.regex("^xdos19 (\\d+)$"))
 async def xdos19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4578,7 +4580,7 @@ async def xdos19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1010", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos20 (\\d+)$"))
+@app.on_message(filters.regex("^xdos20 (\\d+)$"))
 async def xdos20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4588,7 +4590,7 @@ async def xdos20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1011", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos21 (\\d+)$"))
+@app.on_message(filters.regex("^xdos21 (\\d+)$"))
 async def xdos21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4598,7 +4600,7 @@ async def xdos21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1012", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos22 (\\d+)$"))
+@app.on_message(filters.regex("^xdos22 (\\d+)$"))
 async def xdos22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4608,7 +4610,7 @@ async def xdos22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1013", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos23 (\\d+)$"))
+@app.on_message(filters.regex("^xdos23 (\\d+)$"))
 async def xdos23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4618,7 +4620,7 @@ async def xdos23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1014", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos24 (\\d+)$"))
+@app.on_message(filters.regex("^xdos24 (\\d+)$"))
 async def xdos24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4628,7 +4630,7 @@ async def xdos24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1015", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos25 (\\d+)$"))
+@app.on_message(filters.regex("^xdos25 (\\d+)$"))
 async def xdos25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4638,7 +4640,7 @@ async def xdos25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1016", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos26 (\\d+)$"))
+@app.on_message(filters.regex("^xdos26 (\\d+)$"))
 async def xdos26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4648,7 +4650,7 @@ async def xdos26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1017", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos27 (\\d+)$"))
+@app.on_message(filters.regex("^xdos27 (\\d+)$"))
 async def xdos27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4658,7 +4660,7 @@ async def xdos27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1018", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos28 (\\d+)$"))
+@app.on_message(filters.regex("^xdos28 (\\d+)$"))
 async def xdos28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4668,7 +4670,7 @@ async def xdos28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1019", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos29 (\\d+)$"))
+@app.on_message(filters.regex("^xdos29 (\\d+)$"))
 async def xdos30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4678,7 +4680,7 @@ async def xdos30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1020", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos30 (\\d+)$"))
+@app.on_message(filters.regex("^xdos30 (\\d+)$"))
 async def xdos31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4688,7 +4690,7 @@ async def xdos31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1021", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos31 (\\d+)$"))
+@app.on_message(filters.regex("^xdos31 (\\d+)$"))
 async def xdos32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4698,7 +4700,7 @@ async def xdos32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1022", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos32 (\\d+)$"))
+@app.on_message(filters.regex("^xdos32 (\\d+)$"))
 async def xdos33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4708,7 +4710,7 @@ async def xdos33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1023", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos33 (\\d+)$"))
+@app.on_message(filters.regex("^xdos33 (\\d+)$"))
 async def xdos34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4718,7 +4720,7 @@ async def xdos34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1024", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos34 (\\d+)$"))
+@app.on_message(filters.regex("^xdos34 (\\d+)$"))
 async def xdos35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4728,7 +4730,7 @@ async def xdos35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1025", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos35 (\\d+)$"))
+@app.on_message(filters.regex("^xdos35 (\\d+)$"))
 async def xdos36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4738,7 +4740,7 @@ async def xdos36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1026", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos36 (\\d+)$"))
+@app.on_message(filters.regex("^xdos36 (\\d+)$"))
 async def xdos37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4748,7 +4750,7 @@ async def xdos37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1027", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos37 (\\d+)$"))
+@app.on_message(filters.regex("^xdos37 (\\d+)$"))
 async def xdos38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4758,7 +4760,7 @@ async def xdos38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1028", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos38 (\\d+)$"))
+@app.on_message(filters.regex("^xdos38 (\\d+)$"))
 async def xdos39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4768,7 +4770,7 @@ async def xdos39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1029", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos39 (\\d+)$"))
+@app.on_message(filters.regex("^xdos39 (\\d+)$"))
 async def xdos40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4778,7 +4780,7 @@ async def xdos40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1030", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos40 (\\d+)$"))
+@app.on_message(filters.regex("^xdos40 (\\d+)$"))
 async def xdos41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4788,7 +4790,7 @@ async def xdos41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1031", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos41 (\\d+)$"))
+@app.on_message(filters.regex("^xdos41 (\\d+)$"))
 async def xdos42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4798,7 +4800,7 @@ async def xdos42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1032", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos42 (\\d+)$"))
+@app.on_message(filters.regex("^xdos42 (\\d+)$"))
 async def xdos43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4808,7 +4810,7 @@ async def xdos43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1033", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos43 (\\d+)$"))
+@app.on_message(filters.regex("^xdos43 (\\d+)$"))
 async def xdos44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4818,7 +4820,7 @@ async def xdos44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1034", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos44 (\\d+)$"))
+@app.on_message(filters.regex("^xdos44 (\\d+)$"))
 async def xdos45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4828,7 +4830,7 @@ async def xdos45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1035", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos45 (\\d+)$"))
+@app.on_message(filters.regex("^xdos45 (\\d+)$"))
 async def xdos46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4838,7 +4840,7 @@ async def xdos46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1036", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos46 (\\d+)$"))
+@app.on_message(filters.regex("^xdos46 (\\d+)$"))
 async def xdos47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4848,7 +4850,7 @@ async def xdos47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1037", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos47 (\\d+)$"))
+@app.on_message(filters.regex("^xdos47 (\\d+)$"))
 async def xdos48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4858,7 +4860,7 @@ async def xdos48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1038", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos48 (\\d+)$"))
+@app.on_message(filters.regex("^xdos48 (\\d+)$"))
 async def xdos49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4868,7 +4870,7 @@ async def xdos49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1039", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos49 (\\d+)$"))
+@app.on_message(filters.regex("^xdos49 (\\d+)$"))
 async def xdos50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4878,7 +4880,7 @@ async def xdos50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1040", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos50 (\\d+)$"))
+@app.on_message(filters.regex("^xdos50 (\\d+)$"))
 async def xdos51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4888,7 +4890,7 @@ async def xdos51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1041", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos51 (\\d+)$"))
+@app.on_message(filters.regex("^xdos51 (\\d+)$"))
 async def xdos52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4898,7 +4900,7 @@ async def xdos52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1042", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos52 (\\d+)$"))
+@app.on_message(filters.regex("^xdos52 (\\d+)$"))
 async def xdos53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4908,7 +4910,7 @@ async def xdos53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1043", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos53 (\\d+)$"))
+@app.on_message(filters.regex("^xdos53 (\\d+)$"))
 async def xdos54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4918,7 +4920,7 @@ async def xdos54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1044", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos54 (\\d+)$"))
+@app.on_message(filters.regex("^xdos54 (\\d+)$"))
 async def xdos55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4928,7 +4930,7 @@ async def xdos55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1045", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos55 (\\d+)$"))
+@app.on_message(filters.regex("^xdos55 (\\d+)$"))
 async def xdos56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4938,7 +4940,7 @@ async def xdos56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1046", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos56 (\\d+)$"))
+@app.on_message(filters.regex("^xdos56 (\\d+)$"))
 async def xdos57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4948,7 +4950,7 @@ async def xdos57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1047", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos57 (\\d+)$"))
+@app.on_message(filters.regex("^xdos57 (\\d+)$"))
 async def xdos58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4958,7 +4960,7 @@ async def xdos58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1084", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos58 (\\d+)$"))
+@app.on_message(filters.regex("^xdos58 (\\d+)$"))
 async def xdos59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4968,7 +4970,7 @@ async def xdos59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1049", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos59 (\\d+)$"))
+@app.on_message(filters.regex("^xdos59 (\\d+)$"))
 async def xdos60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4978,7 +4980,7 @@ async def xdos60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1050", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos60 (\\d+)$"))
+@app.on_message(filters.regex("^xdos60 (\\d+)$"))
 async def xdos61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4988,7 +4990,7 @@ async def xdos61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1051", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos61 (\\d+)$"))
+@app.on_message(filters.regex("^xdos61 (\\d+)$"))
 async def xdos62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -4998,7 +5000,7 @@ async def xdos62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1052", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos62 (\\d+)$"))
+@app.on_message(filters.regex("^xdos62 (\\d+)$"))
 async def xdos63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5008,7 +5010,7 @@ async def xdos63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1053", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos63 (\\d+)$"))
+@app.on_message(filters.regex("^xdos63 (\\d+)$"))
 async def xdos64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5018,7 +5020,7 @@ async def xdos64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1054", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos64 (\\d+)$"))
+@app.on_message(filters.regex("^xdos64 (\\d+)$"))
 async def xdos65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5028,7 +5030,7 @@ async def xdos65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1055", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos65 (\\d+)$"))
+@app.on_message(filters.regex("^xdos65 (\\d+)$"))
 async def xdos66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5038,7 +5040,7 @@ async def xdos66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1056", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos66 (\\d+)$"))
+@app.on_message(filters.regex("^xdos66 (\\d+)$"))
 async def xdos67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5048,7 +5050,7 @@ async def xdos67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1057", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos67 (\\d+)$"))
+@app.on_message(filters.regex("^xdos67 (\\d+)$"))
 async def xdos68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5058,7 +5060,7 @@ async def xdos68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1058", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos68 (\\d+)$"))
+@app.on_message(filters.regex("^xdos68 (\\d+)$"))
 async def xdos69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5068,7 +5070,7 @@ async def xdos69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1059", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos69 (\\d+)$"))
+@app.on_message(filters.regex("^xdos69 (\\d+)$"))
 async def xdos70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5078,7 +5080,7 @@ async def xdos70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1060", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos70 (\\d+)$"))
+@app.on_message(filters.regex("^xdos70 (\\d+)$"))
 async def xdos71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5088,7 +5090,7 @@ async def xdos71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1061", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos71 (\\d+)$"))
+@app.on_message(filters.regex("^xdos71 (\\d+)$"))
 async def xdos72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5098,7 +5100,7 @@ async def xdos72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1062", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos72 (\\d+)$"))
+@app.on_message(filters.regex("^xdos72 (\\d+)$"))
 async def xdos73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5108,7 +5110,7 @@ async def xdos73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1063", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos73 (\\d+)$"))
+@app.on_message(filters.regex("^xdos73 (\\d+)$"))
 async def xdos74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5118,7 +5120,7 @@ async def xdos74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1064", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos74 (\\d+)$"))
+@app.on_message(filters.regex("^xdos74 (\\d+)$"))
 async def xdos75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5128,7 +5130,7 @@ async def xdos75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1065", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos75 (\\d+)$"))
+@app.on_message(filters.regex("^xdos75 (\\d+)$"))
 async def xdos76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5138,7 +5140,7 @@ async def xdos76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1066", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos76 (\\d+)$"))
+@app.on_message(filters.regex("^xdos76 (\\d+)$"))
 async def xdos77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5148,7 +5150,7 @@ async def xdos77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1067", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos77 (\\d+)$"))
+@app.on_message(filters.regex("^xdos77 (\\d+)$"))
 async def xdos78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5158,7 +5160,7 @@ async def xdos78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1068", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos78 (\\d+)$"))
+@app.on_message(filters.regex("^xdos78 (\\d+)$"))
 async def xdos79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5168,7 +5170,7 @@ async def xdos79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1069", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos79 (\\d+)$"))
+@app.on_message(filters.regex("^xdos79 (\\d+)$"))
 async def xdos80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5178,7 +5180,7 @@ async def xdos80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1070", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos80 (\\d+)$"))
+@app.on_message(filters.regex("^xdos80 (\\d+)$"))
 async def xdos81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5188,7 +5190,7 @@ async def xdos81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1071", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos81 (\\d+)$"))
+@app.on_message(filters.regex("^xdos81 (\\d+)$"))
 async def xdos82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5198,7 +5200,7 @@ async def xdos82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1072", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos82 (\\d+)$"))
+@app.on_message(filters.regex("^xdos82 (\\d+)$"))
 async def xdos83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5208,7 +5210,7 @@ async def xdos83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1073", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos83 (\\d+)$"))
+@app.on_message(filters.regex("^xdos83 (\\d+)$"))
 async def xdos84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5218,7 +5220,7 @@ async def xdos84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1074", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos84 (\\d+)$"))
+@app.on_message(filters.regex("^xdos84 (\\d+)$"))
 async def xdos85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5228,7 +5230,7 @@ async def xdos85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1075", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos85 (\\d+)$"))
+@app.on_message(filters.regex("^xdos85 (\\d+)$"))
 async def xdos86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5238,7 +5240,7 @@ async def xdos86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1076", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos86 (\\d+)$"))
+@app.on_message(filters.regex("^xdos86 (\\d+)$"))
 async def xdos87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5248,7 +5250,7 @@ async def xdos87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1077", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos87 (\\d+)$"))
+@app.on_message(filters.regex("^xdos87 (\\d+)$"))
 async def xdos88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5258,7 +5260,7 @@ async def xdos88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1078", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos88 (\\d+)$"))
+@app.on_message(filters.regex("^xdos88 (\\d+)$"))
 async def xdos89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5268,7 +5270,7 @@ async def xdos89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1079", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos89 (\\d+)$"))
+@app.on_message(filters.regex("^xdos89 (\\d+)$"))
 async def xdos90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5278,7 +5280,7 @@ async def xdos90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1080", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos90 (\\d+)$"))
+@app.on_message(filters.regex("^xdos90 (\\d+)$"))
 async def xdos91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5288,7 +5290,7 @@ async def xdos91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1081", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos91 (\\d+)$"))
+@app.on_message(filters.regex("^xdos91 (\\d+)$"))
 async def xdos92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5298,7 +5300,7 @@ async def xdos92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1082", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos92 (\\d+)$"))
+@app.on_message(filters.regex("^xdos92 (\\d+)$"))
 async def xdos93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5308,7 +5310,7 @@ async def xdos93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1083", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos93 (\\d+)$"))
+@app.on_message(filters.regex("^xdos93 (\\d+)$"))
 async def xdos94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5318,7 +5320,7 @@ async def xdos94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1084", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos94 (\\d+)$"))
+@app.on_message(filters.regex("^xdos94 (\\d+)$"))
 async def xdos95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5328,7 +5330,7 @@ async def xdos95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1085", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos95 (\\d+)$"))
+@app.on_message(filters.regex("^xdos95 (\\d+)$"))
 async def xdos96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5338,7 +5340,7 @@ async def xdos96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1086", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos96 (\\d+)$"))
+@app.on_message(filters.regex("^xdos96 (\\d+)$"))
 async def xdos97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5348,7 +5350,7 @@ async def xdos97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1087", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos97 (\\d+)$"))
+@app.on_message(filters.regex("^xdos97 (\\d+)$"))
 async def xdos98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5358,7 +5360,7 @@ async def xdos98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1088", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos98 (\\d+)$"))
+@app.on_message(filters.regex("^xdos98 (\\d+)$"))
 async def xdos99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5368,7 +5370,7 @@ async def xdos99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1089", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos99 (\\d+)$"))
+@app.on_message(filters.regex("^xdos99 (\\d+)$"))
 async def xdos100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5378,7 +5380,7 @@ async def xdos100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1090", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos100 (\\d+)$"))
+@app.on_message(filters.regex("^xdos100 (\\d+)$"))
 async def xdos101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5388,7 +5390,7 @@ async def xdos101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1091", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos101 (\\d+)$"))
+@app.on_message(filters.regex("^xdos101 (\\d+)$"))
 async def xdos102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5398,7 +5400,7 @@ async def xdos102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1092", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos102 (\\d+)$"))
+@app.on_message(filters.regex("^xdos102 (\\d+)$"))
 async def xdos103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5408,7 +5410,7 @@ async def xdos103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1093", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos103 (\\d+)$"))
+@app.on_message(filters.regex("^xdos103 (\\d+)$"))
 async def xdos104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5418,7 +5420,7 @@ async def xdos104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1094", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos104 (\\d+)$"))
+@app.on_message(filters.regex("^xdos104 (\\d+)$"))
 async def xdos105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5428,7 +5430,7 @@ async def xdos105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1095", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos105 (\\d+)$"))
+@app.on_message(filters.regex("^xdos105 (\\d+)$"))
 async def xdos106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5438,7 +5440,7 @@ async def xdos106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1096", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos106 (\\d+)$"))
+@app.on_message(filters.regex("^xdos106 (\\d+)$"))
 async def xdos107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5448,7 +5450,7 @@ async def xdos107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1097", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos107 (\\d+)$"))
+@app.on_message(filters.regex("^xdos107 (\\d+)$"))
 async def xdos108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5458,7 +5460,7 @@ async def xdos108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1098", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos108 (\\d+)$"))
+@app.on_message(filters.regex("^xdos108 (\\d+)$"))
 async def xdos109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5468,7 +5470,7 @@ async def xdos109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/109", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos109 (\\d+)$"))
+@app.on_message(filters.regex("^xdos109 (\\d+)$"))
 async def xdos110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5478,7 +5480,7 @@ async def xdos110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1100", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos110 (\\d+)$"))
+@app.on_message(filters.regex("^xdos110 (\\d+)$"))
 async def xdos111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5488,7 +5490,7 @@ async def xdos111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1101", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos111 (\\d+)$"))
+@app.on_message(filters.regex("^xdos111 (\\d+)$"))
 async def xdos112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5498,7 +5500,7 @@ async def xdos112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1102", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos112 (\\d+)$"))
+@app.on_message(filters.regex("^xdos112 (\\d+)$"))
 async def xdos113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5508,7 +5510,7 @@ async def xdos113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1103", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos113 (\\d+)$"))
+@app.on_message(filters.regex("^xdos113 (\\d+)$"))
 async def xdos114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5518,7 +5520,7 @@ async def xdos114(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U_VBU/1104", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xdos114 (\\d+)$"))
+@app.on_message(filters.regex("^xdos114 (\\d+)$"))
 async def xdos114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5532,7 +5534,7 @@ async def xdos114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^abkar (\\d+)$"))
+@app.on_message(filters.regex("^abkar (\\d+)$"))
 async def abkar(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5600,7 +5602,7 @@ async def abkar(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ادريس ابكر\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^abkar2 (\\d+)$"))
+@app.on_message(filters.regex("^abkar2 (\\d+)$"))
 async def abkar2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5680,7 +5682,7 @@ async def abkar2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ادريس ابكر\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xabk1 (\\d+)$"))
+@app.on_message(filters.regex("^xabk1 (\\d+)$"))
 async def xabk1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5690,7 +5692,7 @@ async def xabk1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/577", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk2 (\\d+)$"))
+@app.on_message(filters.regex("^xabk2 (\\d+)$"))
 async def xabk2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5700,7 +5702,7 @@ async def xabk2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/578", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk3 (\\d+)$"))
+@app.on_message(filters.regex("^xabk3 (\\d+)$"))
 async def xabk3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5710,7 +5712,7 @@ async def xabk3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/579", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk4 (\\d+)$"))
+@app.on_message(filters.regex("^xabk4 (\\d+)$"))
 async def xabk4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5720,7 +5722,7 @@ async def xabk4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/580", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk5 (\\d+)$"))
+@app.on_message(filters.regex("^xabk5 (\\d+)$"))
 async def xabk5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5730,7 +5732,7 @@ async def xabk5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/581", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk6 (\\d+)$"))
+@app.on_message(filters.regex("^xabk6 (\\d+)$"))
 async def xabk6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5740,7 +5742,7 @@ async def xabk6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/582", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk7 (\\d+)$"))
+@app.on_message(filters.regex("^xabk7 (\\d+)$"))
 async def xabk7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5750,7 +5752,7 @@ async def xabk7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/583", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk8 (\\d+)$"))
+@app.on_message(filters.regex("^xabk8 (\\d+)$"))
 async def xabk8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5760,7 +5762,7 @@ async def xabk8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/584", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk9 (\\d+)$"))
+@app.on_message(filters.regex("^xabk9 (\\d+)$"))
 async def xabk9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5770,7 +5772,7 @@ async def xabk9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/585", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk10 (\\d+)$"))
+@app.on_message(filters.regex("^xabk10 (\\d+)$"))
 async def xabk10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5780,7 +5782,7 @@ async def xabk10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/586", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk11 (\\d+)$"))
+@app.on_message(filters.regex("^xabk11 (\\d+)$"))
 async def xabk11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5790,7 +5792,7 @@ async def xabk11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/587", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk12 (\\d+)$"))
+@app.on_message(filters.regex("^xabk12 (\\d+)$"))
 async def xabk12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5800,7 +5802,7 @@ async def xabk12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/588", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk13 (\\d+)$"))
+@app.on_message(filters.regex("^xabk13 (\\d+)$"))
 async def xabk13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5810,7 +5812,7 @@ async def xabk13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/589", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk14 (\\d+)$"))
+@app.on_message(filters.regex("^xabk14 (\\d+)$"))
 async def xabk14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5820,7 +5822,7 @@ async def xabk14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/590", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk15 (\\d+)$"))
+@app.on_message(filters.regex("^xabk15 (\\d+)$"))
 async def xabk15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5830,7 +5832,7 @@ async def xabk15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/591", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk16 (\\d+)$"))
+@app.on_message(filters.regex("^xabk16 (\\d+)$"))
 async def xabk16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5840,7 +5842,7 @@ async def xabk16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/592", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk17 (\\d+)$"))
+@app.on_message(filters.regex("^xabk17 (\\d+)$"))
 async def xabk17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5850,7 +5852,7 @@ async def xabk17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/593", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk18 (\\d+)$"))
+@app.on_message(filters.regex("^xabk18 (\\d+)$"))
 async def xabk18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5860,7 +5862,7 @@ async def xabk18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/594", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk19 (\\d+)$"))
+@app.on_message(filters.regex("^xabk19 (\\d+)$"))
 async def xabk19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5870,7 +5872,7 @@ async def xabk19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/595", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk20 (\\d+)$"))
+@app.on_message(filters.regex("^xabk20 (\\d+)$"))
 async def xabk20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5880,7 +5882,7 @@ async def xabk20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/596", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk21 (\\d+)$"))
+@app.on_message(filters.regex("^xabk21 (\\d+)$"))
 async def xabk21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5890,7 +5892,7 @@ async def xabk21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/597", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk22 (\\d+)$"))
+@app.on_message(filters.regex("^xabk22 (\\d+)$"))
 async def xabk22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5900,7 +5902,7 @@ async def xabk22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/598", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk23 (\\d+)$"))
+@app.on_message(filters.regex("^xabk23 (\\d+)$"))
 async def xabk23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5910,7 +5912,7 @@ async def xabk23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/599", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk24 (\\d+)$"))
+@app.on_message(filters.regex("^xabk24 (\\d+)$"))
 async def xabk24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5920,7 +5922,7 @@ async def xabk24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/600", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk25 (\\d+)$"))
+@app.on_message(filters.regex("^xabk25 (\\d+)$"))
 async def xabk25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5930,7 +5932,7 @@ async def xabk25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/601", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk26 (\\d+)$"))
+@app.on_message(filters.regex("^xabk26 (\\d+)$"))
 async def xabk26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5940,7 +5942,7 @@ async def xabk26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/602", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk27 (\\d+)$"))
+@app.on_message(filters.regex("^xabk27 (\\d+)$"))
 async def xabk27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5950,7 +5952,7 @@ async def xabk27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/603", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk28 (\\d+)$"))
+@app.on_message(filters.regex("^xabk28 (\\d+)$"))
 async def xabk28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5960,7 +5962,7 @@ async def xabk28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/603", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk29 (\\d+)$"))
+@app.on_message(filters.regex("^xabk29 (\\d+)$"))
 async def xabk29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5970,7 +5972,7 @@ async def xabk29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/604", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk30 (\\d+)$"))
+@app.on_message(filters.regex("^xabk30 (\\d+)$"))
 async def xabk30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5980,7 +5982,7 @@ async def xabk30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/605", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk31 (\\d+)$"))
+@app.on_message(filters.regex("^xabk31 (\\d+)$"))
 async def xabk31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -5990,7 +5992,7 @@ async def xabk31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/606", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk32 (\\d+)$"))
+@app.on_message(filters.regex("^xabk32 (\\d+)$"))
 async def xabk32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6000,7 +6002,7 @@ async def xabk32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/607", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk33 (\\d+)$"))
+@app.on_message(filters.regex("^xabk33 (\\d+)$"))
 async def xabk33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6010,7 +6012,7 @@ async def xabk33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/608", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk34 (\\d+)$"))
+@app.on_message(filters.regex("^xabk34 (\\d+)$"))
 async def xabk34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6020,7 +6022,7 @@ async def xabk34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/609", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk35 (\\d+)$"))
+@app.on_message(filters.regex("^xabk35 (\\d+)$"))
 async def xabk35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6030,7 +6032,7 @@ async def xabk35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/610", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk36 (\\d+)$"))
+@app.on_message(filters.regex("^xabk36 (\\d+)$"))
 async def xabk36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6040,7 +6042,7 @@ async def xabk36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/611", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk37 (\\d+)$"))
+@app.on_message(filters.regex("^xabk37 (\\d+)$"))
 async def xabk37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6050,7 +6052,7 @@ async def xabk37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/612", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk38 (\\d+)$"))
+@app.on_message(filters.regex("^xabk38 (\\d+)$"))
 async def xabk38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6060,7 +6062,7 @@ async def xabk38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/613", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk39 (\\d+)$"))
+@app.on_message(filters.regex("^xabk39 (\\d+)$"))
 async def xabk39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6070,7 +6072,7 @@ async def xabk39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/614", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk40 (\\d+)$"))
+@app.on_message(filters.regex("^xabk40 (\\d+)$"))
 async def xabk40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6080,7 +6082,7 @@ async def xabk40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/615", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk41 (\\d+)$"))
+@app.on_message(filters.regex("^xabk41 (\\d+)$"))
 async def xabk41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6090,7 +6092,7 @@ async def xabk41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/616", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk42 (\\d+)$"))
+@app.on_message(filters.regex("^xabk42 (\\d+)$"))
 async def xabk42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6100,7 +6102,7 @@ async def xabk42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/617", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk43 (\\d+)$"))
+@app.on_message(filters.regex("^xabk43 (\\d+)$"))
 async def xabk43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6110,7 +6112,7 @@ async def xabk43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/618", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk44 (\\d+)$"))
+@app.on_message(filters.regex("^xabk44 (\\d+)$"))
 async def xabk44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6120,7 +6122,7 @@ async def xabk44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/619", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk45 (\\d+)$"))
+@app.on_message(filters.regex("^xabk45 (\\d+)$"))
 async def xabk45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6130,7 +6132,7 @@ async def xabk45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/620", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk46 (\\d+)$"))
+@app.on_message(filters.regex("^xabk46 (\\d+)$"))
 async def xabk46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6140,7 +6142,7 @@ async def xabk46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/621", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk47 (\\d+)$"))
+@app.on_message(filters.regex("^xabk47 (\\d+)$"))
 async def xabk47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6150,7 +6152,7 @@ async def xabk47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/622", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk48 (\\d+)$"))
+@app.on_message(filters.regex("^xabk48 (\\d+)$"))
 async def xabk48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6160,7 +6162,7 @@ async def xabk48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/623", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk49 (\\d+)$"))
+@app.on_message(filters.regex("^xabk49 (\\d+)$"))
 async def xabk49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6170,7 +6172,7 @@ async def xabk49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/624", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk50 (\\d+)$"))
+@app.on_message(filters.regex("^xabk50 (\\d+)$"))
 async def xabk50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6180,7 +6182,7 @@ async def xabk50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/625", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk51 (\\d+)$"))
+@app.on_message(filters.regex("^xabk51 (\\d+)$"))
 async def xabk51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6190,7 +6192,7 @@ async def xabk51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/226", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk52 (\\d+)$"))
+@app.on_message(filters.regex("^xabk52 (\\d+)$"))
 async def xabk52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6200,7 +6202,7 @@ async def xabk52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/627", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk53 (\\d+)$"))
+@app.on_message(filters.regex("^xabk53 (\\d+)$"))
 async def xabk53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6210,7 +6212,7 @@ async def xabk53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/628", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk54 (\\d+)$"))
+@app.on_message(filters.regex("^xabk54 (\\d+)$"))
 async def xabk54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6220,7 +6222,7 @@ async def xabk54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/629", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk55 (\\d+)$"))
+@app.on_message(filters.regex("^xabk55 (\\d+)$"))
 async def xabk55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6230,7 +6232,7 @@ async def xabk55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/630", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk56 (\\d+)$"))
+@app.on_message(filters.regex("^xabk56 (\\d+)$"))
 async def xabk56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6240,7 +6242,7 @@ async def xabk56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/631", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk57 (\\d+)$"))
+@app.on_message(filters.regex("^xabk57 (\\d+)$"))
 async def xabk57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6250,7 +6252,7 @@ async def xabk57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/632", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk58 (\\d+)$"))
+@app.on_message(filters.regex("^xabk58 (\\d+)$"))
 async def xabk58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6260,7 +6262,7 @@ async def xabk58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/633", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk59 (\\d+)$"))
+@app.on_message(filters.regex("^xabk59 (\\d+)$"))
 async def xabk59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6270,7 +6272,7 @@ async def xabk59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/634", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk60 (\\d+)$"))
+@app.on_message(filters.regex("^xabk60 (\\d+)$"))
 async def xabk60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6280,7 +6282,7 @@ async def xabk60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/635", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk61 (\\d+)$"))
+@app.on_message(filters.regex("^xabk61 (\\d+)$"))
 async def xabk61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6290,7 +6292,7 @@ async def xabk61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/636", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk62 (\\d+)$"))
+@app.on_message(filters.regex("^xabk62 (\\d+)$"))
 async def xabk62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6300,7 +6302,7 @@ async def xabk62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/637", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk63 (\\d+)$"))
+@app.on_message(filters.regex("^xabk63 (\\d+)$"))
 async def xabk63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6310,7 +6312,7 @@ async def xabk63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/638", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk64 (\\d+)$"))
+@app.on_message(filters.regex("^xabk64 (\\d+)$"))
 async def xabk64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6320,7 +6322,7 @@ async def xabk64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/639", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk65 (\\d+)$"))
+@app.on_message(filters.regex("^xabk65 (\\d+)$"))
 async def xabk65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6330,7 +6332,7 @@ async def xabk65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/640", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk66 (\\d+)$"))
+@app.on_message(filters.regex("^xabk66 (\\d+)$"))
 async def xabk66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6340,7 +6342,7 @@ async def xabk66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/641", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk67 (\\d+)$"))
+@app.on_message(filters.regex("^xabk67 (\\d+)$"))
 async def xabk67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6350,7 +6352,7 @@ async def xabk67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/642", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk68 (\\d+)$"))
+@app.on_message(filters.regex("^xabk68 (\\d+)$"))
 async def xabk68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6360,7 +6362,7 @@ async def xabk68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/643", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk69 (\\d+)$"))
+@app.on_message(filters.regex("^xabk69 (\\d+)$"))
 async def xabk69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6370,7 +6372,7 @@ async def xabk69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/644", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk70 (\\d+)$"))
+@app.on_message(filters.regex("^xabk70 (\\d+)$"))
 async def xabk70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6380,7 +6382,7 @@ async def xabk70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/645", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk71 (\\d+)$"))
+@app.on_message(filters.regex("^xabk71 (\\d+)$"))
 async def xabk71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6390,7 +6392,7 @@ async def xabk71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/646", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk72 (\\d+)$"))
+@app.on_message(filters.regex("^xabk72 (\\d+)$"))
 async def xabk72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6400,7 +6402,7 @@ async def xabk72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/647", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk73 (\\d+)$"))
+@app.on_message(filters.regex("^xabk73 (\\d+)$"))
 async def xabk73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6410,7 +6412,7 @@ async def xabk73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/648", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk74 (\\d+)$"))
+@app.on_message(filters.regex("^xabk74 (\\d+)$"))
 async def xabk74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6420,7 +6422,7 @@ async def xabk74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/649", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk75 (\\d+)$"))
+@app.on_message(filters.regex("^xabk75 (\\d+)$"))
 async def xabk75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6430,7 +6432,7 @@ async def xabk75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/650", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk76 (\\d+)$"))
+@app.on_message(filters.regex("^xabk76 (\\d+)$"))
 async def xabk76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6440,7 +6442,7 @@ async def xabk76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/651", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk77 (\\d+)$"))
+@app.on_message(filters.regex("^xabk77 (\\d+)$"))
 async def xabk77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6450,7 +6452,7 @@ async def xabk77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/652", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk78 (\\d+)$"))
+@app.on_message(filters.regex("^xabk78 (\\d+)$"))
 async def xabk78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6460,7 +6462,7 @@ async def xabk78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/653", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk79 (\\d+)$"))
+@app.on_message(filters.regex("^xabk79 (\\d+)$"))
 async def xabk79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6470,7 +6472,7 @@ async def xabk79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/654", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk80 (\\d+)$"))
+@app.on_message(filters.regex("^xabk80 (\\d+)$"))
 async def xabk80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6480,7 +6482,7 @@ async def xabk80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/655", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk81 (\\d+)$"))
+@app.on_message(filters.regex("^xabk81 (\\d+)$"))
 async def xabk81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6490,7 +6492,7 @@ async def xabk81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/656", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk82 (\\d+)$"))
+@app.on_message(filters.regex("^xabk82 (\\d+)$"))
 async def xabk82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6500,7 +6502,7 @@ async def xabk82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/657", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk83 (\\d+)$"))
+@app.on_message(filters.regex("^xabk83 (\\d+)$"))
 async def xabk83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6510,7 +6512,7 @@ async def xabk83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/658", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk84 (\\d+)$"))
+@app.on_message(filters.regex("^xabk84 (\\d+)$"))
 async def xabk84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6520,7 +6522,7 @@ async def xabk84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/659", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk85 (\\d+)$"))
+@app.on_message(filters.regex("^xabk85 (\\d+)$"))
 async def xabk85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6530,7 +6532,7 @@ async def xabk85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/660", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk86 (\\d+)$"))
+@app.on_message(filters.regex("^xabk86 (\\d+)$"))
 async def xabk86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6540,7 +6542,7 @@ async def xabk86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/661", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk87 (\\d+)$"))
+@app.on_message(filters.regex("^xabk87 (\\d+)$"))
 async def xabk87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6550,7 +6552,7 @@ async def xabk87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/662", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk88 (\\d+)$"))
+@app.on_message(filters.regex("^xabk88 (\\d+)$"))
 async def xabk88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6560,7 +6562,7 @@ async def xabk88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/663", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk89 (\\d+)$"))
+@app.on_message(filters.regex("^xabk89 (\\d+)$"))
 async def xabk89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6570,7 +6572,7 @@ async def xabk89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/664", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk90 (\\d+)$"))
+@app.on_message(filters.regex("^xabk90 (\\d+)$"))
 async def xabk90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6580,7 +6582,7 @@ async def xabk90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/665", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk91 (\\d+)$"))
+@app.on_message(filters.regex("^xabk91 (\\d+)$"))
 async def xabk91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6590,7 +6592,7 @@ async def xabk91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/666", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk92 (\\d+)$"))
+@app.on_message(filters.regex("^xabk92 (\\d+)$"))
 async def xabk92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6600,7 +6602,7 @@ async def xabk92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/667", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk93 (\\d+)$"))
+@app.on_message(filters.regex("^xabk93 (\\d+)$"))
 async def xabk93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6610,7 +6612,7 @@ async def xabk93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/668", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk94 (\\d+)$"))
+@app.on_message(filters.regex("^xabk94 (\\d+)$"))
 async def xabk94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6620,7 +6622,7 @@ async def xabk94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/669", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk95 (\\d+)$"))
+@app.on_message(filters.regex("^xabk95 (\\d+)$"))
 async def xabk95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6630,7 +6632,7 @@ async def xabk95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/670", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk96 (\\d+)$"))
+@app.on_message(filters.regex("^xabk96 (\\d+)$"))
 async def xabk96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6640,7 +6642,7 @@ async def xabk96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/671", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk97 (\\d+)$"))
+@app.on_message(filters.regex("^xabk97 (\\d+)$"))
 async def xabk97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6650,7 +6652,7 @@ async def xabk97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/672", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk98 (\\d+)$"))
+@app.on_message(filters.regex("^xabk98 (\\d+)$"))
 async def xabk98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6660,7 +6662,7 @@ async def xabk98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/673", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk99 (\\d+)$"))
+@app.on_message(filters.regex("^xabk99 (\\d+)$"))
 async def xabk99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6670,7 +6672,7 @@ async def xabk99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/674", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk100 (\\d+)$"))
+@app.on_message(filters.regex("^xabk100 (\\d+)$"))
 async def xabk100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6680,7 +6682,7 @@ async def xabk100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/675", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk101 (\\d+)$"))
+@app.on_message(filters.regex("^xabk101 (\\d+)$"))
 async def xabk101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6690,7 +6692,7 @@ async def xabk101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/676", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk102 (\\d+)$"))
+@app.on_message(filters.regex("^xabk102 (\\d+)$"))
 async def xabk102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6700,7 +6702,7 @@ async def xabk102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/677", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk103 (\\d+)$"))
+@app.on_message(filters.regex("^xabk103 (\\d+)$"))
 async def xabk103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6710,7 +6712,7 @@ async def xabk103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/678", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk104 (\\d+)$"))
+@app.on_message(filters.regex("^xabk104 (\\d+)$"))
 async def xabk104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6720,7 +6722,7 @@ async def xabk104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/679", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk105 (\\d+)$"))
+@app.on_message(filters.regex("^xabk105 (\\d+)$"))
 async def xabk105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6730,7 +6732,7 @@ async def xabk105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/680", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk106 (\\d+)$"))
+@app.on_message(filters.regex("^xabk106 (\\d+)$"))
 async def xabk106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6740,7 +6742,7 @@ async def xabk106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/681", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk107 (\\d+)$"))
+@app.on_message(filters.regex("^xabk107 (\\d+)$"))
 async def xabk107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6750,7 +6752,7 @@ async def xabk107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/682", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk108 (\\d+)$"))
+@app.on_message(filters.regex("^xabk108 (\\d+)$"))
 async def xabk108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6760,7 +6762,7 @@ async def xabk108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/683", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk109 (\\d+)$"))
+@app.on_message(filters.regex("^xabk109 (\\d+)$"))
 async def xabk109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6770,7 +6772,7 @@ async def xabk109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/684", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk110 (\\d+)$"))
+@app.on_message(filters.regex("^xabk110 (\\d+)$"))
 async def xabk110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6780,7 +6782,7 @@ async def xabk110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/685", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk111 (\\d+)$"))
+@app.on_message(filters.regex("^xabk111 (\\d+)$"))
 async def xabk111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6790,7 +6792,7 @@ async def xabk111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/686", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk112 (\\d+)$"))
+@app.on_message(filters.regex("^xabk112 (\\d+)$"))
 async def xabk112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6800,7 +6802,7 @@ async def xabk112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/687", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk113 (\\d+)$"))
+@app.on_message(filters.regex("^xabk113 (\\d+)$"))
 async def xabk113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6810,7 +6812,7 @@ async def xabk113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/U5iQuran/688", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xabk114 (\\d+)$"))
+@app.on_message(filters.regex("^xabk114 (\\d+)$"))
 async def xabk114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6824,7 +6826,7 @@ async def xabk114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^afasy (\\d+)$"))
+@app.on_message(filters.regex("^afasy (\\d+)$"))
 async def afasy(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6892,7 +6894,7 @@ async def afasy(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقار ئمشاري العفاسي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^afasy2 (\\d+)$"))
+@app.on_message(filters.regex("^afasy2 (\\d+)$"))
 async def afasy2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6971,7 +6973,7 @@ async def afasy2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقار ئمشاري العفاسي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xafas1 (\\d+)$"))
+@app.on_message(filters.regex("^xafas1 (\\d+)$"))
 async def xafas1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6981,7 +6983,7 @@ async def xafas1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/769", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas2 (\\d+)$"))
+@app.on_message(filters.regex("^xafas2 (\\d+)$"))
 async def xafas2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -6991,7 +6993,7 @@ async def xafas2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/770", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas3 (\\d+)$"))
+@app.on_message(filters.regex("^xafas3 (\\d+)$"))
 async def xafas3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7001,7 +7003,7 @@ async def xafas3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/771", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas4 (\\d+)$"))
+@app.on_message(filters.regex("^xafas4 (\\d+)$"))
 async def xafas4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7011,7 +7013,7 @@ async def xafas4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/772", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas5 (\\d+)$"))
+@app.on_message(filters.regex("^xafas5 (\\d+)$"))
 async def xafas5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7021,7 +7023,7 @@ async def xafas5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/773", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas6 (\\d+)$"))
+@app.on_message(filters.regex("^xafas6 (\\d+)$"))
 async def xafas6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7031,7 +7033,7 @@ async def xafas6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/774", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas7 (\\d+)$"))
+@app.on_message(filters.regex("^xafas7 (\\d+)$"))
 async def xafas7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7041,7 +7043,7 @@ async def xafas7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/775", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas8 (\\d+)$"))
+@app.on_message(filters.regex("^xafas8 (\\d+)$"))
 async def xafas8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7051,7 +7053,7 @@ async def xafas8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/776", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas9 (\\d+)$"))
+@app.on_message(filters.regex("^xafas9 (\\d+)$"))
 async def xafas9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7061,7 +7063,7 @@ async def xafas9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/777", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas10 (\\d+)$"))
+@app.on_message(filters.regex("^xafas10 (\\d+)$"))
 async def xafas10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7071,7 +7073,7 @@ async def xafas10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/778", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas11 (\\d+)$"))
+@app.on_message(filters.regex("^xafas11 (\\d+)$"))
 async def xafas11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7081,7 +7083,7 @@ async def xafas11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/779", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas12 (\\d+)$"))
+@app.on_message(filters.regex("^xafas12 (\\d+)$"))
 async def xafas12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7091,7 +7093,7 @@ async def xafas12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/780", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas13 (\\d+)$"))
+@app.on_message(filters.regex("^xafas13 (\\d+)$"))
 async def xafas13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7101,7 +7103,7 @@ async def xafas13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/781", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas14 (\\d+)$"))
+@app.on_message(filters.regex("^xafas14 (\\d+)$"))
 async def xafas14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7111,7 +7113,7 @@ async def xafas14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/782", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas15 (\\d+)$"))
+@app.on_message(filters.regex("^xafas15 (\\d+)$"))
 async def xafas15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7121,7 +7123,7 @@ async def xafas15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/783", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas16 (\\d+)$"))
+@app.on_message(filters.regex("^xafas16 (\\d+)$"))
 async def xafas16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7131,7 +7133,7 @@ async def xafas16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/784", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas17 (\\d+)$"))
+@app.on_message(filters.regex("^xafas17 (\\d+)$"))
 async def xafas17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7141,7 +7143,7 @@ async def xafas17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/785", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas18 (\\d+)$"))
+@app.on_message(filters.regex("^xafas18 (\\d+)$"))
 async def xafas18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7151,7 +7153,7 @@ async def xafas18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/786", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas19 (\\d+)$"))
+@app.on_message(filters.regex("^xafas19 (\\d+)$"))
 async def xafas19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7161,7 +7163,7 @@ async def xafas19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/787", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas20 (\\d+)$"))
+@app.on_message(filters.regex("^xafas20 (\\d+)$"))
 async def xafas20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7171,7 +7173,7 @@ async def xafas20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/788", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas21 (\\d+)$"))
+@app.on_message(filters.regex("^xafas21 (\\d+)$"))
 async def xafas21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7181,7 +7183,7 @@ async def xafas21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/789", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas22 (\\d+)$"))
+@app.on_message(filters.regex("^xafas22 (\\d+)$"))
 async def xafas22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7191,7 +7193,7 @@ async def xafas22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/790", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas23 (\\d+)$"))
+@app.on_message(filters.regex("^xafas23 (\\d+)$"))
 async def xafas23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7201,7 +7203,7 @@ async def xafas23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/791", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas24 (\\d+)$"))
+@app.on_message(filters.regex("^xafas24 (\\d+)$"))
 async def xafas24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7211,7 +7213,7 @@ async def xafas24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/792", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas25 (\\d+)$"))
+@app.on_message(filters.regex("^xafas25 (\\d+)$"))
 async def xafas25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7221,7 +7223,7 @@ async def xafas25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/793", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas26 (\\d+)$"))
+@app.on_message(filters.regex("^xafas26 (\\d+)$"))
 async def xafas26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7231,7 +7233,7 @@ async def xafas26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/794", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas27 (\\d+)$"))
+@app.on_message(filters.regex("^xafas27 (\\d+)$"))
 async def xafas27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7241,7 +7243,7 @@ async def xafas27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/795", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas28 (\\d+)$"))
+@app.on_message(filters.regex("^xafas28 (\\d+)$"))
 async def xafas28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7251,7 +7253,7 @@ async def xafas28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/796", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas29 (\\d+)$"))
+@app.on_message(filters.regex("^xafas29 (\\d+)$"))
 async def xafas29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7261,7 +7263,7 @@ async def xafas29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/797", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas30 (\\d+)$"))
+@app.on_message(filters.regex("^xafas30 (\\d+)$"))
 async def xafas30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7271,7 +7273,7 @@ async def xafas30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/798", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas31 (\\d+)$"))
+@app.on_message(filters.regex("^xafas31 (\\d+)$"))
 async def xafas31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7281,7 +7283,7 @@ async def xafas31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/799", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas32 (\\d+)$"))
+@app.on_message(filters.regex("^xafas32 (\\d+)$"))
 async def xafas32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7291,7 +7293,7 @@ async def xafas32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/800", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas33 (\\d+)$"))
+@app.on_message(filters.regex("^xafas33 (\\d+)$"))
 async def xafas33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7301,7 +7303,7 @@ async def xafas33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/801", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas34 (\\d+)$"))
+@app.on_message(filters.regex("^xafas34 (\\d+)$"))
 async def xafas34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7311,7 +7313,7 @@ async def xafas34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/802", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas35 (\\d+)$"))
+@app.on_message(filters.regex("^xafas35 (\\d+)$"))
 async def xafas35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7321,7 +7323,7 @@ async def xafas35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/803", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas36 (\\d+)$"))
+@app.on_message(filters.regex("^xafas36 (\\d+)$"))
 async def xafas36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7331,7 +7333,7 @@ async def xafas36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/804", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas37 (\\d+)$"))
+@app.on_message(filters.regex("^xafas37 (\\d+)$"))
 async def xafas37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7341,7 +7343,7 @@ async def xafas37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/805", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas38 (\\d+)$"))
+@app.on_message(filters.regex("^xafas38 (\\d+)$"))
 async def xafas38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7351,7 +7353,7 @@ async def xafas38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/806", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas39 (\\d+)$"))
+@app.on_message(filters.regex("^xafas39 (\\d+)$"))
 async def xafas39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7361,7 +7363,7 @@ async def xafas39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/807", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas40 (\\d+)$"))
+@app.on_message(filters.regex("^xafas40 (\\d+)$"))
 async def xafas40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7371,7 +7373,7 @@ async def xafas40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/808", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas41 (\\d+)$"))
+@app.on_message(filters.regex("^xafas41 (\\d+)$"))
 async def xafas41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7381,7 +7383,7 @@ async def xafas41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/809", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas42 (\\d+)$"))
+@app.on_message(filters.regex("^xafas42 (\\d+)$"))
 async def xafas42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7391,7 +7393,7 @@ async def xafas42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/810", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas43 (\\d+)$"))
+@app.on_message(filters.regex("^xafas43 (\\d+)$"))
 async def xafas43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7401,7 +7403,7 @@ async def xafas43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/811", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas44 (\\d+)$"))
+@app.on_message(filters.regex("^xafas44 (\\d+)$"))
 async def xafas44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7411,7 +7413,7 @@ async def xafas44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/812", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas45 (\\d+)$"))
+@app.on_message(filters.regex("^xafas45 (\\d+)$"))
 async def xafas45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7421,7 +7423,7 @@ async def xafas45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/813", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas46 (\\d+)$"))
+@app.on_message(filters.regex("^xafas46 (\\d+)$"))
 async def xafas46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7431,7 +7433,7 @@ async def xafas46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/814", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas47 (\\d+)$"))
+@app.on_message(filters.regex("^xafas47 (\\d+)$"))
 async def xafas47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7441,7 +7443,7 @@ async def xafas47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/815", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas48 (\\d+)$"))
+@app.on_message(filters.regex("^xafas48 (\\d+)$"))
 async def xafas48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7451,7 +7453,7 @@ async def xafas48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/816", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas49 (\\d+)$"))
+@app.on_message(filters.regex("^xafas49 (\\d+)$"))
 async def xafas49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7461,7 +7463,7 @@ async def xafas49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/817", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas50 (\\d+)$"))
+@app.on_message(filters.regex("^xafas50 (\\d+)$"))
 async def xafas50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7471,7 +7473,7 @@ async def xafas50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/818", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas51 (\\d+)$"))
+@app.on_message(filters.regex("^xafas51 (\\d+)$"))
 async def xafas51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7481,7 +7483,7 @@ async def xafas51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/819", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas52 (\\d+)$"))
+@app.on_message(filters.regex("^xafas52 (\\d+)$"))
 async def xafas52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7491,7 +7493,7 @@ async def xafas52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/820", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas53 (\\d+)$"))
+@app.on_message(filters.regex("^xafas53 (\\d+)$"))
 async def xafas53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7501,7 +7503,7 @@ async def xafas53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/821", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas54 (\\d+)$"))
+@app.on_message(filters.regex("^xafas54 (\\d+)$"))
 async def xafas54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7511,7 +7513,7 @@ async def xafas54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/822", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas55 (\\d+)$"))
+@app.on_message(filters.regex("^xafas55 (\\d+)$"))
 async def xafas55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7521,7 +7523,7 @@ async def xafas55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/823", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas56 (\\d+)$"))
+@app.on_message(filters.regex("^xafas56 (\\d+)$"))
 async def xafas56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7531,7 +7533,7 @@ async def xafas56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/824", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas57 (\\d+)$"))
+@app.on_message(filters.regex("^xafas57 (\\d+)$"))
 async def xafas57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7541,7 +7543,7 @@ async def xafas57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/825", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas58 (\\d+)$"))
+@app.on_message(filters.regex("^xafas58 (\\d+)$"))
 async def xafas58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7551,7 +7553,7 @@ async def xafas58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/826", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas59 (\\d+)$"))
+@app.on_message(filters.regex("^xafas59 (\\d+)$"))
 async def xafas59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7561,7 +7563,7 @@ async def xafas59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/827", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas60 (\\d+)$"))
+@app.on_message(filters.regex("^xafas60 (\\d+)$"))
 async def xafas60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7571,7 +7573,7 @@ async def xafas60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/828", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas61 (\\d+)$"))
+@app.on_message(filters.regex("^xafas61 (\\d+)$"))
 async def xafas61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7581,7 +7583,7 @@ async def xafas61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/829", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas62 (\\d+)$"))
+@app.on_message(filters.regex("^xafas62 (\\d+)$"))
 async def xafas62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7591,7 +7593,7 @@ async def xafas62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/830", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas63 (\\d+)$"))
+@app.on_message(filters.regex("^xafas63 (\\d+)$"))
 async def xafas63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7601,7 +7603,7 @@ async def xafas63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/831", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas64 (\\d+)$"))
+@app.on_message(filters.regex("^xafas64 (\\d+)$"))
 async def xafas64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7611,7 +7613,7 @@ async def xafas64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/832", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas65 (\\d+)$"))
+@app.on_message(filters.regex("^xafas65 (\\d+)$"))
 async def xafas65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7621,7 +7623,7 @@ async def xafas65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/833", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas66 (\\d+)$"))
+@app.on_message(filters.regex("^xafas66 (\\d+)$"))
 async def xafas66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7631,7 +7633,7 @@ async def xafas66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/834", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas67 (\\d+)$"))
+@app.on_message(filters.regex("^xafas67 (\\d+)$"))
 async def xafas67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7641,7 +7643,7 @@ async def xafas67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/835", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas68 (\\d+)$"))
+@app.on_message(filters.regex("^xafas68 (\\d+)$"))
 async def xafas68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7651,7 +7653,7 @@ async def xafas68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/836", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas69 (\\d+)$"))
+@app.on_message(filters.regex("^xafas69 (\\d+)$"))
 async def xafas69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7661,7 +7663,7 @@ async def xafas69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/837", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas70 (\\d+)$"))
+@app.on_message(filters.regex("^xafas70 (\\d+)$"))
 async def xafas70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7671,7 +7673,7 @@ async def xafas70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/838", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas71 (\\d+)$"))
+@app.on_message(filters.regex("^xafas71 (\\d+)$"))
 async def xafas71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7681,7 +7683,7 @@ async def xafas71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/839", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas72 (\\d+)$"))
+@app.on_message(filters.regex("^xafas72 (\\d+)$"))
 async def xafas72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7691,7 +7693,7 @@ async def xafas72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/840", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas73 (\\d+)$"))
+@app.on_message(filters.regex("^xafas73 (\\d+)$"))
 async def xafas73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7701,7 +7703,7 @@ async def xafas73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/841", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas74 (\\d+)$"))
+@app.on_message(filters.regex("^xafas74 (\\d+)$"))
 async def xafas74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7711,7 +7713,7 @@ async def xafas74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/842", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas75 (\\d+)$"))
+@app.on_message(filters.regex("^xafas75 (\\d+)$"))
 async def xafas75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7721,7 +7723,7 @@ async def xafas75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/843", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas76 (\\d+)$"))
+@app.on_message(filters.regex("^xafas76 (\\d+)$"))
 async def xafas76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7731,7 +7733,7 @@ async def xafas76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/844", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas77 (\\d+)$"))
+@app.on_message(filters.regex("^xafas77 (\\d+)$"))
 async def xafas77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7741,7 +7743,7 @@ async def xafas77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/845", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas78 (\\d+)$"))
+@app.on_message(filters.regex("^xafas78 (\\d+)$"))
 async def xafas78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7751,7 +7753,7 @@ async def xafas78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/846", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas79 (\\d+)$"))
+@app.on_message(filters.regex("^xafas79 (\\d+)$"))
 async def xafas79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7761,7 +7763,7 @@ async def xafas79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/847", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas80 (\\d+)$"))
+@app.on_message(filters.regex("^xafas80 (\\d+)$"))
 async def xafas80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7771,7 +7773,7 @@ async def xafas80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/848", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas81 (\\d+)$"))
+@app.on_message(filters.regex("^xafas81 (\\d+)$"))
 async def xafas81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7781,7 +7783,7 @@ async def xafas81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/849", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas82 (\\d+)$"))
+@app.on_message(filters.regex("^xafas82 (\\d+)$"))
 async def xafas82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7791,7 +7793,7 @@ async def xafas82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/850", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas83 (\\d+)$"))
+@app.on_message(filters.regex("^xafas83 (\\d+)$"))
 async def xafas83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7801,7 +7803,7 @@ async def xafas83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/851", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas84 (\\d+)$"))
+@app.on_message(filters.regex("^xafas84 (\\d+)$"))
 async def xafas84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7811,7 +7813,7 @@ async def xafas84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/852", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas85 (\\d+)$"))
+@app.on_message(filters.regex("^xafas85 (\\d+)$"))
 async def xafas85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7821,7 +7823,7 @@ async def xafas85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/853", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas86 (\\d+)$"))
+@app.on_message(filters.regex("^xafas86 (\\d+)$"))
 async def xafas86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7831,7 +7833,7 @@ async def xafas86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/854", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas87 (\\d+)$"))
+@app.on_message(filters.regex("^xafas87 (\\d+)$"))
 async def xafas87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7841,7 +7843,7 @@ async def xafas87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/855", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas88 (\\d+)$"))
+@app.on_message(filters.regex("^xafas88 (\\d+)$"))
 async def xafas88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7851,7 +7853,7 @@ async def xafas88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/856", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas89 (\\d+)$"))
+@app.on_message(filters.regex("^xafas89 (\\d+)$"))
 async def xafas89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7861,7 +7863,7 @@ async def xafas89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/857", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas90 (\\d+)$"))
+@app.on_message(filters.regex("^xafas90 (\\d+)$"))
 async def xafas90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7871,7 +7873,7 @@ async def xafas90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/858", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas91 (\\d+)$"))
+@app.on_message(filters.regex("^xafas91 (\\d+)$"))
 async def xafas91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7881,7 +7883,7 @@ async def xafas91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/859", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas92 (\\d+)$"))
+@app.on_message(filters.regex("^xafas92 (\\d+)$"))
 async def xafas92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7891,7 +7893,7 @@ async def xafas92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/860", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas93 (\\d+)$"))
+@app.on_message(filters.regex("^xafas93 (\\d+)$"))
 async def xafas93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7901,7 +7903,7 @@ async def xafas93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/861", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas94 (\\d+)$"))
+@app.on_message(filters.regex("^xafas94 (\\d+)$"))
 async def xafas94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7911,7 +7913,7 @@ async def xafas94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/862", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas95 (\\d+)$"))
+@app.on_message(filters.regex("^xafas95 (\\d+)$"))
 async def xafas95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7921,7 +7923,7 @@ async def xafas95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/863", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas96 (\\d+)$"))
+@app.on_message(filters.regex("^xafas96 (\\d+)$"))
 async def xafas96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7931,7 +7933,7 @@ async def xafas96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/864", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas97 (\\d+)$"))
+@app.on_message(filters.regex("^xafas97 (\\d+)$"))
 async def xafas97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7941,7 +7943,7 @@ async def xafas97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/865", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas98 (\\d+)$"))
+@app.on_message(filters.regex("^xafas98 (\\d+)$"))
 async def xafas98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7951,7 +7953,7 @@ async def xafas98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/866", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas99 (\\d+)$"))
+@app.on_message(filters.regex("^xafas99 (\\d+)$"))
 async def xafas99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7961,7 +7963,7 @@ async def xafas99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/867", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas100 (\\d+)$"))
+@app.on_message(filters.regex("^xafas100 (\\d+)$"))
 async def xafas100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7971,7 +7973,7 @@ async def xafas100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/868", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas101 (\\d+)$"))
+@app.on_message(filters.regex("^xafas101 (\\d+)$"))
 async def xafas101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7981,7 +7983,7 @@ async def xafas101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/869", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas102 (\\d+)$"))
+@app.on_message(filters.regex("^xafas102 (\\d+)$"))
 async def xafas102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -7991,7 +7993,7 @@ async def xafas102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/870", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas103 (\\d+)$"))
+@app.on_message(filters.regex("^xafas103 (\\d+)$"))
 async def xafas103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8001,7 +8003,7 @@ async def xafas103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/871", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas104 (\\d+)$"))
+@app.on_message(filters.regex("^xafas104 (\\d+)$"))
 async def xafas104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8011,7 +8013,7 @@ async def xafas104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/872", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas105 (\\d+)$"))
+@app.on_message(filters.regex("^xafas105 (\\d+)$"))
 async def xafas105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8021,7 +8023,7 @@ async def xafas105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/873", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas106 (\\d+)$"))
+@app.on_message(filters.regex("^xafas106 (\\d+)$"))
 async def xafas106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8031,7 +8033,7 @@ async def xafas106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/874", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas107 (\\d+)$"))
+@app.on_message(filters.regex("^xafas107 (\\d+)$"))
 async def xafas107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8041,7 +8043,7 @@ async def xafas107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/875", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas108 (\\d+)$"))
+@app.on_message(filters.regex("^xafas108 (\\d+)$"))
 async def xafas108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8051,7 +8053,7 @@ async def xafas108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/876", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas109 (\\d+)$"))
+@app.on_message(filters.regex("^xafas109 (\\d+)$"))
 async def xafas109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8061,7 +8063,7 @@ async def xafas109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/877", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas110 (\\d+)$"))
+@app.on_message(filters.regex("^xafas110 (\\d+)$"))
 async def xafas110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8071,7 +8073,7 @@ async def xafas110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/878", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas111 (\\d+)$"))
+@app.on_message(filters.regex("^xafas111 (\\d+)$"))
 async def xafas111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8081,7 +8083,7 @@ async def xafas111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/879", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas112 (\\d+)$"))
+@app.on_message(filters.regex("^xafas112 (\\d+)$"))
 async def xafas112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8091,7 +8093,7 @@ async def xafas112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/880", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas113 (\\d+)$"))
+@app.on_message(filters.regex("^xafas113 (\\d+)$"))
 async def xafas113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8101,7 +8103,7 @@ async def xafas113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/881", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xafas114 (\\d+)$"))
+@app.on_message(filters.regex("^xafas114 (\\d+)$"))
 async def xafas114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8115,7 +8117,7 @@ async def xafas114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^agamy (\\d+)$"))
+@app.on_message(filters.regex("^agamy (\\d+)$"))
 async def agamy(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8183,7 +8185,7 @@ async def agamy(c: Client, m: CallbackQuery):
                               disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^agamy2 (\\d+)$"))
+@app.on_message(filters.regex("^agamy2 (\\d+)$"))
 async def agamy2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8264,7 +8266,7 @@ async def agamy2(c: Client, m: CallbackQuery):
                               disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xagam1 (\\d+)$"))
+@app.on_message(filters.regex("^xagam1 (\\d+)$"))
 async def xagam1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8274,7 +8276,7 @@ async def xagam1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/237", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam2 (\\d+)$"))
+@app.on_message(filters.regex("^xagam2 (\\d+)$"))
 async def xagam2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8284,7 +8286,7 @@ async def xagam2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/238", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam3 (\\d+)$"))
+@app.on_message(filters.regex("^xagam3 (\\d+)$"))
 async def xagam3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8294,7 +8296,7 @@ async def xagam3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/239", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam4 (\\d+)$"))
+@app.on_message(filters.regex("^xagam4 (\\d+)$"))
 async def xagam4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8304,7 +8306,7 @@ async def xagam4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/240", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam5 (\\d+)$"))
+@app.on_message(filters.regex("^xagam5 (\\d+)$"))
 async def xagam5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8314,7 +8316,7 @@ async def xagam5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/241", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam6 (\\d+)$"))
+@app.on_message(filters.regex("^xagam6 (\\d+)$"))
 async def xagam6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8324,7 +8326,7 @@ async def xagam6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/242", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam7 (\\d+)$"))
+@app.on_message(filters.regex("^xagam7 (\\d+)$"))
 async def xagam7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8334,7 +8336,7 @@ async def xagam7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/243", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam8 (\\d+)$"))
+@app.on_message(filters.regex("^xagam8 (\\d+)$"))
 async def xagam8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8344,7 +8346,7 @@ async def xagam8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/244", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam9 (\\d+)$"))
+@app.on_message(filters.regex("^xagam9 (\\d+)$"))
 async def xagam9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8354,7 +8356,7 @@ async def xagam9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/245", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam10 (\\d+)$"))
+@app.on_message(filters.regex("^xagam10 (\\d+)$"))
 async def xagam10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8364,7 +8366,7 @@ async def xagam10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/246", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam11 (\\d+)$"))
+@app.on_message(filters.regex("^xagam11 (\\d+)$"))
 async def xagam11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8374,7 +8376,7 @@ async def xagam11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/247", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam12 (\\d+)$"))
+@app.on_message(filters.regex("^xagam12 (\\d+)$"))
 async def xagam12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8384,7 +8386,7 @@ async def xagam12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/248", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam13 (\\d+)$"))
+@app.on_message(filters.regex("^xagam13 (\\d+)$"))
 async def xagam13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8394,7 +8396,7 @@ async def xagam13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/249", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam14 (\\d+)$"))
+@app.on_message(filters.regex("^xagam14 (\\d+)$"))
 async def xagam14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8404,7 +8406,7 @@ async def xagam14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/250", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam15 (\\d+)$"))
+@app.on_message(filters.regex("^xagam15 (\\d+)$"))
 async def xagam15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8414,7 +8416,7 @@ async def xagam15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/251", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam16 (\\d+)$"))
+@app.on_message(filters.regex("^xagam16 (\\d+)$"))
 async def xagam16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8424,7 +8426,7 @@ async def xagam16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/252", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam17 (\\d+)$"))
+@app.on_message(filters.regex("^xagam17 (\\d+)$"))
 async def xagam17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8434,7 +8436,7 @@ async def xagam17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/253", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam18 (\\d+)$"))
+@app.on_message(filters.regex("^xagam18 (\\d+)$"))
 async def xagam18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8444,7 +8446,7 @@ async def xagam18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/254", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam19 (\\d+)$"))
+@app.on_message(filters.regex("^xagam19 (\\d+)$"))
 async def xagam19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8454,7 +8456,7 @@ async def xagam19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/255", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam20 (\\d+)$"))
+@app.on_message(filters.regex("^xagam20 (\\d+)$"))
 async def xagam20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8464,7 +8466,7 @@ async def xagam20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/256", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam21 (\\d+)$"))
+@app.on_message(filters.regex("^xagam21 (\\d+)$"))
 async def xagam21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8474,7 +8476,7 @@ async def xagam21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/257", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam22 (\\d+)$"))
+@app.on_message(filters.regex("^xagam22 (\\d+)$"))
 async def xagam22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8484,7 +8486,7 @@ async def xagam22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/258", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam23 (\\d+)$"))
+@app.on_message(filters.regex("^xagam23 (\\d+)$"))
 async def xagam23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8494,7 +8496,7 @@ async def xagam23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/259", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam24 (\\d+)$"))
+@app.on_message(filters.regex("^xagam24 (\\d+)$"))
 async def xagam24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8504,7 +8506,7 @@ async def xagam24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/260", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam25 (\\d+)$"))
+@app.on_message(filters.regex("^xagam25 (\\d+)$"))
 async def xagam25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8514,7 +8516,7 @@ async def xagam25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/261", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam26 (\\d+)$"))
+@app.on_message(filters.regex("^xagam26 (\\d+)$"))
 async def xagam26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8524,7 +8526,7 @@ async def xagam26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/262", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam27 (\\d+)$"))
+@app.on_message(filters.regex("^xagam27 (\\d+)$"))
 async def xagam27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8534,7 +8536,7 @@ async def xagam27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/263", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam28 (\\d+)$"))
+@app.on_message(filters.regex("^xagam28 (\\d+)$"))
 async def xagam28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8544,7 +8546,7 @@ async def xagam28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/264", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam29 (\\d+)$"))
+@app.on_message(filters.regex("^xagam29 (\\d+)$"))
 async def xagam29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8554,7 +8556,7 @@ async def xagam29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/265", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam30 (\\d+)$"))
+@app.on_message(filters.regex("^xagam30 (\\d+)$"))
 async def xagam30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8564,7 +8566,7 @@ async def xagam30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/266", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam31 (\\d+)$"))
+@app.on_message(filters.regex("^xagam31 (\\d+)$"))
 async def xagam31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8574,7 +8576,7 @@ async def xagam31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/267", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam32 (\\d+)$"))
+@app.on_message(filters.regex("^xagam32 (\\d+)$"))
 async def xagam32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8584,7 +8586,7 @@ async def xagam32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/268", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam33 (\\d+)$"))
+@app.on_message(filters.regex("^xagam33 (\\d+)$"))
 async def xagam33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8594,7 +8596,7 @@ async def xagam33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/269", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam34 (\\d+)$"))
+@app.on_message(filters.regex("^xagam34 (\\d+)$"))
 async def xagam34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8604,7 +8606,7 @@ async def xagam34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/270", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam35 (\\d+)$"))
+@app.on_message(filters.regex("^xagam35 (\\d+)$"))
 async def xagam35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8614,7 +8616,7 @@ async def xagam35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/271", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam36 (\\d+)$"))
+@app.on_message(filters.regex("^xagam36 (\\d+)$"))
 async def xagam36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8624,7 +8626,7 @@ async def xagam36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/272", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam37 (\\d+)$"))
+@app.on_message(filters.regex("^xagam37 (\\d+)$"))
 async def xagam37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8634,7 +8636,7 @@ async def xagam37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/273", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam38 (\\d+)$"))
+@app.on_message(filters.regex("^xagam38 (\\d+)$"))
 async def xagam38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8644,7 +8646,7 @@ async def xagam38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/274", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam39 (\\d+)$"))
+@app.on_message(filters.regex("^xagam39 (\\d+)$"))
 async def xagam39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8654,7 +8656,7 @@ async def xagam39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/275", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam40 (\\d+)$"))
+@app.on_message(filters.regex("^xagam40 (\\d+)$"))
 async def xagam40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8664,7 +8666,7 @@ async def xagam40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/276", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam41 (\\d+)$"))
+@app.on_message(filters.regex("^xagam41 (\\d+)$"))
 async def xagam41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8674,7 +8676,7 @@ async def xagam41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/277", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam42 (\\d+)$"))
+@app.on_message(filters.regex("^xagam42 (\\d+)$"))
 async def xagam42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8684,7 +8686,7 @@ async def xagam42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/278", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam43 (\\d+)$"))
+@app.on_message(filters.regex("^xagam43 (\\d+)$"))
 async def xagam43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8694,7 +8696,7 @@ async def xagam43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/279", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam44 (\\d+)$"))
+@app.on_message(filters.regex("^xagam44 (\\d+)$"))
 async def xagam44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8704,7 +8706,7 @@ async def xagam44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/280", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam45 (\\d+)$"))
+@app.on_message(filters.regex("^xagam45 (\\d+)$"))
 async def xagam45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8714,7 +8716,7 @@ async def xagam45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/281", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam46 (\\d+)$"))
+@app.on_message(filters.regex("^xagam46 (\\d+)$"))
 async def xagam46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8724,7 +8726,7 @@ async def xagam46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/282", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam47 (\\d+)$"))
+@app.on_message(filters.regex("^xagam47 (\\d+)$"))
 async def xagam47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8734,7 +8736,7 @@ async def xagam47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/283", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam48 (\\d+)$"))
+@app.on_message(filters.regex("^xagam48 (\\d+)$"))
 async def xagam48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8744,7 +8746,7 @@ async def xagam48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/284", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam49 (\\d+)$"))
+@app.on_message(filters.regex("^xagam49 (\\d+)$"))
 async def xagam49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8754,7 +8756,7 @@ async def xagam49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/285", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam50 (\\d+)$"))
+@app.on_message(filters.regex("^xagam50 (\\d+)$"))
 async def xagam50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8764,7 +8766,7 @@ async def xagam50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/286", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam51 (\\d+)$"))
+@app.on_message(filters.regex("^xagam51 (\\d+)$"))
 async def xagam51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8774,7 +8776,7 @@ async def xagam51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/287", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam52 (\\d+)$"))
+@app.on_message(filters.regex("^xagam52 (\\d+)$"))
 async def xagam52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8784,7 +8786,7 @@ async def xagam52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/288", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam53 (\\d+)$"))
+@app.on_message(filters.regex("^xagam53 (\\d+)$"))
 async def xagam53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8794,7 +8796,7 @@ async def xagam53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/289", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam54 (\\d+)$"))
+@app.on_message(filters.regex("^xagam54 (\\d+)$"))
 async def xagam54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8804,7 +8806,7 @@ async def xagam54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/290", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam55 (\\d+)$"))
+@app.on_message(filters.regex("^xagam55 (\\d+)$"))
 async def xagam55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8814,7 +8816,7 @@ async def xagam55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/291", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam56 (\\d+)$"))
+@app.on_message(filters.regex("^xagam56 (\\d+)$"))
 async def xagam56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8824,7 +8826,7 @@ async def xagam56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/292", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam57 (\\d+)$"))
+@app.on_message(filters.regex("^xagam57 (\\d+)$"))
 async def xagam57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8834,7 +8836,7 @@ async def xagam57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/293", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam58 (\\d+)$"))
+@app.on_message(filters.regex("^xagam58 (\\d+)$"))
 async def xagam58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8844,7 +8846,7 @@ async def xagam58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/294", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam59 (\\d+)$"))
+@app.on_message(filters.regex("^xagam59 (\\d+)$"))
 async def xagam59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8854,7 +8856,7 @@ async def xagam59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/295", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam60 (\\d+)$"))
+@app.on_message(filters.regex("^xagam60 (\\d+)$"))
 async def xagam60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8864,7 +8866,7 @@ async def xagam60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/296", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam61 (\\d+)$"))
+@app.on_message(filters.regex("^xagam61 (\\d+)$"))
 async def xagam61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8874,7 +8876,7 @@ async def xagam61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/297", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam62 (\\d+)$"))
+@app.on_message(filters.regex("^xagam62 (\\d+)$"))
 async def xagam62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8884,7 +8886,7 @@ async def xagam62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/298", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam63 (\\d+)$"))
+@app.on_message(filters.regex("^xagam63 (\\d+)$"))
 async def xagam63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8894,7 +8896,7 @@ async def xagam63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/299", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam64 (\\d+)$"))
+@app.on_message(filters.regex("^xagam64 (\\d+)$"))
 async def xagam64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8904,7 +8906,7 @@ async def xagam64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/300", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam65 (\\d+)$"))
+@app.on_message(filters.regex("^xagam65 (\\d+)$"))
 async def xagam65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8914,7 +8916,7 @@ async def xagam65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/301", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam66 (\\d+)$"))
+@app.on_message(filters.regex("^xagam66 (\\d+)$"))
 async def xagam66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8924,7 +8926,7 @@ async def xagam66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/302", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam67 (\\d+)$"))
+@app.on_message(filters.regex("^xagam67 (\\d+)$"))
 async def xagam67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8934,7 +8936,7 @@ async def xagam67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/303", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam68 (\\d+)$"))
+@app.on_message(filters.regex("^xagam68 (\\d+)$"))
 async def xagam68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8944,7 +8946,7 @@ async def xagam68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/304", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam69 (\\d+)$"))
+@app.on_message(filters.regex("^xagam69 (\\d+)$"))
 async def xagam69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8954,7 +8956,7 @@ async def xagam69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/305", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam70 (\\d+)$"))
+@app.on_message(filters.regex("^xagam70 (\\d+)$"))
 async def xagam70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8964,7 +8966,7 @@ async def xagam70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/306", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam71 (\\d+)$"))
+@app.on_message(filters.regex("^xagam71 (\\d+)$"))
 async def xagam71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8974,7 +8976,7 @@ async def xagam71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/307", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam72 (\\d+)$"))
+@app.on_message(filters.regex("^xagam72 (\\d+)$"))
 async def xagam72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8984,7 +8986,7 @@ async def xagam72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/308", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam73 (\\d+)$"))
+@app.on_message(filters.regex("^xagam73 (\\d+)$"))
 async def xagam73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -8994,7 +8996,7 @@ async def xagam73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/309", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam74 (\\d+)$"))
+@app.on_message(filters.regex("^xagam74 (\\d+)$"))
 async def xagam74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9004,7 +9006,7 @@ async def xagam74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/310", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam75 (\\d+)$"))
+@app.on_message(filters.regex("^xagam75 (\\d+)$"))
 async def xagam75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9014,7 +9016,7 @@ async def xagam75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/311", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam76 (\\d+)$"))
+@app.on_message(filters.regex("^xagam76 (\\d+)$"))
 async def xagam76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9024,7 +9026,7 @@ async def xagam76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/312", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam77 (\\d+)$"))
+@app.on_message(filters.regex("^xagam77 (\\d+)$"))
 async def xagam77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9034,7 +9036,7 @@ async def xagam77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/313", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam78 (\\d+)$"))
+@app.on_message(filters.regex("^xagam78 (\\d+)$"))
 async def xagam78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9044,7 +9046,7 @@ async def xagam78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/314", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam79 (\\d+)$"))
+@app.on_message(filters.regex("^xagam79 (\\d+)$"))
 async def xagam79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9054,7 +9056,7 @@ async def xagam79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/315", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam80 (\\d+)$"))
+@app.on_message(filters.regex("^xagam80 (\\d+)$"))
 async def xagam80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9064,7 +9066,7 @@ async def xagam80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/316", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam81 (\\d+)$"))
+@app.on_message(filters.regex("^xagam81 (\\d+)$"))
 async def xagam81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9074,7 +9076,7 @@ async def xagam81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/317", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam82 (\\d+)$"))
+@app.on_message(filters.regex("^xagam82 (\\d+)$"))
 async def xagam82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9084,7 +9086,7 @@ async def xagam82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/318", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam83 (\\d+)$"))
+@app.on_message(filters.regex("^xagam83 (\\d+)$"))
 async def xagam83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9094,7 +9096,7 @@ async def xagam83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/319", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam84 (\\d+)$"))
+@app.on_message(filters.regex("^xagam84 (\\d+)$"))
 async def xagam84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9104,7 +9106,7 @@ async def xagam84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/320", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam85 (\\d+)$"))
+@app.on_message(filters.regex("^xagam85 (\\d+)$"))
 async def xagam85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9114,7 +9116,7 @@ async def xagam85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/321", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam86 (\\d+)$"))
+@app.on_message(filters.regex("^xagam86 (\\d+)$"))
 async def xagam86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9124,7 +9126,7 @@ async def xagam86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/322", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam87 (\\d+)$"))
+@app.on_message(filters.regex("^xagam87 (\\d+)$"))
 async def xagam87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9134,7 +9136,7 @@ async def xagam87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/323", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam88 (\\d+)$"))
+@app.on_message(filters.regex("^xagam88 (\\d+)$"))
 async def xagam88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9144,7 +9146,7 @@ async def xagam88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/324", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam89 (\\d+)$"))
+@app.on_message(filters.regex("^xagam89 (\\d+)$"))
 async def xagam89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9154,7 +9156,7 @@ async def xagam89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/325", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam90 (\\d+)$"))
+@app.on_message(filters.regex("^xagam90 (\\d+)$"))
 async def xagam90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9164,7 +9166,7 @@ async def xagam90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/326", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam91 (\\d+)$"))
+@app.on_message(filters.regex("^xagam91 (\\d+)$"))
 async def xagam91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9174,7 +9176,7 @@ async def xagam91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/327", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam92 (\\d+)$"))
+@app.on_message(filters.regex("^xagam92 (\\d+)$"))
 async def xagam92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9184,7 +9186,7 @@ async def xagam92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/328", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam93 (\\d+)$"))
+@app.on_message(filters.regex("^xagam93 (\\d+)$"))
 async def xagam93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9194,7 +9196,7 @@ async def xagam93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/329", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam94 (\\d+)$"))
+@app.on_message(filters.regex("^xagam94 (\\d+)$"))
 async def xagam94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9204,7 +9206,7 @@ async def xagam94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/330", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam95 (\\d+)$"))
+@app.on_message(filters.regex("^xagam95 (\\d+)$"))
 async def xagam95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9214,7 +9216,7 @@ async def xagam95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/331", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam96 (\\d+)$"))
+@app.on_message(filters.regex("^xagam96 (\\d+)$"))
 async def xagam96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9224,7 +9226,7 @@ async def xagam96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/332", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam97 (\\d+)$"))
+@app.on_message(filters.regex("^xagam97 (\\d+)$"))
 async def xagam97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9234,7 +9236,7 @@ async def xagam97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/333", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam98 (\\d+)$"))
+@app.on_message(filters.regex("^xagam98 (\\d+)$"))
 async def xagam98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9244,7 +9246,7 @@ async def xagam98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/334", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam99 (\\d+)$"))
+@app.on_message(filters.regex("^xagam99 (\\d+)$"))
 async def xagam99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9254,7 +9256,7 @@ async def xagam99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/335", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam100 (\\d+)$"))
+@app.on_message(filters.regex("^xagam100 (\\d+)$"))
 async def xagam100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9264,7 +9266,7 @@ async def xagam100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/336", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam101 (\\d+)$"))
+@app.on_message(filters.regex("^xagam101 (\\d+)$"))
 async def xagam101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9274,7 +9276,7 @@ async def xagam101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/337", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam102 (\\d+)$"))
+@app.on_message(filters.regex("^xagam102 (\\d+)$"))
 async def xagam102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9284,7 +9286,7 @@ async def xagam102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/338", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam103 (\\d+)$"))
+@app.on_message(filters.regex("^xagam103 (\\d+)$"))
 async def xagam103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9294,7 +9296,7 @@ async def xagam103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/339", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam104 (\\d+)$"))
+@app.on_message(filters.regex("^xagam104 (\\d+)$"))
 async def xagam104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9304,7 +9306,7 @@ async def xagam104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/340", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam105 (\\d+)$"))
+@app.on_message(filters.regex("^xagam105 (\\d+)$"))
 async def xagam105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9314,7 +9316,7 @@ async def xagam105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/341", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam106 (\\d+)$"))
+@app.on_message(filters.regex("^xagam106 (\\d+)$"))
 async def xagam106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9324,7 +9326,7 @@ async def xagam106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/342", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam107 (\\d+)$"))
+@app.on_message(filters.regex("^xagam107 (\\d+)$"))
 async def xagam107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9334,7 +9336,7 @@ async def xagam107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/343", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam108 (\\d+)$"))
+@app.on_message(filters.regex("^xagam108 (\\d+)$"))
 async def xagam108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9344,7 +9346,7 @@ async def xagam108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/344", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam109 (\\d+)$"))
+@app.on_message(filters.regex("^xagam109 (\\d+)$"))
 async def xagam109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9354,7 +9356,7 @@ async def xagam109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/345", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam110 (\\d+)$"))
+@app.on_message(filters.regex("^xagam110 (\\d+)$"))
 async def xagam110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9364,7 +9366,7 @@ async def xagam110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/346", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam111 (\\d+)$"))
+@app.on_message(filters.regex("^xagam111 (\\d+)$"))
 async def xagam111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9374,7 +9376,7 @@ async def xagam111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/347", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam112 (\\d+)$"))
+@app.on_message(filters.regex("^xagam112 (\\d+)$"))
 async def xagam112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9384,7 +9386,7 @@ async def xagam112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/348", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam113 (\\d+)$"))
+@app.on_message(filters.regex("^xagam113 (\\d+)$"))
 async def xagam113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9394,7 +9396,7 @@ async def xagam113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/349", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xagam114 (\\d+)$"))
+@app.on_message(filters.regex("^xagam114 (\\d+)$"))
 async def xagam114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9408,7 +9410,7 @@ async def xagam114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^maher (\\d+)$"))
+@app.on_message(filters.regex("^maher (\\d+)$"))
 async def maher(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9476,7 +9478,7 @@ async def maher(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ماهر المعيقلي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^maher2 (\\d+)$"))
+@app.on_message(filters.regex("^maher2 (\\d+)$"))
 async def maher2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9556,7 +9558,7 @@ async def maher2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ ماهر المعيقلي\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xmah1 (\\d+)$"))
+@app.on_message(filters.regex("^xmah1 (\\d+)$"))
 async def xmah1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9566,7 +9568,7 @@ async def xmah1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2749", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah2 (\\d+)$"))
+@app.on_message(filters.regex("^xmah2 (\\d+)$"))
 async def xmah2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9576,7 +9578,7 @@ async def xmah2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2750", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah3 (\\d+)$"))
+@app.on_message(filters.regex("^xmah3 (\\d+)$"))
 async def xmah3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9586,7 +9588,7 @@ async def xmah3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2751", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah4 (\\d+)$"))
+@app.on_message(filters.regex("^xmah4 (\\d+)$"))
 async def xmah4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9596,7 +9598,7 @@ async def xmah4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2752", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah5 (\\d+)$"))
+@app.on_message(filters.regex("^xmah5 (\\d+)$"))
 async def xmah5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9606,7 +9608,7 @@ async def xmah5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2753", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah6 (\\d+)$"))
+@app.on_message(filters.regex("^xmah6 (\\d+)$"))
 async def xmah6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9616,7 +9618,7 @@ async def xmah6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2754", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah7 (\\d+)$"))
+@app.on_message(filters.regex("^xmah7 (\\d+)$"))
 async def xmah7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9626,7 +9628,7 @@ async def xmah7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2755", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah8 (\\d+)$"))
+@app.on_message(filters.regex("^xmah8 (\\d+)$"))
 async def xmah8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9636,7 +9638,7 @@ async def xmah8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2756", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah9 (\\d+)$"))
+@app.on_message(filters.regex("^xmah9 (\\d+)$"))
 async def xmah9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9646,7 +9648,7 @@ async def xmah9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2757", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah10 (\\d+)$"))
+@app.on_message(filters.regex("^xmah10 (\\d+)$"))
 async def xmah10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9656,7 +9658,7 @@ async def xmah10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2758", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah11 (\\d+)$"))
+@app.on_message(filters.regex("^xmah11 (\\d+)$"))
 async def xmah11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9666,7 +9668,7 @@ async def xmah11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2759", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah12 (\\d+)$"))
+@app.on_message(filters.regex("^xmah12 (\\d+)$"))
 async def xmah12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9676,7 +9678,7 @@ async def xmah12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2760", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah13 (\\d+)$"))
+@app.on_message(filters.regex("^xmah13 (\\d+)$"))
 async def xmah13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9686,7 +9688,7 @@ async def xmah13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2761", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah14 (\\d+)$"))
+@app.on_message(filters.regex("^xmah14 (\\d+)$"))
 async def xmah14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9696,7 +9698,7 @@ async def xmah14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2762", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah15 (\\d+)$"))
+@app.on_message(filters.regex("^xmah15 (\\d+)$"))
 async def xmah15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9706,7 +9708,7 @@ async def xmah15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2763", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah16 (\\d+)$"))
+@app.on_message(filters.regex("^xmah16 (\\d+)$"))
 async def xmah16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9716,7 +9718,7 @@ async def xmah16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2764", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah17 (\\d+)$"))
+@app.on_message(filters.regex("^xmah17 (\\d+)$"))
 async def xmah17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9726,7 +9728,7 @@ async def xmah17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2765", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah18 (\\d+)$"))
+@app.on_message(filters.regex("^xmah18 (\\d+)$"))
 async def xmah18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9736,7 +9738,7 @@ async def xmah18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2766", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah19 (\\d+)$"))
+@app.on_message(filters.regex("^xmah19 (\\d+)$"))
 async def xmah19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9746,7 +9748,7 @@ async def xmah19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2767", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah20 (\\d+)$"))
+@app.on_message(filters.regex("^xmah20 (\\d+)$"))
 async def xmah20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9756,7 +9758,7 @@ async def xmah20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2768", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah21 (\\d+)$"))
+@app.on_message(filters.regex("^xmah21 (\\d+)$"))
 async def xmah21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9766,7 +9768,7 @@ async def xmah21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2769", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah22 (\\d+)$"))
+@app.on_message(filters.regex("^xmah22 (\\d+)$"))
 async def xmah22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9776,7 +9778,7 @@ async def xmah22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2770", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah23 (\\d+)$"))
+@app.on_message(filters.regex("^xmah23 (\\d+)$"))
 async def xmah23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9786,7 +9788,7 @@ async def xmah23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2771", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah24 (\\d+)$"))
+@app.on_message(filters.regex("^xmah24 (\\d+)$"))
 async def xmah24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9796,7 +9798,7 @@ async def xmah24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2772", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah25 (\\d+)$"))
+@app.on_message(filters.regex("^xmah25 (\\d+)$"))
 async def xmah25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9806,7 +9808,7 @@ async def xmah25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2773", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah26 (\\d+)$"))
+@app.on_message(filters.regex("^xmah26 (\\d+)$"))
 async def xmah26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9816,7 +9818,7 @@ async def xmah26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2774", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah27 (\\d+)$"))
+@app.on_message(filters.regex("^xmah27 (\\d+)$"))
 async def xmah27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9826,7 +9828,7 @@ async def xmah27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2775", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah28 (\\d+)$"))
+@app.on_message(filters.regex("^xmah28 (\\d+)$"))
 async def xmah28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9836,7 +9838,7 @@ async def xmah28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2776", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah29 (\\d+)$"))
+@app.on_message(filters.regex("^xmah29 (\\d+)$"))
 async def xmah29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9846,7 +9848,7 @@ async def xmah29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2777", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah30 (\\d+)$"))
+@app.on_message(filters.regex("^xmah30 (\\d+)$"))
 async def xmah30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9856,7 +9858,7 @@ async def xmah30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2778", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah31 (\\d+)$"))
+@app.on_message(filters.regex("^xmah31 (\\d+)$"))
 async def xmah31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9866,7 +9868,7 @@ async def xmah31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2779", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah32 (\\d+)$"))
+@app.on_message(filters.regex("^xmah32 (\\d+)$"))
 async def xmah32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9876,7 +9878,7 @@ async def xmah32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2780", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah33 (\\d+)$"))
+@app.on_message(filters.regex("^xmah33 (\\d+)$"))
 async def xmah33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9886,7 +9888,7 @@ async def xmah33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2781", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah34 (\\d+)$"))
+@app.on_message(filters.regex("^xmah34 (\\d+)$"))
 async def xmah34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9896,7 +9898,7 @@ async def xmah34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2782", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah35 (\\d+)$"))
+@app.on_message(filters.regex("^xmah35 (\\d+)$"))
 async def xmah35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9906,7 +9908,7 @@ async def xmah35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2783", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah36 (\\d+)$"))
+@app.on_message(filters.regex("^xmah36 (\\d+)$"))
 async def xmah36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9916,7 +9918,7 @@ async def xmah36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2784", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah37 (\\d+)$"))
+@app.on_message(filters.regex("^xmah37 (\\d+)$"))
 async def xmah37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9926,7 +9928,7 @@ async def xmah37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2785", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah38 (\\d+)$"))
+@app.on_message(filters.regex("^xmah38 (\\d+)$"))
 async def xmah38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9936,7 +9938,7 @@ async def xmah38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2786", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah39 (\\d+)$"))
+@app.on_message(filters.regex("^xmah39 (\\d+)$"))
 async def xmah39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9946,7 +9948,7 @@ async def xmah39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2787", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah40 (\\d+)$"))
+@app.on_message(filters.regex("^xmah40 (\\d+)$"))
 async def xmah40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9956,7 +9958,7 @@ async def xmah40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2788", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah41 (\\d+)$"))
+@app.on_message(filters.regex("^xmah41 (\\d+)$"))
 async def xmah41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9966,7 +9968,7 @@ async def xmah41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2789", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah42 (\\d+)$"))
+@app.on_message(filters.regex("^xmah42 (\\d+)$"))
 async def xmah42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9976,7 +9978,7 @@ async def xmah42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2790", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah43 (\\d+)$"))
+@app.on_message(filters.regex("^xmah43 (\\d+)$"))
 async def xmah43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9986,7 +9988,7 @@ async def xmah43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2791", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah44 (\\d+)$"))
+@app.on_message(filters.regex("^xmah44 (\\d+)$"))
 async def xmah44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -9996,7 +9998,7 @@ async def xmah44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2792", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah45 (\\d+)$"))
+@app.on_message(filters.regex("^xmah45 (\\d+)$"))
 async def xmah45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10006,7 +10008,7 @@ async def xmah45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2793", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah46 (\\d+)$"))
+@app.on_message(filters.regex("^xmah46 (\\d+)$"))
 async def xmah46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10016,7 +10018,7 @@ async def xmah46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2794", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah47 (\\d+)$"))
+@app.on_message(filters.regex("^xmah47 (\\d+)$"))
 async def xmah47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10026,7 +10028,7 @@ async def xmah47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2795", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah48 (\\d+)$"))
+@app.on_message(filters.regex("^xmah48 (\\d+)$"))
 async def xmah48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10036,7 +10038,7 @@ async def xmah48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2796", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah49 (\\d+)$"))
+@app.on_message(filters.regex("^xmah49 (\\d+)$"))
 async def xmah49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10046,7 +10048,7 @@ async def xmah49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2797", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah50 (\\d+)$"))
+@app.on_message(filters.regex("^xmah50 (\\d+)$"))
 async def xmah50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10056,7 +10058,7 @@ async def xmah50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2798", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah51 (\\d+)$"))
+@app.on_message(filters.regex("^xmah51 (\\d+)$"))
 async def xmah51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10066,7 +10068,7 @@ async def xmah51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2799", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah52 (\\d+)$"))
+@app.on_message(filters.regex("^xmah52 (\\d+)$"))
 async def xmah52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10076,7 +10078,7 @@ async def xmah52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2800", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah53 (\\d+)$"))
+@app.on_message(filters.regex("^xmah53 (\\d+)$"))
 async def xmah53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10086,7 +10088,7 @@ async def xmah53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2801", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah54 (\\d+)$"))
+@app.on_message(filters.regex("^xmah54 (\\d+)$"))
 async def xmah54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10096,7 +10098,7 @@ async def xmah54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2802", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah55 (\\d+)$"))
+@app.on_message(filters.regex("^xmah55 (\\d+)$"))
 async def xmah55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10106,7 +10108,7 @@ async def xmah55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2803", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah56 (\\d+)$"))
+@app.on_message(filters.regex("^xmah56 (\\d+)$"))
 async def xmah56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10116,7 +10118,7 @@ async def xmah56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2804", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah57 (\\d+)$"))
+@app.on_message(filters.regex("^xmah57 (\\d+)$"))
 async def xmah57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10126,7 +10128,7 @@ async def xmah57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2805", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah58 (\\d+)$"))
+@app.on_message(filters.regex("^xmah58 (\\d+)$"))
 async def xmah58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10136,7 +10138,7 @@ async def xmah58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2806", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah59 (\\d+)$"))
+@app.on_message(filters.regex("^xmah59 (\\d+)$"))
 async def xmah59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10146,7 +10148,7 @@ async def xmah59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2807", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah60 (\\d+)$"))
+@app.on_message(filters.regex("^xmah60 (\\d+)$"))
 async def xmah60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10156,7 +10158,7 @@ async def xmah60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2808", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah61 (\\d+)$"))
+@app.on_message(filters.regex("^xmah61 (\\d+)$"))
 async def xmah61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10166,7 +10168,7 @@ async def xmah61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2809", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah62 (\\d+)$"))
+@app.on_message(filters.regex("^xmah62 (\\d+)$"))
 async def xmah62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10176,7 +10178,7 @@ async def xmah62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2810", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah63 (\\d+)$"))
+@app.on_message(filters.regex("^xmah63 (\\d+)$"))
 async def xmah63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10186,7 +10188,7 @@ async def xmah63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2811", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah64 (\\d+)$"))
+@app.on_message(filters.regex("^xmah64 (\\d+)$"))
 async def xmah64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10196,7 +10198,7 @@ async def xmah64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2812", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah65 (\\d+)$"))
+@app.on_message(filters.regex("^xmah65 (\\d+)$"))
 async def xmah65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10206,7 +10208,7 @@ async def xmah65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2813", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah66 (\\d+)$"))
+@app.on_message(filters.regex("^xmah66 (\\d+)$"))
 async def xmah66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10216,7 +10218,7 @@ async def xmah66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2814", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah67 (\\d+)$"))
+@app.on_message(filters.regex("^xmah67 (\\d+)$"))
 async def xmah67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10226,7 +10228,7 @@ async def xmah67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2815", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah68 (\\d+)$"))
+@app.on_message(filters.regex("^xmah68 (\\d+)$"))
 async def xmah68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10236,7 +10238,7 @@ async def xmah68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2816", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah69 (\\d+)$"))
+@app.on_message(filters.regex("^xmah69 (\\d+)$"))
 async def xmah69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10246,7 +10248,7 @@ async def xmah69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2817", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah70 (\\d+)$"))
+@app.on_message(filters.regex("^xmah70 (\\d+)$"))
 async def xmah70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10256,7 +10258,7 @@ async def xmah70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2818", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah71 (\\d+)$"))
+@app.on_message(filters.regex("^xmah71 (\\d+)$"))
 async def xmah71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10266,7 +10268,7 @@ async def xmah71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2819", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah72 (\\d+)$"))
+@app.on_message(filters.regex("^xmah72 (\\d+)$"))
 async def xmah72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10276,7 +10278,7 @@ async def xmah72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2820", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah73 (\\d+)$"))
+@app.on_message(filters.regex("^xmah73 (\\d+)$"))
 async def xmah73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10286,7 +10288,7 @@ async def xmah73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2821", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah74 (\\d+)$"))
+@app.on_message(filters.regex("^xmah74 (\\d+)$"))
 async def xmah74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10296,7 +10298,7 @@ async def xmah74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2822", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah75 (\\d+)$"))
+@app.on_message(filters.regex("^xmah75 (\\d+)$"))
 async def xmah75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10306,7 +10308,7 @@ async def xmah75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2823", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah76 (\\d+)$"))
+@app.on_message(filters.regex("^xmah76 (\\d+)$"))
 async def xmah76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10316,7 +10318,7 @@ async def xmah76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2824", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah77 (\\d+)$"))
+@app.on_message(filters.regex("^xmah77 (\\d+)$"))
 async def xmah77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10326,7 +10328,7 @@ async def xmah77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2825", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah78 (\\d+)$"))
+@app.on_message(filters.regex("^xmah78 (\\d+)$"))
 async def xmah78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10336,7 +10338,7 @@ async def xmah78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2826", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah79 (\\d+)$"))
+@app.on_message(filters.regex("^xmah79 (\\d+)$"))
 async def xmah79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10346,7 +10348,7 @@ async def xmah79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2827", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah80 (\\d+)$"))
+@app.on_message(filters.regex("^xmah80 (\\d+)$"))
 async def xmah80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10356,7 +10358,7 @@ async def xmah80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2828", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah81 (\\d+)$"))
+@app.on_message(filters.regex("^xmah81 (\\d+)$"))
 async def xmah81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10366,7 +10368,7 @@ async def xmah81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2829", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah82 (\\d+)$"))
+@app.on_message(filters.regex("^xmah82 (\\d+)$"))
 async def xmah82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10376,7 +10378,7 @@ async def xmah82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2830", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah83 (\\d+)$"))
+@app.on_message(filters.regex("^xmah83 (\\d+)$"))
 async def xmah83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10386,7 +10388,7 @@ async def xmah83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2831", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah84 (\\d+)$"))
+@app.on_message(filters.regex("^xmah84 (\\d+)$"))
 async def xmah84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10396,7 +10398,7 @@ async def xmah84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2832", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah85 (\\d+)$"))
+@app.on_message(filters.regex("^xmah85 (\\d+)$"))
 async def xmah85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10406,7 +10408,7 @@ async def xmah85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2833", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah86 (\\d+)$"))
+@app.on_message(filters.regex("^xmah86 (\\d+)$"))
 async def xmah86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10416,7 +10418,7 @@ async def xmah86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2834", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah87 (\\d+)$"))
+@app.on_message(filters.regex("^xmah87 (\\d+)$"))
 async def xmah87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10426,7 +10428,7 @@ async def xmah87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2835", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah88 (\\d+)$"))
+@app.on_message(filters.regex("^xmah88 (\\d+)$"))
 async def xmah88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10436,7 +10438,7 @@ async def xmah88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2836", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah89 (\\d+)$"))
+@app.on_message(filters.regex("^xmah89 (\\d+)$"))
 async def xmah89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10446,7 +10448,7 @@ async def xmah89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2837", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah90 (\\d+)$"))
+@app.on_message(filters.regex("^xmah90 (\\d+)$"))
 async def xmah90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10456,7 +10458,7 @@ async def xmah90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2838", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah91 (\\d+)$"))
+@app.on_message(filters.regex("^xmah91 (\\d+)$"))
 async def xmah91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10466,7 +10468,7 @@ async def xmah91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2839", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah92 (\\d+)$"))
+@app.on_message(filters.regex("^xmah92 (\\d+)$"))
 async def xmah92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10476,7 +10478,7 @@ async def xmah92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2840", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah93 (\\d+)$"))
+@app.on_message(filters.regex("^xmah93 (\\d+)$"))
 async def xmah93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10486,7 +10488,7 @@ async def xmah93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2841", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah94 (\\d+)$"))
+@app.on_message(filters.regex("^xmah94 (\\d+)$"))
 async def xmah94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10496,7 +10498,7 @@ async def xmah94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2842", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah95 (\\d+)$"))
+@app.on_message(filters.regex("^xmah95 (\\d+)$"))
 async def xmah95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10506,7 +10508,7 @@ async def xmah95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2843", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah96 (\\d+)$"))
+@app.on_message(filters.regex("^xmah96 (\\d+)$"))
 async def xmah96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10516,7 +10518,7 @@ async def xmah96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2844", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah97 (\\d+)$"))
+@app.on_message(filters.regex("^xmah97 (\\d+)$"))
 async def xmah97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10526,7 +10528,7 @@ async def xmah97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2845", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah98 (\\d+)$"))
+@app.on_message(filters.regex("^xmah98 (\\d+)$"))
 async def xmah98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10536,7 +10538,7 @@ async def xmah98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2846", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah99 (\\d+)$"))
+@app.on_message(filters.regex("^xmah99 (\\d+)$"))
 async def xmah99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10546,7 +10548,7 @@ async def xmah99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2847", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah100 (\\d+)$"))
+@app.on_message(filters.regex("^xmah100 (\\d+)$"))
 async def xmah100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10556,7 +10558,7 @@ async def xmah100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2848", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah101 (\\d+)$"))
+@app.on_message(filters.regex("^xmah101 (\\d+)$"))
 async def xmah101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10566,7 +10568,7 @@ async def xmah101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2849", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah102 (\\d+)$"))
+@app.on_message(filters.regex("^xmah102 (\\d+)$"))
 async def xmah102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10576,7 +10578,7 @@ async def xmah102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2850", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah103 (\\d+)$"))
+@app.on_message(filters.regex("^xmah103 (\\d+)$"))
 async def xmah103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10586,7 +10588,7 @@ async def xmah103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2851", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah104 (\\d+)$"))
+@app.on_message(filters.regex("^xmah104 (\\d+)$"))
 async def xmah104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10596,7 +10598,7 @@ async def xmah104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2852", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah105 (\\d+)$"))
+@app.on_message(filters.regex("^xmah105 (\\d+)$"))
 async def xmah105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10606,7 +10608,7 @@ async def xmah105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2853", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah106 (\\d+)$"))
+@app.on_message(filters.regex("^xmah106 (\\d+)$"))
 async def xmah106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10616,7 +10618,7 @@ async def xmah106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2854", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah107 (\\d+)$"))
+@app.on_message(filters.regex("^xmah107 (\\d+)$"))
 async def xmah107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10626,7 +10628,7 @@ async def xmah107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2855", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah108 (\\d+)$"))
+@app.on_message(filters.regex("^xmah108 (\\d+)$"))
 async def xmah108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10636,7 +10638,7 @@ async def xmah108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2856", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah109 (\\d+)$"))
+@app.on_message(filters.regex("^xmah109 (\\d+)$"))
 async def xmah109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10646,7 +10648,7 @@ async def xmah109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2857", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah110 (\\d+)$"))
+@app.on_message(filters.regex("^xmah110 (\\d+)$"))
 async def xmah110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10656,7 +10658,7 @@ async def xmah110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2858", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah111 (\\d+)$"))
+@app.on_message(filters.regex("^xmah111 (\\d+)$"))
 async def xmah111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10666,7 +10668,7 @@ async def xmah111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2859", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah112 (\\d+)$"))
+@app.on_message(filters.regex("^xmah112 (\\d+)$"))
 async def xmah112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10676,7 +10678,7 @@ async def xmah112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2860", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah113 (\\d+)$"))
+@app.on_message(filters.regex("^xmah113 (\\d+)$"))
 async def xmah113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10686,7 +10688,7 @@ async def xmah113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/2861", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xmah114 (\\d+)$"))
+@app.on_message(filters.regex("^xmah114 (\\d+)$"))
 async def xmah114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10700,7 +10702,7 @@ async def xmah114(c: Client, m: CallbackQuery):
 ########################################################################################################################
 
 
-@Client.on_callback_query(filters.regex("^galel (\\d+)$"))
+@app.on_message(filters.regex("^galel (\\d+)$"))
 async def galel(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10767,7 +10769,7 @@ async def galel(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ خالد عبدالجليل\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^galel2 (\\d+)$"))
+@app.on_message(filters.regex("^galel2 (\\d+)$"))
 async def galel2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10847,7 +10849,7 @@ async def galel2(c: Client, m: CallbackQuery):
     await m.message.edit_text("◍ اختر سوره للقارئ خالد عبدالجيل\n√", reply_markup=keyboard, disable_web_page_preview=True)
 
 
-@Client.on_callback_query(filters.regex("^xgal1 (\\d+)$"))
+@app.on_message(filters.regex("^xgal1 (\\d+)$"))
 async def xgal1(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10857,7 +10859,7 @@ async def xgal1(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3697", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal2 (\\d+)$"))
+@app.on_message(filters.regex("^xgal2 (\\d+)$"))
 async def xgal2(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10867,7 +10869,7 @@ async def xgal2(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3698", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal3 (\\d+)$"))
+@app.on_message(filters.regex("^xgal3 (\\d+)$"))
 async def xgal3(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10877,7 +10879,7 @@ async def xgal3(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3699", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal4 (\\d+)$"))
+@app.on_message(filters.regex("^xgal4 (\\d+)$"))
 async def xgal4(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10887,7 +10889,7 @@ async def xgal4(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3700", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal5 (\\d+)$"))
+@app.on_message(filters.regex("^xgal5 (\\d+)$"))
 async def xgal5(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10897,7 +10899,7 @@ async def xgal5(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3701", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal6 (\\d+)$"))
+@app.on_message(filters.regex("^xgal6 (\\d+)$"))
 async def xgal6(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10907,7 +10909,7 @@ async def xgal6(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3702", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal7 (\\d+)$"))
+@app.on_message(filters.regex("^xgal7 (\\d+)$"))
 async def xgal7(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10917,7 +10919,7 @@ async def xgal7(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3703", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal8 (\\d+)$"))
+@app.on_message(filters.regex("^xgal8 (\\d+)$"))
 async def xgal8(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10927,7 +10929,7 @@ async def xgal8(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3704", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal9 (\\d+)$"))
+@app.on_message(filters.regex("^xgal9 (\\d+)$"))
 async def xgal9(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10937,7 +10939,7 @@ async def xgal9(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3705", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal10 (\\d+)$"))
+@app.on_message(filters.regex("^xgal10 (\\d+)$"))
 async def xgal10(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10947,7 +10949,7 @@ async def xgal10(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3706", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal11 (\\d+)$"))
+@app.on_message(filters.regex("^xgal11 (\\d+)$"))
 async def xgal11(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10957,7 +10959,7 @@ async def xgal11(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3707", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal12 (\\d+)$"))
+@app.on_message(filters.regex("^xgal12 (\\d+)$"))
 async def xgal12(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10967,7 +10969,7 @@ async def xgal12(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3708", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal13 (\\d+)$"))
+@app.on_message(filters.regex("^xgal13 (\\d+)$"))
 async def xgal13(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10977,7 +10979,7 @@ async def xgal13(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3709", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal14 (\\d+)$"))
+@app.on_message(filters.regex("^xgal14 (\\d+)$"))
 async def xgal14(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10987,7 +10989,7 @@ async def xgal14(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3710", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal15 (\\d+)$"))
+@app.on_message(filters.regex("^xgal15 (\\d+)$"))
 async def xgal15(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -10997,7 +10999,7 @@ async def xgal15(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3711", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal16 (\\d+)$"))
+@app.on_message(filters.regex("^xgal16 (\\d+)$"))
 async def xgal16(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11007,7 +11009,7 @@ async def xgal16(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3712", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal17 (\\d+)$"))
+@app.on_message(filters.regex("^xgal17 (\\d+)$"))
 async def xgal17(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11017,7 +11019,7 @@ async def xgal17(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3713", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal18 (\\d+)$"))
+@app.on_message(filters.regex("^xgal18 (\\d+)$"))
 async def xgal18(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11027,7 +11029,7 @@ async def xgal18(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3714", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal19 (\\d+)$"))
+@app.on_message(filters.regex("^xgal19 (\\d+)$"))
 async def xgal19(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11037,7 +11039,7 @@ async def xgal19(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3715", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal20 (\\d+)$"))
+@app.on_message(filters.regex("^xgal20 (\\d+)$"))
 async def xgal20(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11047,7 +11049,7 @@ async def xgal20(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3716", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal21 (\\d+)$"))
+@app.on_message(filters.regex("^xgal21 (\\d+)$"))
 async def xgal21(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11057,7 +11059,7 @@ async def xgal21(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3717", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal22 (\\d+)$"))
+@app.on_message(filters.regex("^xgal22 (\\d+)$"))
 async def xgal22(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11067,7 +11069,7 @@ async def xgal22(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3718", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal23 (\\d+)$"))
+@app.on_message(filters.regex("^xgal23 (\\d+)$"))
 async def xgal23(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11077,7 +11079,7 @@ async def xgal23(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3719", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal24 (\\d+)$"))
+@app.on_message(filters.regex("^xgal24 (\\d+)$"))
 async def xgal24(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11087,7 +11089,7 @@ async def xgal24(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3720", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal25 (\\d+)$"))
+@app.on_message(filters.regex("^xgal25 (\\d+)$"))
 async def xgal25(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11097,7 +11099,7 @@ async def xgal25(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3721", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal26 (\\d+)$"))
+@app.on_message(filters.regex("^xgal26 (\\d+)$"))
 async def xgal26(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11107,7 +11109,7 @@ async def xgal26(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3722", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal27 (\\d+)$"))
+@app.on_message(filters.regex("^xgal27 (\\d+)$"))
 async def xgal27(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11117,7 +11119,7 @@ async def xgal27(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3723", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal28 (\\d+)$"))
+@app.on_message(filters.regex("^xgal28 (\\d+)$"))
 async def xgal28(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11127,7 +11129,7 @@ async def xgal28(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3724", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal29 (\\d+)$"))
+@app.on_message(filters.regex("^xgal29 (\\d+)$"))
 async def xgal29(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11137,7 +11139,7 @@ async def xgal29(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3725", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal30 (\\d+)$"))
+@app.on_message(filters.regex("^xgal30 (\\d+)$"))
 async def xgal30(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11147,7 +11149,7 @@ async def xgal30(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3726", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal31 (\\d+)$"))
+@app.on_message(filters.regex("^xgal31 (\\d+)$"))
 async def xgal31(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11157,7 +11159,7 @@ async def xgal31(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3727", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal32 (\\d+)$"))
+@app.on_message(filters.regex("^xgal32 (\\d+)$"))
 async def xgal32(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11167,7 +11169,7 @@ async def xgal32(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3728", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal33 (\\d+)$"))
+@app.on_message(filters.regex("^xgal33 (\\d+)$"))
 async def xgal33(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11177,7 +11179,7 @@ async def xgal33(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3729", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal34 (\\d+)$"))
+@app.on_message(filters.regex("^xgal34 (\\d+)$"))
 async def xgal34(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11187,7 +11189,7 @@ async def xgal34(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3730", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal35 (\\d+)$"))
+@app.on_message(filters.regex("^xgal35 (\\d+)$"))
 async def xgal35(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11197,7 +11199,7 @@ async def xgal35(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3731", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal36 (\\d+)$"))
+@app.on_message(filters.regex("^xgal36 (\\d+)$"))
 async def xgal36(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11207,7 +11209,7 @@ async def xgal36(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3732", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal37 (\\d+)$"))
+@app.on_message(filters.regex("^xgal37 (\\d+)$"))
 async def xgal37(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11217,7 +11219,7 @@ async def xgal37(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3733", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal38 (\\d+)$"))
+@app.on_message(filters.regex("^xgal38 (\\d+)$"))
 async def xgal38(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11227,7 +11229,7 @@ async def xgal38(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3734", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal39 (\\d+)$"))
+@app.on_message(filters.regex("^xgal39 (\\d+)$"))
 async def xgal39(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11237,7 +11239,7 @@ async def xgal39(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3735", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal40 (\\d+)$"))
+@app.on_message(filters.regex("^xgal40 (\\d+)$"))
 async def xgal40(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11247,7 +11249,7 @@ async def xgal40(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3736", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal41 (\\d+)$"))
+@app.on_message(filters.regex("^xgal41 (\\d+)$"))
 async def xgal41(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11257,7 +11259,7 @@ async def xgal41(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3737", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal42 (\\d+)$"))
+@app.on_message(filters.regex("^xgal42 (\\d+)$"))
 async def xgal42(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11267,7 +11269,7 @@ async def xgal42(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3738", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal43 (\\d+)$"))
+@app.on_message(filters.regex("^xgal43 (\\d+)$"))
 async def xgal43(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11277,7 +11279,7 @@ async def xgal43(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3739", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal44 (\\d+)$"))
+@app.on_message(filters.regex("^xgal44 (\\d+)$"))
 async def xgal44(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11287,7 +11289,7 @@ async def xgal44(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3740", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal45 (\\d+)$"))
+@app.on_message(filters.regex("^xgal45 (\\d+)$"))
 async def xgal45(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11297,7 +11299,7 @@ async def xgal45(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3741", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal46 (\\d+)$"))
+@app.on_message(filters.regex("^xgal46 (\\d+)$"))
 async def xgal46(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11307,7 +11309,7 @@ async def xgal46(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3742", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal47 (\\d+)$"))
+@app.on_message(filters.regex("^xgal47 (\\d+)$"))
 async def xgal47(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11317,7 +11319,7 @@ async def xgal47(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3743", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal48 (\\d+)$"))
+@app.on_message(filters.regex("^xgal48 (\\d+)$"))
 async def xgal48(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11327,7 +11329,7 @@ async def xgal48(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3744", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal49 (\\d+)$"))
+@app.on_message(filters.regex("^xgal49 (\\d+)$"))
 async def xgal49(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11337,7 +11339,7 @@ async def xgal49(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3745", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal50 (\\d+)$"))
+@app.on_message(filters.regex("^xgal50 (\\d+)$"))
 async def xgal50(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11347,7 +11349,7 @@ async def xgal50(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3746", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal51 (\\d+)$"))
+@app.on_message(filters.regex("^xgal51 (\\d+)$"))
 async def xgal51(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11357,7 +11359,7 @@ async def xgal51(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3747", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal52 (\\d+)$"))
+@app.on_message(filters.regex("^xgal52 (\\d+)$"))
 async def xgal52(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11367,7 +11369,7 @@ async def xgal52(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3748", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal53 (\\d+)$"))
+@app.on_message(filters.regex("^xgal53 (\\d+)$"))
 async def xgal53(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11377,7 +11379,7 @@ async def xgal53(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3749", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal54 (\\d+)$"))
+@app.on_message(filters.regex("^xgal54 (\\d+)$"))
 async def xgal54(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11387,7 +11389,7 @@ async def xgal54(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3750", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal55 (\\d+)$"))
+@app.on_message(filters.regex("^xgal55 (\\d+)$"))
 async def xgal55(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11397,7 +11399,7 @@ async def xgal55(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3751", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal56 (\\d+)$"))
+@app.on_message(filters.regex("^xgal56 (\\d+)$"))
 async def xgal56(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11407,7 +11409,7 @@ async def xgal56(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3752", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal57 (\\d+)$"))
+@app.on_message(filters.regex("^xgal57 (\\d+)$"))
 async def xgal57(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11417,7 +11419,7 @@ async def xgal57(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3753", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal58 (\\d+)$"))
+@app.on_message(filters.regex("^xgal58 (\\d+)$"))
 async def xgal58(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11427,7 +11429,7 @@ async def xgal58(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3754", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal59 (\\d+)$"))
+@app.on_message(filters.regex("^xgal59 (\\d+)$"))
 async def xgal59(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11437,7 +11439,7 @@ async def xgal59(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3755", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal60 (\\d+)$"))
+@app.on_message(filters.regex("^xgal60 (\\d+)$"))
 async def xgal60(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11447,7 +11449,7 @@ async def xgal60(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3756", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal61 (\\d+)$"))
+@app.on_message(filters.regex("^xgal61 (\\d+)$"))
 async def xgal61(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11457,7 +11459,7 @@ async def xgal61(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3757", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal62 (\\d+)$"))
+@app.on_message(filters.regex("^xgal62 (\\d+)$"))
 async def xgal62(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11467,7 +11469,7 @@ async def xgal62(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3758", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal63 (\\d+)$"))
+@app.on_message(filters.regex("^xgal63 (\\d+)$"))
 async def xgal63(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11477,7 +11479,7 @@ async def xgal63(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3759", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal64 (\\d+)$"))
+@app.on_message(filters.regex("^xgal64 (\\d+)$"))
 async def xgal64(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11487,7 +11489,7 @@ async def xgal64(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3760", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal65 (\\d+)$"))
+@app.on_message(filters.regex("^xgal65 (\\d+)$"))
 async def xgal65(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11497,7 +11499,7 @@ async def xgal65(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3761", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal66 (\\d+)$"))
+@app.on_message(filters.regex("^xgal66 (\\d+)$"))
 async def xgal66(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11507,7 +11509,7 @@ async def xgal66(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3762", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal67 (\\d+)$"))
+@app.on_message(filters.regex("^xgal67 (\\d+)$"))
 async def xgal67(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11517,7 +11519,7 @@ async def xgal67(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3763", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal68 (\\d+)$"))
+@app.on_message(filters.regex("^xgal68 (\\d+)$"))
 async def xgal68(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11527,7 +11529,7 @@ async def xgal68(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3764", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal69 (\\d+)$"))
+@app.on_message(filters.regex("^xgal69 (\\d+)$"))
 async def xgal69(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11537,7 +11539,7 @@ async def xgal69(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3765", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal70 (\\d+)$"))
+@app.on_message(filters.regex("^xgal70 (\\d+)$"))
 async def xgal70(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11547,7 +11549,7 @@ async def xgal70(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3766", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal71 (\\d+)$"))
+@app.on_message(filters.regex("^xgal71 (\\d+)$"))
 async def xgal71(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11557,7 +11559,7 @@ async def xgal71(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3767", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal72 (\\d+)$"))
+@app.on_message(filters.regex("^xgal72 (\\d+)$"))
 async def xgal72(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11567,7 +11569,7 @@ async def xgal72(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3768", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal73 (\\d+)$"))
+@app.on_message(filters.regex("^xgal73 (\\d+)$"))
 async def xgal73(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11577,7 +11579,7 @@ async def xgal73(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3769", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal74 (\\d+)$"))
+@app.on_message(filters.regex("^xgal74 (\\d+)$"))
 async def xgal74(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11587,7 +11589,7 @@ async def xgal74(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3770", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal75 (\\d+)$"))
+@app.on_message(filters.regex("^xgal75 (\\d+)$"))
 async def xgal75(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11597,7 +11599,7 @@ async def xgal75(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3771", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal76 (\\d+)$"))
+@app.on_message(filters.regex("^xgal76 (\\d+)$"))
 async def xgal76(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11607,7 +11609,7 @@ async def xgal76(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3772", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal77 (\\d+)$"))
+@app.on_message(filters.regex("^xgal77 (\\d+)$"))
 async def xgal77(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11617,7 +11619,7 @@ async def xgal77(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3773", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal78 (\\d+)$"))
+@app.on_message(filters.regex("^xgal78 (\\d+)$"))
 async def xgal78(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11627,7 +11629,7 @@ async def xgal78(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3774", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal79 (\\d+)$"))
+@app.on_message(filters.regex("^xgal79 (\\d+)$"))
 async def xgal79(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11637,7 +11639,7 @@ async def xgal79(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3775", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal80 (\\d+)$"))
+@app.on_message(filters.regex("^xgal80 (\\d+)$"))
 async def xgal80(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11647,7 +11649,7 @@ async def xgal80(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3776", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal81 (\\d+)$"))
+@app.on_message(filters.regex("^xgal81 (\\d+)$"))
 async def xgal81(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11657,7 +11659,7 @@ async def xgal81(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3777", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal82 (\\d+)$"))
+@app.on_message(filters.regex("^xgal82 (\\d+)$"))
 async def xgal82(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11667,7 +11669,7 @@ async def xgal82(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3778", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal83 (\\d+)$"))
+@app.on_message(filters.regex("^xgal83 (\\d+)$"))
 async def xgal83(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11677,7 +11679,7 @@ async def xgal83(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3779", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal84 (\\d+)$"))
+@app.on_message(filters.regex("^xgal84 (\\d+)$"))
 async def xgal84(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11687,7 +11689,7 @@ async def xgal84(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3780", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal85 (\\d+)$"))
+@app.on_message(filters.regex("^xgal85 (\\d+)$"))
 async def xgal85(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11697,7 +11699,7 @@ async def xgal85(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3781", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal86 (\\d+)$"))
+@app.on_message(filters.regex("^xgal86 (\\d+)$"))
 async def xgal86(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11707,7 +11709,7 @@ async def xgal86(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3782", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal87 (\\d+)$"))
+@app.on_message(filters.regex("^xgal87 (\\d+)$"))
 async def xgal87(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11717,7 +11719,7 @@ async def xgal87(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3783", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal88 (\\d+)$"))
+@app.on_message(filters.regex("^xgal88 (\\d+)$"))
 async def xgal88(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11727,7 +11729,7 @@ async def xgal88(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3784", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal89 (\\d+)$"))
+@app.on_message(filters.regex("^xgal89 (\\d+)$"))
 async def xgal89(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11737,7 +11739,7 @@ async def xgal89(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3785", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal90 (\\d+)$"))
+@app.on_message(filters.regex("^xgal90 (\\d+)$"))
 async def xgal90(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11747,7 +11749,7 @@ async def xgal90(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3786", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal91 (\\d+)$"))
+@app.on_message(filters.regex("^xgal91 (\\d+)$"))
 async def xgal91(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11757,7 +11759,7 @@ async def xgal91(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3787", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal92 (\\d+)$"))
+@app.on_message(filters.regex("^xgal92 (\\d+)$"))
 async def xgal92(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11767,7 +11769,7 @@ async def xgal92(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3788", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal93 (\\d+)$"))
+@app.on_message(filters.regex("^xgal93 (\\d+)$"))
 async def xgal93(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11777,7 +11779,7 @@ async def xgal93(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3789", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal94 (\\d+)$"))
+@app.on_message(filters.regex("^xgal94 (\\d+)$"))
 async def xgal94(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11787,7 +11789,7 @@ async def xgal94(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3790", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal95 (\\d+)$"))
+@app.on_message(filters.regex("^xgal95 (\\d+)$"))
 async def xgal95(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11797,7 +11799,7 @@ async def xgal95(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3791", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal96 (\\d+)$"))
+@app.on_message(filters.regex("^xgal96 (\\d+)$"))
 async def xgal96(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11807,7 +11809,7 @@ async def xgal96(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3792", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal97 (\\d+)$"))
+@app.on_message(filters.regex("^xgal97 (\\d+)$"))
 async def xgal97(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11817,7 +11819,7 @@ async def xgal97(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3793", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal98 (\\d+)$"))
+@app.on_message(filters.regex("^xgal98 (\\d+)$"))
 async def xgal98(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11827,7 +11829,7 @@ async def xgal98(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3794", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal99 (\\d+)$"))
+@app.on_message(filters.regex("^xgal99 (\\d+)$"))
 async def xgal99(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11837,7 +11839,7 @@ async def xgal99(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3795", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal100 (\\d+)$"))
+@app.on_message(filters.regex("^xgal100 (\\d+)$"))
 async def xgal100(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11847,7 +11849,7 @@ async def xgal100(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3796", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal101 (\\d+)$"))
+@app.on_message(filters.regex("^xgal101 (\\d+)$"))
 async def xgal101(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11857,7 +11859,7 @@ async def xgal101(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3797", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal102 (\\d+)$"))
+@app.on_message(filters.regex("^xgal102 (\\d+)$"))
 async def xgal102(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11867,7 +11869,7 @@ async def xgal102(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3798", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal103 (\\d+)$"))
+@app.on_message(filters.regex("^xgal103 (\\d+)$"))
 async def xgal103(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11877,7 +11879,7 @@ async def xgal103(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3799", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal104 (\\d+)$"))
+@app.on_message(filters.regex("^xgal104 (\\d+)$"))
 async def xgal104(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11887,7 +11889,7 @@ async def xgal104(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3800", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal105 (\\d+)$"))
+@app.on_message(filters.regex("^xgal105 (\\d+)$"))
 async def xgal105(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11897,7 +11899,7 @@ async def xgal105(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3801", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal106 (\\d+)$"))
+@app.on_message(filters.regex("^xgal106 (\\d+)$"))
 async def xgal106(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11907,7 +11909,7 @@ async def xgal106(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3802", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal107 (\\d+)$"))
+@app.on_message(filters.regex("^xgal107 (\\d+)$"))
 async def xgal107(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11917,7 +11919,7 @@ async def xgal107(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3803", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal108 (\\d+)$"))
+@app.on_message(filters.regex("^xgal108 (\\d+)$"))
 async def xgal108(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11927,7 +11929,7 @@ async def xgal108(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3804", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal109 (\\d+)$"))
+@app.on_message(filters.regex("^xgal109 (\\d+)$"))
 async def xgal109(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11937,7 +11939,7 @@ async def xgal109(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3805", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal110 (\\d+)$"))
+@app.on_message(filters.regex("^xgal110 (\\d+)$"))
 async def xgal110(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11947,7 +11949,7 @@ async def xgal110(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3806", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal111 (\\d+)$"))
+@app.on_message(filters.regex("^xgal111 (\\d+)$"))
 async def xgal111(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11957,7 +11959,7 @@ async def xgal111(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3807", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal112 (\\d+)$"))
+@app.on_message(filters.regex("^xgal112 (\\d+)$"))
 async def xgal112(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11967,7 +11969,7 @@ async def xgal112(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3808", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal113 (\\d+)$"))
+@app.on_message(filters.regex("^xgal113 (\\d+)$"))
 async def xgal113(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
@@ -11977,7 +11979,7 @@ async def xgal113(c: Client, m: CallbackQuery):
     await m.message.reply_audio("https://t.me/MP3_QURAN/3809", reply_to_message_id=mid)
 
 
-@Client.on_callback_query(filters.regex("^xgal114 (\\d+)$"))
+@app.on_message(filters.regex("^xgal114 (\\d+)$"))
 async def xgal114(c: Client, m: CallbackQuery):
     a = m.data.split(" ")
     if m.from_user.id != int(a[1]):
