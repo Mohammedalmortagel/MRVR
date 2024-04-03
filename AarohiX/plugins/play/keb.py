@@ -93,7 +93,6 @@ async def cpanel(_, message: Message):
         await message.reply(
               text=text,
               reply_markup=kep,quote=True)
-        )
 
 @app.on_message(filters.command(["❎ ¦ حذف الكيبورد"], ""))
 async def upbkgt(client: Client, message: Message):
