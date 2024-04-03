@@ -1,5 +1,4 @@
 import asyncio
-
 import os
 import time
 import requests
@@ -8,9 +7,12 @@ from pyrogram import filters
 import random
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
-
+from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from AarohiX import app
 from random import  choice, randint
+
+
+
 
 @app.on_message(filters.command(["صوره", "🕷", "صورهه", "صور"], ""))
 async def almortagel(client: Client, message: Message):
