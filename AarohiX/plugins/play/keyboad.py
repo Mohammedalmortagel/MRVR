@@ -2,7 +2,6 @@ import asyncio
 import config
 from pyrogram import Client, filters
 from pyrogram import filters
-from strings import get_filters.command
 from AarohiX import app
 from config import OWNER_ID
 from AarohiX.misc import SUDOERS
