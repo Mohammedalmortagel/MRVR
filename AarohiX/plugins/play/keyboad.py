@@ -10,7 +10,7 @@ import random
 chat = []
 
 
-@app.on_message(filters.channel, channel = 768)
+@app.on_message(filters.group, group = 768)
 async def almortagelr(c, msg):
   if msg.text == "تفعيل الصلى علي النبي":
     if msg.chat.id in chat:
