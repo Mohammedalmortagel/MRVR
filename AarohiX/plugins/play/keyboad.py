@@ -25,7 +25,7 @@ async def almortagelr(c, msg):
     else:
       return await msg.reply_text("- الصلى علي النبي متعطله من قبل")
       
-@app.on_message(filters.channel, channel = 768)
+@app.on_message(filters.chanel, chanel = 768)
 async def almortagelr(c, msg):
   if msg.text == "تفعيل الصلى علي النبي":
     if msg.chat.id in chat:
