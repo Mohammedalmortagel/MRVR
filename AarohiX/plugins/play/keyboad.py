@@ -57,22 +57,22 @@ REPLY_MESSAGE_BUTTONS = [
 
 
     
-@app.on_message(filters.filters.command(["✭ قسم الاذاعه"], "") & SUDOERS)
+@app.on_message(filters.command(["✭ قسم الاذاعه"], "") & SUDOERS)
 async def cast(client: app, message):
     kep = ReplyKeyboardMarkup([["✭ اذاعه عام","✭ اذاعه بالتوجيه"],["✭ رجوع"]], resize_keyboard=True)
     await message.reply_text("**أهلا بك عزيزي المطور **\n**هنا قسم الاذاعه تحكم بالازار**", reply_markup=kep)
     
-@app.on_message(filters.filters.command(["✭ السورس"], "") & SUDOERS)
+@app.on_message(filters.command(["✭ السورس"], "") & SUDOERS)
 async def cast(client: app, message):
     kep = ReplyKeyboardMarkup([["✭ قـنـاة الـسـورس","✭ للتواصل معنآ"], ["✭ مطور السورس"], ["✭ رجوع"]], resize_keyboard=True)
     await message.reply_text("**أهلا بك عزيزي المطور **\n**هنا قسم السورس تحكم بالازار**", reply_markup=kep)
     
-@app.on_message(filters.filters.command(["✭ قسم المطورين"], "") & SUDOERS)
+@app.on_message(filters.command(["✭ قسم المطورين"], "") & SUDOERS)
 async def cast(client: app, message):
     kep = ReplyKeyboardMarkup([["✭ مـطـوريـنـك","✭ للتواصل معنآ"],  ["✭ رجوع"]], resize_keyboard=True)
     await message.reply_text("**أهلا بك عزيزي المطور **\n**هنا قسم المطورين تحكم بالازار**", reply_markup=kep)
 
-@app.on_message(filters.filters.command(["✭ قسم الجروبات"], "") & SUDOERS)
+@app.on_message(filters.command(["✭ قسم الجروبات"], "") & SUDOERS)
 async def cast(client: app, message):
     kep = ReplyKeyboardMarkup([["✭ الجروبات المحظوره","✭ الاحصائيات","✭ حـظـر الـجـروبـات"], ["✭ رجوع","✭ جـروبـاتـك النـشـطـه"]], resize_keyboard=True)
     await message.reply_text("**أهلا بك عزيزي المطور **\n**هنا قسم الجروبات تحكم بالازار**", reply_markup=kep)
