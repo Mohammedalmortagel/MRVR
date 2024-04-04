@@ -19,7 +19,7 @@ async def admin(client, message):
     await message.reply("لوحة المفاتيح الخاصة بالمطور", reply_markup=admin_keyboard)
     
 @app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private & SUDOERS)
-async def upbkgt(client: Client, message: Message):
+async def admin(client, message):
     await message.reply_text(
         text="""❎ ¦ تم حذف الكيبورد بنجاح""",
         reply_markup=ReplyKeyboardRemove()
