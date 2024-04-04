@@ -210,11 +210,7 @@ async def italy(client: Client, message: Message):
 
 
 @app.on_message(
-    filters.command(["مطور البوت","مطور"])
-    & filters.group
-    & ~filters.edited
-)
-async def yas(client, message):
+    filters.command(["مطور البوت","مطور"]))async def yas(client, message):
     usr = await client.get_chat({OWNER_ID})
     name = usr.first_name
     photo = await app.download_media(usr.photo.big_file_id)
@@ -310,7 +306,7 @@ async def italy(client: Client, message: Message):
 async def italy(client: Client, message: Message):
     usr = await client.get_users(message.from_user.id)
     name = usr.first_name
-    async for photo in client.iter_profile_photos(message.from_user.id, limit=1):
+    async for photo in client.iter_profile_photos(message.from_user.id, limit=1)
                     await message.reply_text( 
                     f"""**نبذه سريعه عن 💡︙جـروبـاتـك النـشـطـه︙💡 : **يتم استخدام هذا الامر لعرض من يقوم بتشغيل البوت الان في المحادثه الصوتية🫡**\n**استخدم الامر بهذا الشكل** `اونلاين` **اضغط علي الامر لنسخ والاستخدام**""",
         reply_markup=InlineKeyboardMarkup(
