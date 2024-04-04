@@ -1,14 +1,11 @@
 import asyncio
-from AarohiX.plugins.xgame import callback_query
 import config
 from pyrogram import Client, filters
 from pyrogram import filters
 from strings import get_filters.command
-from strings.filters import filters.command
 from AarohiX import app
 from config import OWNER_ID
 from AarohiX.misc import SUDOERS
-from strings.filters import filters.command
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
 from pyrogram.types import (InlineKeyboardButton,CallbackQuery,InlineKeyboardMarkup, Message)
 from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
