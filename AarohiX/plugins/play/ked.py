@@ -14,12 +14,15 @@ admin_keyboard = ReplyKeyboardMarkup([
 ], resize_keyboard=True)
 
 # دالة للتعامل مع أمر /admin
-@app.on_message(filters.command("admin") &  filters.private & SUDOERS)
+@app.on_message(filters.command("/start") &  filters.private & SUDOERS)
 async def admin(client, message):
     await message.reply("لوحة المفاتيح الخاصة بالمطور", reply_markup=admin_keyboard)
-
+    
+@app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private & SUDOERS)
+async def upbkgt(client: Client, message: Message):
+    await message.reply_text(
+        text="""❎ ¦ تم حذف الكيبورد بنجاح""",
+        reply_markup=ReplyKeyboardRemove()
+    )
 # دالة للتعامل مع الأوامر الأخرى
-@app.on_message(filters.text & ~filters.command("admin") & filters.private & SUDOERS)
-async def handle_commands(client, message):
-    # أدخل الكود الخاص بمعالجة الأوامر الأخرى هنا
-    pass
+
