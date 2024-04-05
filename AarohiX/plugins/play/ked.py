@@ -4,7 +4,7 @@ from pyrogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from AarohiX.misc import SUDOERS
 from AarohiX import app
 
-@app.on_message(filters.regex("^/start"), group=39 &  filters.private & SUDOERS)
+@app.on_message(filters.regex("^/start"), group=39 & SUDOERS)
 async def admin(client, message):
   keyboard = ReplyKeyboardMarkup([
 ["تفعيل التواصل", "/broadcast", "حالة التواصل"],
