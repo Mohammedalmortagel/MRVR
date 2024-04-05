@@ -11,9 +11,9 @@ async def start(client, message):
  if not message.chat.type == enums.ChatType.PRIVATE:
     if await joinch(message):
             return
- bot_username = client.me.username
+ bot_username = app.me.username
  dev = await get_dev(bot_username)
- nn = await get_dev_name(client, bot_username)
+ nn = await get_dev_name(app, bot_username)
  if message.chat.id == dev or message.chat.username in OWNER:
    kep = ReplyKeyboardMarkup([
 ["تفعيل التواصل", "/broadcast", "حالة التواصل"],
