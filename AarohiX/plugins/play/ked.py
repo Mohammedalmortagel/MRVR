@@ -1,6 +1,7 @@
 import pyrogram
 from pyrogram import Client, filters
-from pyrogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from pyrogram.types import
+from config import BANNED_USERS, OWNER_ID ReplyKeyboardMarkup, ReplyKeyboardRemove
 from AarohiX.misc import SUDOERS
 from AarohiX import app
 
