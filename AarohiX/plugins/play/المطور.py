@@ -27,7 +27,7 @@ async def mmmezat(client, message):
     )
 
 @app.on_message(
-    command(["المطور"])
+    command(["المطور","مطور البوت"])
 )
 async def maker(client: Client, message: Message):
     await message.reply_photo(
