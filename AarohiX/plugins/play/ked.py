@@ -22,7 +22,7 @@ async def start(client, message):
 ["اذاعة للكل", "توجيه للكل"],
 ["توجيه للمستخدمين", "توجيه للجروبات", "توجيه للقنوات"],
 ["اخفاء الكيبورد ⚒️"]],resize_keyboard=True)
-  await message.reply("لوحة المفاتيح الخاصة بالمطور", reply_markup=keyboard,quote=True)
+ await message.reply("لوحة المفاتيح الخاصة بالمطور", reply_markup=keyboard,quote=True)
 
 @app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private & SUDOERS)
 async def admin(client, message):
