@@ -6,7 +6,7 @@ from AarohiX.misc import SUDOERS
 from AarohiX import app
 
 
-@Client.on_message(filters.command(["/start","رجوع للقائمة الرئيسيه"], ""))
+@app.on_message(filters.command(["/start","رجوع للقائمة الرئيسيه"], ""))
 async def start(client, message):
  if not message.chat.type == enums.ChatType.PRIVATE:
     if await joinch(message):
