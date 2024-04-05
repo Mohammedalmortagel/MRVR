@@ -14,4 +14,8 @@ async def start(client, message):
 ["اذاعة للكل", "توجيه للكل"],
 ["توجيه للمستخدمين", "توجيه للجروبات", "توجيه للقنوات"],
 ["اخفاء الكيبورد ⚒️"]], resize_keyboard=True)
-await message.reply_text("**♪ اهلا بك ، عزيزي المطور الاساسي  💎 .**", reply_markup=kep,quote=True)
+  await message.reply("لوحة المفاتيح الخاصة بالمطور", reply_markup=keyboard,quote=True)
+
+@app.on_message(filters.command("اخفاء الكيبورد ⚒️") & filters.private & SUDOERS)
+async def admin(client, message):
+  await message.reply("❎ ¦ تم حذف الكيبورد بنجاح",quote=True,reply_markup=ReplyKeyboardRemove(selective=True))
