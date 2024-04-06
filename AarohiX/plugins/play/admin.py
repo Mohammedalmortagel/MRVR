@@ -1,3 +1,26 @@
+"""
+MIT License
+
+Copyright (c) 2021 TheHamkerCat
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import asyncio
 from time import time
 import re
@@ -5,7 +28,9 @@ from pyrogram import Client
 import re
 import sys
 from os import getenv
+from strings.filters import command
 import sys
+from config import BOT_ID
 from AarohiX.misc import SUDOERS
 from os import getenv
 from pyrogram import filters
@@ -75,7 +100,7 @@ async def list_admins(chat_id: int):
         "last_updated_at": time(),
         "data": [
             member.user.id
-            async for member in app.get_chat_members(
+            async for member in app.iter_chat_members(
                 chat_id, filter="administrators"
             )
         ],
@@ -93,7 +118,7 @@ async def admin_cache_func(_, cmu: ChatMemberUpdated):
             "last_updated_at": time(),
             "data": [
                 member.user.id
-                async for member in app.get_chat_members(
+                async for member in app.iter_chat_members(
                     cmu.chat.id, filter="administrators"
                 )
             ],
@@ -104,7 +129,7 @@ async def admin_cache_func(_, cmu: ChatMemberUpdated):
 # Purge Messages
 
 
-@app.on_message(filters.command("purge") & filters.group)
+@app.on_message(filters.command("purge") & ~filters.private)
 @adminsOnly("can_delete_messages")
 async def purgeFunc(_, message: Message):
     repliedmsg = message.reply_to_message
@@ -153,7 +178,8 @@ async def purgeFunc(_, message: Message):
 # Kick members
 
 
-@app.on_message(filters.command(["طرد", "dkick"], "") & filters.group
+@app.on_message(
+    command(["طرد", "dkick"]) & ~filters.private
 )
 @adminsOnly("can_restrict_members")
 async def kickFunc(_, message: Message):
@@ -173,7 +199,7 @@ async def kickFunc(_, message: Message):
     mention = (await app.get_users(user_id)).mention
     msg = f"""
 **Kicked User:** {mention}
-**Kicked By:** {message.from_user.mention if message.from_user else 'Dil'}
+**Kicked By:** {message.from_user.mention if message.from_user else 'Anon'}
 **Reason:** {reason or 'No Reason Provided.'}"""
     if message.command[0][0] == "d":
         await message.reply_to_message.delete()
@@ -186,7 +212,7 @@ async def kickFunc(_, message: Message):
 # Ban members
 
 
-@app.on_message(filters.command(["حظر"], "") & filters.group)
+@app.on_message(command(["حظر"]) & filters.group)
 @adminsOnly("can_restrict_members")
 async def banFunc(_, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
@@ -212,12 +238,12 @@ async def banFunc(_, message: Message):
         mention = (
             message.reply_to_message.sender_chat.title
             if message.reply_to_message
-            else "Dil"
+            else "Anon"
         )
 
     msg = (
         f"**Banned User:** {mention}\n"
-        f"**Banned By:** {message.from_user.mention if message.from_user else 'Dil'}\n"
+        f"**Banned By:** {message.from_user.mention if message.from_user else 'Anon'}\n"
     )
     if message.command[0][0] == "d":
         await message.reply_to_message.delete()
@@ -247,7 +273,7 @@ async def banFunc(_, message: Message):
 # Unban members
 
 
-@app.on_message(filters.command(["الغاء حظر", "الغاء الحظر"], "") & filters.group)
+@app.on_message(filters.command(["الغاء حظر", "الغاء الحظر"]) & ~filters.private)
 @adminsOnly("can_restrict_members")
 async def unban_func(_, message: Message):
     # we don't need reasons for unban, also, we
@@ -275,7 +301,7 @@ async def unban_func(_, message: Message):
 # Delete messages
 
 
-@app.on_message(filters.command("del") & filters.group)
+@app.on_message(filters.command("del") & ~filters.private)
 @adminsOnly("can_delete_messages")
 async def deleteFunc(_, message: Message):
     if not message.reply_to_message:
@@ -287,9 +313,10 @@ async def deleteFunc(_, message: Message):
 # Promote Members
 
 
-@app.on_message(filters.command(["رفع مشرف", "fullpromote"], "")
+@app.on_message(
+    command(["رفع مشرف", "fullpromote"])
    
-    & filters.group
+    & ~filters.private
 )
 @adminsOnly("can_promote_members")
 async def promoteFunc(_, message: Message):
@@ -333,7 +360,7 @@ async def promoteFunc(_, message: Message):
 # Demote Member
 
 
-@app.on_message(filters.command(["تنزيل مشرف"], "") & filters.group)
+@app.on_message(command("تنزيل مشرف") & ~filters.private)
 @adminsOnly("can_promote_members")
 async def demote(_, message: Message):
     user_id = await extract_user(message)
@@ -363,7 +390,8 @@ async def demote(_, message: Message):
 # Pin Messages
 
 
-@app.on_message(filters.command(["تثبيت", "unpin"], "") & filters.group
+@app.on_message(
+    command(["تثبيت", "unpin"]) & ~filters.private
 )
 @adminsOnly("can_pin_messages")
 async def pin(_, message: Message):
@@ -389,7 +417,8 @@ async def pin(_, message: Message):
 # Mute members
 
 
-@app.on_message(filters.command(["كتم", "tmute", "mute"], "") & filters.group
+@app.on_message(
+    command(["كتم", "tmute", "mute"]) & ~filters.private
 )
 @adminsOnly("can_restrict_members")
 async def mute(_, message: Message):
@@ -410,7 +439,7 @@ async def mute(_, message: Message):
     keyboard = ikb({"🚨   الغاء كتم  🚨": f"unmute_{user_id}"})
     msg = (
         f"**Muted User:** {mention}\n"
-        f"**Muted By:** {message.from_user.mention if message.from_user else 'Dil'}\n"
+        f"**Muted By:** {message.from_user.mention if message.from_user else 'Anon'}\n"
     )
     photo = (f"https://telegra.ph/file/f0f3e316bebd894baa110.jpg")
     if message.command[0] == "tmute":
@@ -444,7 +473,7 @@ async def mute(_, message: Message):
 
     
 
-@app.on_message(filters.command(["الغاء كتم", "unmute", "unmute_", "الغاء الكتم"], "") & filters.group)
+@app.on_message(command(["الغاء كتم", "unmute", "unmute_", "الغاء الكتم"]) & ~filters.private)
 @adminsOnly("can_restrict_members")
 async def unmute(_, message: Message):
     user_id = await extract_user(message)
@@ -457,8 +486,9 @@ async def unmute(_, message: Message):
 # Ban deleted accounts
 
 
-@app.on_message(filters.command("حظر خفي")
-    & filters.group
+@app.on_message(
+    command("حظر خفي")
+    & ~filters.private
    
 )
 @adminsOnly("can_restrict_members")
@@ -468,7 +498,7 @@ async def ban_deleted_accounts(_, message: Message):
     banned_users = 0
     m = await message.reply("Finding ghosts...")
 
-    async for i in app.get_chat_members(chat_id):
+    async for i in app.iter_chat_members(chat_id):
         if i.user.is_deleted:
             deleted_users.append(i.user.id)
     if len(deleted_users) > 0:
@@ -483,7 +513,8 @@ async def ban_deleted_accounts(_, message: Message):
         await m.edit("There are no deleted accounts in this chat")
 
 
-@app.on_message(filters.command(["warn", "dwarn", "تحذير", "انذار"], "") & filters.group
+@app.on_message(
+    command(["warn", "dwarn", "تحذير", "انذار"]) & ~filters.private
 )
 @adminsOnly("can_restrict_members")
 async def warn_user(_, message: Message):
@@ -525,7 +556,7 @@ async def warn_user(_, message: Message):
         warn = {"warns": warns + 1}
         msg = f"""
 **حذرت :** {mention}
-**يا:** {message.from_user.mention if message.from_user else 'Dil'}
+**يا:** {message.from_user.mention if message.from_user else 'Anon'}
 **السبب:** {reason or 'No Reason Provided.'}
 **التحذيرات المتبقيه:** {warns + 1}/3"""
         await message.reply_text(msg, reply_markup=keyboard)
@@ -561,7 +592,8 @@ async def remove_warning(_, cq: CallbackQuery):
 # Rmwarns
 
 
-@app.on_message(filters.command(["حذف التحذير", "حذف الاندارات"], "") & filters.group
+@app.on_message(
+    command(["حذف التحذير", "حذف الاندارات"]) & ~filters.private
 )
 @adminsOnly("can_restrict_members")
 async def remove_warnings(_, message: Message):
@@ -585,7 +617,7 @@ async def remove_warnings(_, message: Message):
 # Warns
 
 
-@app.on_message(filters.command(["التحذيرات", "الانذارات"], "") & filters.group)
+@app.on_message(command(["التحذيرات", "الانذارات"]) & ~filters.private)
 @capture_err
 async def check_warns(_, message: Message):
     user_id = await extract_user(message)
@@ -604,11 +636,12 @@ async def check_warns(_, message: Message):
 
 
 @app.on_message(
-    (filters.command("ابلاغ")
+    (
+            command("ابلاغ")
             | filters.command(["admins", "admin"], prefixes="@")
     )
    
-    & filters.group
+    & ~filters.private
 )
 @capture_err
 async def report_user(_, message):
