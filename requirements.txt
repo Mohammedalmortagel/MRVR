@@ -43,3 +43,5 @@ youtube-search-python
 wget
 kvsqlite 
 pytz
+enums
+pyromod
