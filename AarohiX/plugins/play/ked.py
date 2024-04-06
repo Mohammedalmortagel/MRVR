@@ -9,8 +9,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
                         
-@app.on_message(
-    command(["/command_sudo", "/command", "♕رجوع♕"])
+@app.on_message(command(["/command_sudo", "/command", "♕رجوع♕"])
     )
 async def khalid(client: Client, message: Message):
     if message.from_user.id in SUDOERS:
@@ -41,9 +40,7 @@ async def khalid(client: Client, message: Message):
                 )
             )     
 
-@app.on_message(
-    command(["الاوامر"])
-    )
+@app.on_message(command(["الاوامر"]))
 async def khalid(client: Client, message: Message):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
