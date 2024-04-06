@@ -3,13 +3,12 @@ from pyrogram import Client, filters
 from AarohiX.utils.decorators import AdminRightsCheck
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from AarohiX.misc import SUDOERS
-from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram,
-                        YouTube, app)
+from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram,YouTube, app)
 from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
                         
-@app.on_message(command(["كيب", "/admin", "♕رجوع♕"]))
+@app.on_message(filters.command(["كيب", "/admin", "♕رجوع♕"]))
 async def khalid(client: Client, message: Message):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
