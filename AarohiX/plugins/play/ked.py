@@ -38,7 +38,7 @@ async def khalid(client: Client, message: Message):
                 )
             )     
 
-@app.on_message(filters.command(["الاوامر"]))
+@app.on_message(filters.command(["الاوامر"], ""))
 async def khalid(client: Client, message: Message):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
