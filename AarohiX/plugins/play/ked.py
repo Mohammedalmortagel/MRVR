@@ -44,7 +44,7 @@ async def khalid(client: Client, message: Message):
                         ["غنيلي","سوال"],
                         ["تلاوات","عبدالباسط"],
                         ["افاتار بنات","افاتار شباب"],
-                        ["❎ ¦ حذف الكيبورد"]],      
+                        ["❎ ¦ حذف الكيبورد"]      
                     ],
                     resize_keyboard=True
                 )
