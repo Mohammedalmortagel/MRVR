@@ -5,7 +5,7 @@ from AarohiX import app
 import config
 
 @app.on_message(
-    command(["اوامر", "الاوامر"])
+    command(["اوامر"])
 )
 async def mmmezat(client, message):
     await message.reply_text(
