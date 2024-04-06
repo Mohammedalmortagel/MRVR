@@ -8,7 +8,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
                         
-@app.on_message(filters.command(["كيب", "/start", "♕رجوع♕"], ""))
+@app.on_message(filters.command(["كيب", "/start", "♕رجوع♕"], group=39))
 async def khalid(client: Client, message: Message):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
@@ -31,8 +31,20 @@ async def khalid(client: Client, message: Message):
                 "اهلا عزيزي العضو\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
                     [
-                        ["سورس"],
-                        ["الاوامر","الالعاب"],        
+                        ["مطور البوت", "مبرمج السورس"],
+                        ["السورس","اصدار"],
+                        ["اقتباس","استوري"],
+                        ["انمي","متحركه"],
+                        ["تويت", "صراحه"],
+                        ["نكته","احكام"],
+                        [" لو خيروك","انصحني"],
+                        ["قران","نقشبندي"],
+                        ["اذكار","كتابات"],
+                        ["حروف","بوت"],
+                        ["غنيلي","سوال"],
+                        ["تلاوات","عبدالباسط"],
+                        ["افاتار بنات","افاتار شباب"],
+                        ["❎ ¦ حذف الكيبورد"]],      
                     ],
                     resize_keyboard=True
                 )
