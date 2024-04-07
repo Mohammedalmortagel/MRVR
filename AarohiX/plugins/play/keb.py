@@ -8,7 +8,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
                         
-@app.on_message(filters.regex("♕رجوع♕","^/start"), group=39)
+@app.on_message(filters.regex("^/start"), group=39)
 async def cpanel(_, message: Message):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
@@ -60,7 +60,7 @@ async def khalid(client: Client, message: Message):
                         ["اوامر 1","اوامر 2"],
                         ["اوامر 3","اوامر 4"],
                         ["اوامر 5","اوامر 6"],
-                        ["♕رجوع♕"],
+                        ["❎ ¦ حذف الاوامر"], 
                     ],
                     resize_keyboard=True
                 )
@@ -73,7 +73,7 @@ async def khalid(client: Client, message: Message):
                         ["اوامر 1","اوامر 2"],
                         ["اوامر 3","اوامر 4"],
                         ["اوامر 5"],
-                        ["♕رجوع♕"],
+                        ["❎ ¦ حذف الاوامر"]
                     ],
                     resize_keyboard=True
                 )
