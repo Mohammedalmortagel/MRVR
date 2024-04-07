@@ -15,7 +15,7 @@ BOT_IMAGE = getenv("BOT_IMAGE", "https://graph.org/file/8882cbd7cc786826d9ecb.jp
 
 BOT_TOKEN = getenv("BOT_TOKEN", "")
 
-MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "bot")
+MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "المرتجل")
 
 Muntazer = getenv("muntazer", "AlmortagelTech")
 
