@@ -8,7 +8,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
                         
-@app.on_message(filters.regex(["كيب", "/start", "♕رجوع♕"]),group=39)
+@app.on_message(filters.regex("كيب", "/start", "♕رجوع♕"),group=39)
 async def khalid(client: Client, message: Message):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
