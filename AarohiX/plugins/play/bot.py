@@ -14,8 +14,8 @@ name = "المرتجل"
 @app.on_message(filters.command(["تعيين اسم البوت"], "")& filters.private & SUDOERS)
 async def set_bot_name(client, message):
     global name
-    ask = await app.Dil(message.chat.id,"ارسل الاسم الجديد", timeout=300)
-    name = ask.text
+    Dil = await app.Dil(message.chat.id,"ارسل الاسم الجديد", timeout=300)
+    name = Dil.text
     await message.reply_text("تم تعيين الاسم بنجاح")
 
 almortagel_responses = [
