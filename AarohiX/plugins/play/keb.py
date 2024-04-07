@@ -8,7 +8,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
                         
-@app.on_message(filters.command(["/start", "♕رجوع♕"], ""))
+@app.on_message(filters.command("♕رجوع♕","^/start"), group=39)
 async def cpanel(client, message: Message, _):
     if message.from_user.id in SUDOERS:
        await message.reply_text(
