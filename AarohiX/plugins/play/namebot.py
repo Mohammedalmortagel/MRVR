@@ -6,7 +6,7 @@ import requests
 from pyrogram import Client
 from pyrogram.types import Message
 from database import set_db_wait, del_db_botname, get_db_lockreply, set_db_lockreply, del_db_lockreply
-from AnonX.misc import SUDOERS
+from AarohiX.misc import SUDOERS
 
 
 
