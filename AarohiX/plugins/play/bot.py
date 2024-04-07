@@ -1,55 +1,52 @@
 import asyncio
 import random
-from pyrogram.types import InlineKeyboardButton
-from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from typing import Union
-from pyrogram.types import InlineKeyboardButton
-from random import choice
-from AarohiX import app
-from config import BANNED_USERS, MUSIC_BOT_NAME
 from AarohiX.misc import SUDOERS
-import re
-import sys
-from os import getenv
+from pyrogram.types import (Message,InlineKeyboardButton,InlineKeyboardMarkup,CallbackQuery,ChatPrivileges)
+from pyrogram import filters, Client
+from AarohiX import app
+from config import *
 
-from dotenv import load_dotenv
-from pyrogram import filters
+bot_name = {}
+botname = {}
 
-load_dotenv()
+name = "المرتجل"
 
-namd = [
-f"اسمي {MUSIC_BOT_NAME} يقلبي 🙈",
-f"عايز اي من {MUSIC_BOT_NAME} 😒",
-f"اؤمرني يعيوني 🌚",
-f"كل شويه {MUSIC_BOT_NAME} 😭",
-f"قلبي ودقاته بينادي علي {MUSIC_BOT_NAME} 🔥🙈",
-f"اسمي {MUSIC_BOT_NAME} يصحبي",
-f"يسطا قولتلك اسمي {MUSIC_BOT_NAME} الاه",
-f"نعم يحب",
-f"قول يقلبو",
-f"يسطا هوا عشان بحبك تصعدني؟",
-f"يعم والله بحبك بس ناديلي ب {MUSIC_BOT_NAME}",
-f"تعرف بالله هحبك أكتر لو ناديتلي {MUSIC_BOT_NAME}",
-f"اي ي معلم مين مزعلك",
-f"متصلي على النبي كدا",
-f"مش فاضيلك نصايح وكلمني",
-f"يسطا قولي مين مزعلك وعايزك تقعد وتتفرج على أخوك",
-f"انجز عايزني أشقطلك مين؟",
-f"شكلها منكدا عليك وجاي تطلعهم علينا",
-f"ورحمة أبويا اسمي {MUSIC_BOT_NAME}",
+@app.on_message(filters.command(["تعيين اسم البوت"], "")& filters.private & SUDOERS)
+async def set_bot_name(client, message):
+    global name
+    ask = await app.ask(message.chat.id,"ارسل الاسم الجديد", timeout=300)
+    name = ask.text
+    await message.reply_text("تم تعيين الاسم بنجاح")
+
+almortagel_responses = [
+    "اسمي {name} يصحبي",
+    "يسطا قولتلك اسمي {name} الاه",
+    "نعم يحب",
+    "قول يقلبو",
+    "يسطا هوا عشان بحبك تصعدني؟",
+    "يعم والله بحبك بس ناديلي ب {name}",
+    "تعرف بالله هحبك أكتر لو ناديتلي {name}",
+    "اي ي معلم مين مزعلك",
+    "متصلي على النبي كدا",
+    "مش فاضيلك نصايح وكلمني",
+    "يسطا قولي مين مزعلك وعايزك تقعد وتتفرج على أخوك",
+    "انجز عايزني أشقطلك مين؟",
+    "شكلها منكدا عليك وجاي تطلعهم علينا",
+    "ورحمة أبويا اسمي {name}",
 ]
 
 @app.on_message(filters.command(["بوت", "البوت"], ""), group=39)
-async def mreslam(client: Client, message: Message):
-    barr = random.choice(namd) 
+async def almortagel_bot(client, message):
+    global name
+    bot_username = (await app.get_me()).username
+    bar = random.choice(almortagel_responses).format(name=name)
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("خدني لجروبك والنبي🥺♥", url=f"https://t.me/{bot_username}?startgroup=True")]
     ])
 
     await message.reply_text(
-       text=f"[{barr}](https://t.me/{bot_username}?startgroup=True)",
+       text=f"[{bar}](https://t.me/{bot_username}?startgroup=True)",
        disable_web_page_preview=True,
         reply_markup=keyboard
     )
+    
