@@ -965,10 +965,10 @@ def top_thieves(client, message):
 #######£££££££££££££££#######££££££££££#############££££££££££#########££££#
 #######£££££££££££££££#######££££££££££#############££££££££££#########££££
 
-@app.on_message(filters.text, group=39)
-async def almortagel(client, message):
-   if message.text == "بنك":
-       await message.reply_text(f"""︙اوامر البنك كالاتي : 
+
+@app.on_message(filters.command(["بنك","اوامر البنك"], ""))
+async def huhh(client: Client, message: Message):
+       await message.reply_text(f"""︙اوامر البنك كالاتي
 . — — — — —  — — — — — .
 ⌯︙انشاء حساب بنكي
 ⌯︙راتب ، بخشيش
@@ -988,6 +988,7 @@ async def almortagel(client, message):
 ⌯︙اضف فلوس + مبلغ (بالرد ، بالمعرف)  
 ⌯︙تصفير فلوسه ( بالرد ، بالمعرف )
 . — — — — —  — — — — — .""")
+
 
 
 @app.on_message(command("توب فلوس"))
