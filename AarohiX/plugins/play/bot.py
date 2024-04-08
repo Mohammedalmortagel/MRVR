@@ -11,7 +11,7 @@ botname = {}
 
 name = "المرتجل"
 
-@app.on_message(filters.command(["تعيين اسم البوت"], "")& filters.private & SUDOERS)
+@app.on_message(filters.command(["تعيين اسم البوت"], "") & filters.private & SUDOERS)
 async def set_bot(client: Client, message):
    NAME = await client.ask(message.chat.id,"**♪ ارسل اسم البوت الجديد  💎 .**", filters=filters.text, timeout=30)
    BOT_NAME = NAME.text
