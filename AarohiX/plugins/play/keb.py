@@ -6,7 +6,7 @@ from AarohiX.misc import SUDOERS
 from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram,YouTube, app)
 from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardRemove, ReplyKeyboardMarkup
                         
 @app.on_message(filters.regex("^/start"), group=39)
 async def cpanel(_, message: Message):
