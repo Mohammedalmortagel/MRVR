@@ -12,11 +12,12 @@ botname = {}
 name = "المرتجل"
 
 @app.on_message(filters.command(["تعيين اسم البوت"], "")& filters.private & SUDOERS)
-async def set_bot_name(client, message):
-    global name
-    Dil = await app.Dil(message.chat.id,"ارسل الاسم الجديد", timeout=300)
-    name = Dil.text
-    await message.reply_text("تم تعيين الاسم بنجاح")
+async def set_bot(client: Client, message):
+   NAME = await client.ask(message.chat.id,"**♪ ارسل اسم البوت الجديد  💎 .**", filters=filters.text, timeout=30)
+   BOT_NAME = NAME.text
+   bot_username = client.me.username
+   await set_bot_name(bot_username, BOT_NAME)
+   await message.reply_text("**♪ تم تعين اسم البوت بنجاح  💎 .**")
 
 almortagel_responses = [
     "اسمي {name} يصحبي",
@@ -49,4 +50,3 @@ async def almortagel_bot(client, message):
        disable_web_page_preview=True,
         reply_markup=keyboard
     )
-    
