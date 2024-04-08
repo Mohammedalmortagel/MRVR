@@ -144,3 +144,17 @@ async def almortagel(client, message):
 ★ميزه ⦂ اصدار+حول
 
 ⩹━★⊷⌯⌞ ѕᴏụʀᴄᴇ ᴀʟᴍᴏʀᴛᴀɢᴇʟ ⌝⌯⊶★━⩺""")
+
+@app.on_message(filters.command(["❎ ¦ حذف الاوامر"], ""))
+async def upbkgt(client: Client, message: Message):
+    await message.reply_text(
+        text="""❎ ¦ تم حذف الاوامر بنجاح""",
+        reply_markup=ReplyKeyboardRemove()
+    )
+
+
+@app.on_message(filters.command(["❎ ¦ حذف الكيبورد"], ""))
+async def upbkgt(client: Client, message: Message):
+    await message.reply_text(
+        text="""❎ ¦ تم حذف الكيبورد بنجاح""",
+        reply_markup=ReplyKeyboardRemove()
