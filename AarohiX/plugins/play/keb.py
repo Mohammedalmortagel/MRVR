@@ -72,7 +72,7 @@ async def khalid(client: Client, message: Message):
                     [
                         ["اوامر 1","اوامر 2"],
                         ["اوامر 3","اوامر 4"],
-                        ["اوامر 5"],
+                        ["اوامر 5","اوامر 6"],
                         ["❎ ¦ حذف الاوامر"]
                     ],
                     resize_keyboard=True
