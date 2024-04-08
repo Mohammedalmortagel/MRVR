@@ -967,7 +967,7 @@ def top_thieves(client, message):
 
 
 @app.on_message(filters.command(["بنك","اوامر البنك"], ""))
-async def huhh(client: Client, message: Message):
+async def huhh(client, message):
        await message.reply_text(f"""︙اوامر البنك كالاتي
 . — — — — —  — — — — — .
 ⌯︙انشاء حساب بنكي
