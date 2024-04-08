@@ -967,7 +967,7 @@ def top_thieves(client, message):
 
 @app.on_message(filters.text, group=39)
 async def almortagel(client, message):
-   if message.text == "اوامر البنك","بنك":
+   if message.text == "بنك":
        await message.reply_text(f"""︙اوامر البنك كالاتي : 
 . — — — — —  — — — — — .
 ⌯︙انشاء حساب بنكي
