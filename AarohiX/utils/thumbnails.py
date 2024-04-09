@@ -134,10 +134,12 @@ async def get_thumb(videoid):
             views = f"Views : {views}"
             duration = f"Duration : {duration} Mins"
             channel = f"Channel : {channel}"
+            dev = f"DEV : {OWNERID}"
 
             image4.text((670, 450), text=views, fill="white", font = font4, align ="left") 
             image4.text((670, 500), text=duration, fill="white", font = font4, align ="left") 
             image4.text((670, 550), text=channel, fill="white", font = font4, align ="left")
+            image4.text((670, 550), text=dev, fill="white", font = font4, align ="left")
             
             image2 = ImageOps.expand(image2,border=20,fill=make_col())
             image2 = image2.convert('RGB')
