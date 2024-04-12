@@ -11,7 +11,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, 
 
 @app.on_message(filters.regex("^/start"), group=39))
 async def start_(_, message):
-    if message.from_user.id in OWNER_ID:
+async def update_(client, message, _):
+    if message.from_user.id in filters.user(OWNER_ID):
        await message.reply_text(
                 "اهلا عزيزي المطور\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
@@ -26,6 +27,7 @@ async def start_(_, message):
                 )
             )
     else:
+       message.from_user.id in SUDOERS 
        await message.reply_text(
                 "اهلا عزيزي العضو\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
