@@ -9,8 +9,8 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardRemove, ReplyKeyboardMarkup
 
+
 @app.on_message(filters.regex("^/start"), group=39))
-async def start_(_, message):
 async def update_(client, message, _):
     if message.from_user.id in filters.user(OWNER_ID):
        await message.reply_text(
