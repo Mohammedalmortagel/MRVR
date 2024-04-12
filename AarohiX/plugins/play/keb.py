@@ -8,7 +8,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardRemove, ReplyKeyboardMarkup
 
-  @app.on_message(filters.command(["start"]) & SUDOERS)
+@app.on_message(filters.command(["start"]) & SUDOERS)
 async def start_(_, message):
        await message.reply_text(
                 "اهلا عزيزي المطور\nاليك لوحة التحكم الخاصة بالبوت",
