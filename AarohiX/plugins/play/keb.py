@@ -23,8 +23,9 @@ async def start_(_, message):
                     resize_keyboard=True
                 )
             )
-                   @app.on_message(filters.regex("^/start"), group=39)
-       async def start_(_, message):
+            
+@app.on_message(filters.regex("^/start"), group=39)
+async def start_(_, message):
        await message.reply_text(
                 "اهلا عزيزي العضو\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
