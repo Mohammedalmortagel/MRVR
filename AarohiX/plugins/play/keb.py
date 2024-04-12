@@ -7,14 +7,9 @@ from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram,YouTube, app)
 from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardRemove, ReplyKeyboardMarkup
-                        
-@app.on_message(filters.regex("^/start"), group=39)
-async def cpanel(_, message: Message):
-     if not message.chat.type == enums.ChatType.PRIVATE:
- bot_username = client.me.username
- dev = await get_dev(bot_username)
- nn = await get_dev_name(client, bot_username)
- if message.chat.id == dev or message.chat.username in OWNER:
+
+  @app.on_message(filters.command(["start"]) & SUDOERS)
+async def start_(_, message):
        await message.reply_text(
                 "اهلا عزيزي المطور\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
@@ -28,7 +23,7 @@ async def cpanel(_, message: Message):
                     resize_keyboard=True
                 )
             )
-    else:
+                      @app.on_message(filters.regex("^/start"), group=39)
        await message.reply_text(
                 "اهلا عزيزي العضو\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
