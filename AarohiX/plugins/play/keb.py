@@ -3,6 +3,7 @@ from pyrogram import Client, filters
 from AarohiX.utils.decorators import AdminRightsCheck
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from AarohiX.misc import SUDOERS
+from config import OWNER_ID
 from AarohiX import (Apple, Resso, SoundCloud, Spotify, Telegram,YouTube, app)
 from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
