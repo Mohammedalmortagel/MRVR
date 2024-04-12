@@ -9,8 +9,9 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardRemove, ReplyKeyboardMarkup
 
-@app.on_message(filters.regex("/start") & filters.user(OWNER_ID))
+@app.on_message(filters.regex("^/start"), group=39))
 async def start_(_, message):
+    if message.from_user.id in OWNER_ID:
        await message.reply_text(
                 "اهلا عزيزي المطور\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
@@ -24,9 +25,7 @@ async def start_(_, message):
                     resize_keyboard=True
                 )
             )
-            
-@app.on_message(filters.regex("^/start"), group=39)
-async def start_(_, message):
+    else:
        await message.reply_text(
                 "اهلا عزيزي العضو\nاليك لوحة التحكم الخاصة بالبوت",
                 reply_markup=ReplyKeyboardMarkup(
@@ -52,7 +51,7 @@ async def start_(_, message):
 
 @app.on_message(filters.command(["الاوامر"], ""))
 async def khalid(client: Client, message: Message):
-    if message.from_user.id in SUDOERS:
+    if message.from_user.id in OWNER_ID:
        await message.reply_text(
                 "اليك اوامر البوت عزيزي المطور",
                 reply_markup=ReplyKeyboardMarkup(
