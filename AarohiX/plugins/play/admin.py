@@ -1,683 +1,961 @@
-"""
-MIT License
-
-Copyright (c) 2021 TheHamkerCat
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
 import asyncio
-from time import time
-import re
+
+from config import get_bot_information
+from database import del_db_admin, del_db_constractors, del_db_manager, del_db_special, set_db_ban, del_db_ban, \
+    get_db_ban, get_db_mute, set_db_mute, del_db_mute
 from pyrogram import Client
-import re
-import sys
-from os import getenv
-from strings.filters import command
-import sys
-from config import BOT_USERNAME
-from AarohiX.misc import SUDOERS
-from os import getenv
-from pyrogram import filters
-from pyrogram.types import (
-    CallbackQuery,
-    ChatMemberUpdated,
-    ChatPermissions,
-    Message,
-)
-
-from AarohiX import app
-from AarohiX.core.errors import capture_err
-from AarohiX.core.keyboard import ikb
-from AarohiX.utils.dbfunctions import (
-    add_warn,
-    get_warn,
-    int_to_alpha,
-    remove_warns,
-    save_filter,
-)
-from AarohiX.utils.functions import (
-    extract_user,
-    extract_user_and_reason,
-    time_converter,
-)
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatPermissions, Message
+from plugins.developer import check_username
+from plugins.rtp_function import sudooo, sudooo2, specialll
+from utils import time_extract, html_user, commands
+from localization import use_chat_lang
 
 
-async def member_permissions(chat_id: int, user_id: int):
-    perms = []
-    try:
-        member = await app.get_chat_member(chat_id, user_id)
-    except Exception:
-        return []
-    if member.can_post_messages:
-        perms.append("can_post_messages")
-    if member.can_edit_messages:
-        perms.append("can_edit_messages")
-    if member.can_delete_messages:
-        perms.append("can_delete_messages")
-    if member.can_restrict_members:
-        perms.append("can_restrict_members")
-    if member.can_promote_members:
-        perms.append("can_promote_members")
-    if member.can_change_info:
-        perms.append("can_change_info")
-    if member.can_invite_users:
-        perms.append("can_invite_users")
-    if member.can_pin_messages:
-        perms.append("can_pin_messages")
-    if member.can_manage_voice_chats:
-        perms.append("can_manage_voice_chats")
-    return perms
-
-
-from AarohiX.core.permissions import adminsOnly
-admins_in_chat = {}
-
-
-async def list_admins(chat_id: int):
-    global admins_in_chat
-    if chat_id in admins_in_chat:
-        interval = time() - admins_in_chat[chat_id]["last_updated_at"]
-        if interval < 3600:
-            return admins_in_chat[chat_id]["data"]
-
-    admins_in_chat[chat_id] = {
-        "last_updated_at": time(),
-        "data": [
-            member.user.id
-            async for member in app.iter_chat_members(
-                chat_id, filter="administrators"
-            )
-        ],
-    }
-    return admins_in_chat[chat_id]["data"]
-
-
-# Admin cache reload
-
-
-@app.on_chat_member_updated()
-async def admin_cache_func(_, cmu: ChatMemberUpdated):
-    if cmu.old_chat_member and cmu.old_chat_member.promoted_by:
-        admins_in_chat[cmu.chat.id] = {
-            "last_updated_at": time(),
-            "data": [
-                member.user.id
-                async for member in app.iter_chat_members(
-                    cmu.chat.id, filter="administrators"
-                )
-            ],
-        }
-        log.info(f"Updated admin cache for {cmu.chat.id} [{cmu.chat.title}]")
-
-
-# Purge Messages
-
-
-@app.on_message(filters.command("purge") & ~filters.private)
-@adminsOnly("can_delete_messages")
-async def purgeFunc(_, message: Message):
-    repliedmsg = message.reply_to_message
-    await message.delete()
-
-    if not repliedmsg:
-        return await message.reply_text("Reply to a message to purge from.")
-
-    cmd = message.command
-    if len(cmd) > 1 and cmd[1].isdigit():
-        purge_to = repliedmsg.message_id + int(cmd[1])
-        if purge_to > message.message_id:
-            purge_to = message.message_id
-    else:
-        purge_to = message.message_id   
-
-    chat_id = message.chat.id
-    message_ids = []
-
-    for message_id in range(
-            repliedmsg.message_id,
-            purge_to,
-    ):
-        message_ids.append(message_id)
-
-        # Max message deletion limit is 100
-        if len(message_ids) == 100:
-            await app.delete_messages(
-                chat_id=chat_id,
-                message_ids=message_ids,
-                revoke=True,  # For both sides
-            )
-
-            # To delete more than 100 messages, start again
-            message_ids = []
-
-    # Delete if any messages left
-    if len(message_ids) > 0:
-        await app.delete_messages(
-            chat_id=chat_id,
-            message_ids=message_ids,
-            revoke=True,
-        )
-
-
-# Kick members
-
-
-@app.on_message(
-    command(["طرد", "dkick"]) & ~filters.private
-)
-@adminsOnly("can_restrict_members")
-async def kickFunc(_, message: Message):
-    user_id, reason = await extract_user_and_reason(message)
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    if user_id == BOT_USERNAME:
-        return await message.reply_text(
-            "I can't kick myself, i can leave if you want."
-        )
-    if user_id in SUDOERS:
-        return await message.reply_text("You Wanna Kick The Elevated One?")
-    if user_id in (await list_admins(message.chat.id)):
-        return await message.reply_text(
-            "I can't kick an admin, You know the rules, so do i."
-        )
-    mention = (await app.get_users(user_id)).mention
-    msg = f"""
-**Kicked User:** {mention}
-**Kicked By:** {message.from_user.mention if message.from_user else 'Anon'}
-**Reason:** {reason or 'No Reason Provided.'}"""
-    if message.command[0][0] == "d":
-        await message.reply_to_message.delete()
-    await message.chat.ban_member(user_id)
-    await message.reply_text(msg)
-    await asyncio.sleep(1)
-    await message.chat.unban_member(user_id)
-
-
-# Ban members
-
-
-@app.on_message(command(["حظر"]) & filters.group)
-@adminsOnly("can_restrict_members")
-async def banFunc(_, message: Message):
-    user_id, reason = await extract_user_and_reason(message, sender_chat=True)
-
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    if user_id == BOT_USERNAME:
-        return await message.reply_text(
-            "I can't ban myself, i can leave if you want."
-        )
-    if user_id in SUDOERS:
-        return await message.reply_text(
-            "You Wanna Ban The Elevated One?, RECONSIDER!"
-        )
-    if user_id in (await list_admins(message.chat.id)):
-        return await message.reply_text(
-            "I can't ban an admin, You know the rules, so do i."
-        )
-
-    try:
-        mention = (await app.get_users(user_id)).mention
-    except IndexError:
-        mention = (
-            message.reply_to_message.sender_chat.title
-            if message.reply_to_message
-            else "Anon"
-        )
-
-    msg = (
-        f"**Banned User:** {mention}\n"
-        f"**Banned By:** {message.from_user.mention if message.from_user else 'Anon'}\n"
-    )
-    if message.command[0][0] == "d":
-        await message.reply_to_message.delete()
-    if message.command[0] == "tban":
-        split = reason.split(None, 1)
-        time_value = split[0]
-        temp_reason = split[1] if len(split) > 1 else ""
-        temp_ban = await time_converter(message, time_value)
-        msg += f"**Banned For:** {time_value}\n"
-        if temp_reason:
-            msg += f"**Reason:** {temp_reason}"
-        try:
-            if len(time_value[:-1]) < 3:
-                await message.chat.ban_member(user_id, until_date=temp_ban)
-                await message.reply_text(msg)
+async def get_available_bot(c: Client, m: Message):
+    ban = ""
+    pinmessage = ""
+    deletemessage = ""
+    async for bot in c.iter_chat_members(m.chat.id, filter="bots"):
+        if bot.user.id == get_bot_information()[0]:
+            if bot.can_restrict_members:
+                ban = "banTrue"
             else:
-                await message.reply_text("You can't use more than 99")
-        except AttributeError:
-            pass
-        return
-    if reason:
-        msg += f"**Reason:** {reason}"
-    await message.chat.ban_member(user_id)
-    await message.reply_text(msg)
-
-
-# Unban members
-
-
-@app.on_message(filters.command(["الغاء حظر", "الغاء الحظر"]) & ~filters.private)
-@adminsOnly("can_restrict_members")
-async def unban_func(_, message: Message):
-    # we don't need reasons for unban, also, we
-    # don't need to get "text_mention" entity, because
-    # normal users won't get text_mention if the user
-    # they want to unban is not in the group.
-    reply = message.reply_to_message
-
-    if reply and reply.sender_chat and reply.sender_chat != message.chat.id:
-        return await message.reply_text("You cannot unban a channel")
-
-    if len(message.command) == 2:
-        user = message.text.split(None, 1)[1]
-    elif len(message.command) == 1 and reply:
-        user = message.reply_to_message.from_user.id
-    else:
-        return await message.reply_text(
-            "Provide a username or reply to a user's message to unban."
-        )
-    await message.chat.unban_member(user)
-    umention = (await app.get_users(user)).mention
-    await message.reply_text(f"Unbanned! {umention}")
-
-
-# Delete messages
-
-
-@app.on_message(filters.command("del") & ~filters.private)
-@adminsOnly("can_delete_messages")
-async def deleteFunc(_, message: Message):
-    if not message.reply_to_message:
-        return await message.reply_text("Reply To A Message To Delete It")
-    await message.reply_to_message.delete()
-    await message.delete()
-
-
-# Promote Members
-
-
-@app.on_message(
-    command(["رفع مشرف", "fullpromote"])
-   
-    & ~filters.private
-)
-@adminsOnly("can_promote_members")
-async def promoteFunc(_, message: Message):
-    user_id = await extract_user(message)
-    umention = (await app.get_users(user_id)).mention
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    bot = await app.get_chat_member(message.chat.id, BOT_USERNAME)
-    if user_id == BOT_USERNAME:
-        return await message.reply_text("I can't promote myself.")
-    if not bot.can_promote_members:
-        return await message.reply_text("I don't have enough permissions")
-    if message.command[0][0] == "f":
-        await message.chat.promote_member(
-            user_id=user_id,
-            can_change_info=bot.can_change_info,
-            can_invite_users=bot.can_invite_users,
-            can_delete_messages=bot.can_delete_messages,
-            can_restrict_members=bot.can_restrict_members,
-            can_pin_messages=bot.can_pin_messages,
-            can_promote_members=bot.can_promote_members,
-            can_manage_chat=bot.can_manage_chat,
-            can_manage_voice_chats=bot.can_manage_voice_chats,
-        )
-        return await message.reply_text(f"Fully Promoted! {umention}")
-
-    await message.chat.promote_member(
-        user_id=user_id,
-        can_change_info=False,
-        can_invite_users=bot.can_invite_users,
-        can_delete_messages=bot.can_delete_messages,
-        can_restrict_members=False,
-        can_pin_messages=False,
-        can_promote_members=False,
-        can_manage_chat=bot.can_manage_chat,
-        can_manage_voice_chats=bot.can_manage_voice_chats,
-    )
-    await message.reply_text(f"Promoted! {umention}")
-
-
-# Demote Member
-
-
-@app.on_message(command("تنزيل مشرف") & ~filters.private)
-@adminsOnly("can_promote_members")
-async def demote(_, message: Message):
-    user_id = await extract_user(message)
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    if user_id == BOT_USERNAME:
-        return await message.reply_text("I can't demote myself.")
-    if user_id in SUDOERS:
-        return await message.reply_text(
-            "You wanna demote the elevated one?, RECONSIDER!"
-        )
-    await message.chat.promote_member(
-        user_id=user_id,
-        can_change_info=False,
-        can_invite_users=False,
-        can_delete_messages=False,
-        can_restrict_members=False,
-        can_pin_messages=False,
-        can_promote_members=False,
-        can_manage_chat=False,
-        can_manage_voice_chats=False,
-    )
-    umention = (await app.get_users(user_id)).mention
-    await message.reply_text(f"Demoted! {umention}")
-
-
-# Pin Messages
-
-
-@app.on_message(
-    command(["تثبيت", "unpin"]) & ~filters.private
-)
-@adminsOnly("can_pin_messages")
-async def pin(_, message: Message):
-    if not message.reply_to_message:
-        return await message.reply_text("Reply to a message to pin/unpin it.")
-    r = message.reply_to_message
-    if message.command[0][0] == "u":
-        await r.unpin()
-        return await message.reply_text(
-            f"**Unpinned [this]({r.link}) message.**",
-            disable_web_page_preview=True,
-        )
-    await r.pin(disable_notification=True)
-    await message.reply(
-        f"**Pinned [this]({r.link}) message.**",
-        disable_web_page_preview=True,
-    )
-    msg = "Please check the pinned message: ~ " + f"[Check, {r.link}]"
-    filter_ = dict(type="text", data=msg)
-    await save_filter(message.chat.id, "~pinned", filter_)
-
-
-# Mute members
-
-
-@app.on_message(
-    command(["كتم", "tmute", "mute"]) & ~filters.private
-)
-@adminsOnly("can_restrict_members")
-async def mute(_, message: Message):
-    user_id, reason = await extract_user_and_reason(message)
-    if not user_id:
-        return await message.reply_text("فين الحساب يغبي !")
-    if user_id == BOT_USERNAME:
-        return await message.reply_text("عايز تكتم نفسك يحلاوه")
-    if user_id in SUDOERS:
-        return await message.reply_text(
-            "عايز تكتم المطور 😂😂"
-        )
-    if user_id in (await list_admins(message.chat.id)):
-        return await message.reply_text(
-            "للاسف الشخص دا واخد ادمن  فالمجموعه"
-        )
-    mention = (await app.get_users(user_id)).mention
-    keyboard = ikb({"🚨   الغاء كتم  🚨": f"unmute_{user_id}"})
-    msg = (
-        f"**Muted User:** {mention}\n"
-        f"**Muted By:** {message.from_user.mention if message.from_user else 'Anon'}\n"
-    )
-    photo = (f"https://telegra.ph/file/f0f3e316bebd894baa110.jpg")
-    if message.command[0] == "tmute":
-        split = reason.split(None, 1)
-        time_value = split[0]
-        temp_reason = split[1] if len(split) > 1 else ""
-        temp_mute = await time_converter(message, time_value)
-        msg += f"**Muted For:** {time_value}\n"
-        if temp_reason:
-            msg += f"**Reason:** {temp_reason}"
-        try:
-            if len(time_value[:-1]) < 3:
-                await message.chat.restrict_member(
-                    user_id,
-                    permissions=ChatPermissions(),
-                    until_date=temp_mute,
-                )
-                await message.reply_photo(photo,       caption=msg, reply_markup=keyboard)                  
+                ban = "banFalse"
+            if bot.can_pin_messages:
+                pinmessage = "pinTrue"
             else:
-                await message.reply_text("You can't use more than 99")
-        except AttributeError:
-            pass
+                pinmessage = "pinFalse"
+            if bot.can_delete_messages:
+                deletemessage = "deleteTrue"
+            else:
+                deletemessage = "deleteFalse"
+
+    return ban, pinmessage, deletemessage
+
+
+async def get_available_adminstrator(c: Client, m: Message):
+    admincheck = False
+    adminbot = False
+    try:
+        async for admin in c.iter_chat_members(m.chat.id, filter="Administrators"):
+            if m.from_user.id == admin.user.id:
+                admincheck = True
+            if admin.user.id == get_bot_information()[0]:
+                adminbot = True
+    except Exception as e:
+        print("get_available_adminstrator " + str(e))
+
+    return admincheck, adminbot
+
+
+async def pin(c: Client, m: Message):
+    try:
+        check = await get_available_bot(c, m)
+        if check[1] == "pinFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه التثبيت فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await c.pin_chat_message(
+            m.chat.id,
+            m.reply_to_message.message_id,
+            disable_notification=False,
+            both_sides=True
+        )
+        await m.reply_text("✪ تم تثبيت الرساله\n🇾🇪",
+                           reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
         return
-    if reason:
-        msg += f"**Reason:** {reason}"
-    await message.chat.restrict_member(user_id, permissions=ChatPermissions())
-    await message.reply_photo(photo,       caption=msg, reply_markup=keyboard)
 
 
-# Unmute members
-
-    
-
-@app.on_message(command(["الغاء كتم", "unmute", "unmute_", "الغاء الكتم"]) & ~filters.private)
-@adminsOnly("can_restrict_members")
-async def unmute(_, message: Message):
-    user_id = await extract_user(message)
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    await message.chat.unban_member(user_id)
-    umention = (await app.get_users(user_id)).mention
-    await message.reply_text(f"Unmuted! {umention}")
-
-# Ban deleted accounts
-
-
-@app.on_message(
-    command("حظر خفي")
-    & ~filters.private
-   
-)
-@adminsOnly("can_restrict_members")
-async def ban_deleted_accounts(_, message: Message):
-    chat_id = message.chat.id
-    deleted_users = []
-    banned_users = 0
-    m = await message.reply("Finding ghosts...")
-
-    async for i in app.iter_chat_members(chat_id):
-        if i.user.is_deleted:
-            deleted_users.append(i.user.id)
-    if len(deleted_users) > 0:
-        for deleted_user in deleted_users:
-            try:
-                await message.chat.ban_member(deleted_user)
-            except Exception:
-                pass
-            banned_users += 1
-        await m.edit(f"Banned {banned_users} Deleted Accounts")
-    else:
-        await m.edit("There are no deleted accounts in this chat")
-
-
-@app.on_message(
-    command(["warn", "dwarn", "تحذير", "انذار"]) & ~filters.private
-)
-@adminsOnly("can_restrict_members")
-async def warn_user(_, message: Message):
-    user_id, reason = await extract_user_and_reason(message)
-    chat_id = message.chat.id
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    if user_id == BOT_USERNAME:
-        return await message.reply_text(
-            "I can't warn myself, i can leave if you want."
+async def pinloud(c: Client, m: Message):
+    try:
+        check = await get_available_bot(c, m)
+        if check[1] == "pinFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه التثبيت فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await c.pin_chat_message(
+            m.chat.id,
+            m.reply_to_message.message_id,
+            disable_notification=True,
+            both_sides=True
         )
-    if user_id in SUDOERS:
-        return await message.reply_text(
-            "You Wanna Warn The Elevated One?, RECONSIDER!"
+        await m.reply_text("✪ تم تثبيت الرساله\n🇾🇪",
+                           reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+async def unpin(c: Client, m: Message):
+    try:
+        check = await get_available_bot(c, m)
+        if check[1] == "pinFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه التثبيت فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await c.unpin_chat_message(
+            m.chat.id,
+            m.reply_to_message.message_id
         )
-    if user_id in (await list_admins(chat_id)):
-        return await message.reply_text(
-            "I can't warn an admin, You know the rules, so do i."
+        await m.reply_text("✪ تم الغاء تثبيت الرساله\n🇾🇪",
+                           reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+async def unpinall(c: Client, m: Message):
+    try:
+        check = await get_available_bot(c, m)
+        if check[1] == "pinFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه التثبيت فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await c.unpin_all_chat_messages(
+            m.chat.id
         )
-    user, warns = await asyncio.gather(
-        app.get_users(user_id),
-        get_warn(chat_id, await int_to_alpha(user_id)),
-    )
-    mention = user.mention
-    keyboard = ikb({"🚨  حذف التحذير  🚨": f"unwarn_{user_id}"})
-    if warns:
-        warns = warns["warns"]
-    else:
-        warns = 0
-    if message.command[0][0] == "d":
-        await message.reply_to_message.delete()
-    if warns >= 2:
-        await message.chat.ban_member(user_id)
-        await message.reply_text(
-            f"Number of warns of {mention} exceeded, BANNED!"
-        )
-        await remove_warns(chat_id, await int_to_alpha(user_id))
-    else:
-        warn = {"warns": warns + 1}
-        msg = f"""
-**حذرت :** {mention}
-**يا:** {message.from_user.mention if message.from_user else 'Anon'}
-**السبب:** {reason or 'No Reason Provided.'}
-**التحذيرات المتبقيه:** {warns + 1}/3"""
-        await message.reply_text(msg, reply_markup=keyboard)
-        await add_warn(chat_id, await int_to_alpha(user_id), warn)
+        await m.reply_text("✪ تم الغاء تثبيت جميع الرساله\n🇾🇪",
+                           reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
 
 
-@app.on_callback_query(filters.regex("unwarn_"))
-async def remove_warning(_, cq: CallbackQuery):
-    from_user = cq.from_user
-    chat_id = cq.message.chat.id
-    permissions = await member_permissions(chat_id, from_user.id)
-    permission = "can_restrict_members"
-    if permission not in permissions:
-        return await cq.answer(
-            "You don't have enough permissions to perform this action.\n"
-            + f"Permission needed: {permission}",
-            show_alert=True,
-        )
-    user_id = cq.data.split("_")[1]
-    warns = await get_warn(chat_id, await int_to_alpha(user_id))
-    if warns:
-        warns = warns["warns"]
-    if not warns or warns == 0:
-        return await cq.answer("User has no warnings.")
-    warn = {"warns": warns - 1}
-    await add_warn(chat_id, await int_to_alpha(user_id), warn)
-    text = cq.message.text.markdown
-    text = f"~~{text}~~\n\n"
-    text += f"__Warn removed by {from_user.mention}__"
-    await cq.message.edit(text)
-
-
-# Rmwarns
-
-
-@app.on_message(
-    command(["حذف التحذير", "حذف الاندارات"]) & ~filters.private
-)
-@adminsOnly("can_restrict_members")
-async def remove_warnings(_, message: Message):
-    if not message.reply_to_message:
-        return await message.reply_text(
-            "Reply to a message to remove a user's warnings."
-        )
-    user_id = message.reply_to_message.from_user.id
-    mention = message.reply_to_message.from_user.mention
-    chat_id = message.chat.id
-    warns = await get_warn(chat_id, await int_to_alpha(user_id))
-    if warns:
-        warns = warns["warns"]
-    if warns == 0 or not warns:
-        await message.reply_text(f"{mention} have no warnings.")
-    else:
-        await remove_warns(chat_id, await int_to_alpha(user_id))
-        await message.reply_text(f"Removed warnings of {mention}.")
-
-
-# Warns
-
-
-@app.on_message(command(["التحذيرات", "الانذارات"]) & ~filters.private)
-@capture_err
-async def check_warns(_, message: Message):
-    user_id = await extract_user(message)
-    if not user_id:
-        return await message.reply_text("I can't find that user.")
-    warns = await get_warn(message.chat.id, await int_to_alpha(user_id))
-    mention = (await app.get_users(user_id)).mention
-    if warns:
-        warns = warns["warns"]
-    else:
-        return await message.reply_text(f"{mention} has no warnings.")
-    return await message.reply_text(f"{mention} has {warns}/3 warnings.")
-
-
-# Report
-
-
-@app.on_message(
-    (
-            command("ابلاغ")
-            | filters.command(["admins", "admin"], prefixes="@")
-    )
-   
-    & ~filters.private
-)
-@capture_err
-async def report_user(_, message):
-    if not message.reply_to_message:
-        return await message.reply_text(
-            "Reply to a message to report that user."
-        )
-
-    reply = message.reply_to_message
-    reply_id = reply.from_user.id if reply.from_user else reply.sender_chat.id
-    user_id = message.from_user.id if message.from_user else message.sender_chat.id
-    if reply_id == user_id:
-        return await message.reply_text("Why are you reporting yourself ?")
-
-    list_of_admins = await list_admins(message.chat.id)
-    linked_chat = (await app.get_chat(message.chat.id)).linked_chat
-    if linked_chat is not None:
-        if reply_id in list_of_admins or reply_id == message.chat.id or reply_id == linked_chat.id:
-            return await message.reply_text(
-                "Do you know that the user you are replying is an admin ?"
+@use_chat_lang()
+async def banrep(c: Client, m: Message, strings):
+    try:
+        if m.reply_to_message.from_user.id == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        elif m.reply_to_message.from_user.id == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        elif m.reply_to_message.from_user.id == get_bot_information()[0]:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر البوت\n🇾🇪", parse_mode="Markdown")
+            return
+        elif sudooo(m.reply_to_message.from_user.id):
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+            return
+        elif sudooo2(m.reply_to_message.from_user.id):
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر المطور\n🇾🇪", parse_mode="Markdown")
+            return
+        elif specialll(m.reply_to_message.from_user.id, m):
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+            return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        if get_db_ban(m.chat.id) is None:
+            # await c.ban_chat_member(m.chat.id, m.reply_to_message.from_user.id)
+            set_db_ban(m.reply_to_message.from_user.id, m.reply_to_message.from_user.first_name, m.chat.id)
+            del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+            await m.reply_text(
+                strings("ban_success").format(
+                    user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
             )
-    else:
-        if reply_id in list_of_admins or reply_id == message.chat.id:
-            return await message.reply_text(
-                "Do you know that the user you are replying is an admin ?"
+            await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+        else:
+            for per in get_db_ban(m.chat.id):
+                if per[0] == m.reply_to_message.from_user.id:
+                    await m.reply_text("✪ العضو محظور بالفعل\n🇾🇪",
+                                       reply_to_message_id=m.message_id)
+                    return
+            set_db_ban(m.reply_to_message.from_user.id, m.reply_to_message.from_user.first_name, m.chat.id)
+            del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+            await m.reply_text(
+                strings("ban_success").format(
+                    user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
             )
+            await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
 
-    user_mention = reply.from_user.mention if reply.from_user else reply.sender_chat.title
-    text = f"Reported {user_mention} to admins!"
-    admin_data = await app.get_chat_members(
-        chat_id=message.chat.id, filter="administrators"
-    )  # will it giv floods ?
-    for admin in admin_data:
-        if admin.user.is_bot or admin.user.is_deleted:
-            # return bots or deleted admins
-            continue
-        text += f"[\u2063](tg://user?id={admin.user.id})"
 
-    await message.reply_to_message.reply_text(text)
+@use_chat_lang()
+async def banuser(c: Client, m: Message, strings):
+    m.text = m.text[4:]
+    result = await check_username(m, c)
+    chat_id_foruser = result[0]
+    chat_name_foruser = result[1]
+    try:
+        if chat_id_foruser == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if chat_id_foruser == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if sudooo(chat_id_foruser):
+                    await m.reply_animation("https://t.me/UURTBOT/36",
+                                        caption=f"✪ لايمكننى حظر المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo2(chat_id_foruser):
+                        await m.reply_animation("https://t.me/UURTBOT/36",
+                                                caption=f"✪ لايمكننى حظر المطور\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if specialll(chat_id_foruser, m):
+                            await m.reply_animation("https://t.me/UURTBOT/36",
+                                                    caption=f"✪ لايمكننى حظر الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                            return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        if get_db_ban(m.chat.id) is None:
+            # await c.ban_chat_member(m.chat.id, chat_id_foruser)
+            set_db_ban(chat_id_foruser, chat_name_foruser, m.chat.id)
+            del_db_manager(chat_id_foruser, m.chat.id)
+            del_db_constractors(chat_id_foruser, m.chat.id)
+            del_db_admin(chat_id_foruser, m.chat.id)
+            del_db_special(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("ban_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+            await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+        else:
+            for per in get_db_ban(m.chat.id):
+                if per[0] == chat_id_foruser:
+                    await m.reply_text("✪ العضو محظور بالفعل\n🇾🇪",
+                                       reply_to_message_id=m.message_id)
+                    return
+            set_db_ban(chat_id_foruser, chat_name_foruser, m.chat.id)
+            del_db_manager(chat_id_foruser, m.chat.id)
+            del_db_constractors(chat_id_foruser, m.chat.id)
+            del_db_admin(chat_id_foruser, m.chat.id)
+            del_db_special(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("ban_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+            await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def unbanrep(c: Client, m: Message, strings):
+    try:
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        del_db_ban(m.reply_to_message.from_user.id, m.chat.id)
+        await m.chat.unban_member(m.reply_to_message.from_user.id)
+        await m.reply_text(
+            strings("unban_success").format(
+                user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                admin=html_user(m.from_user.first_name, m.from_user.id)
+            ),
+            reply_to_message_id=m.message_id
+        )
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def unbanuser(c: Client, m: Message, strings):
+    m.text = m.text[10:]
+    result = await check_username(m, c)
+    chat_id_foruser = result[0]
+    chat_name_foruser = result[1]
+    try:
+        if chat_name_foruser.startswith("id "):
+            del_db_ban(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("unban_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+        else:
+            check = await get_available_bot(c, m)
+            if check[0] == "banFalse":
+                await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                                   reply_to_message_id=m.message_id)
+                return
+            await m.chat.unban_member(chat_id_foruser)
+            del_db_ban(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("unban_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+def ban_user_test(m: Message):
+    leader = False
+    if get_db_ban(m.chat.id) is None:
+        leader = False
+    else:
+        try:
+            for hz in get_db_ban(m.chat.id):
+                if m.from_user.id == hz[0]:
+                    leader = True
+        except Exception as e:
+            print("ban group" + str(e))
+            return
+    return leader
+
+
+def ban_user_test_byuser(m, u):
+    leader = False
+    if get_db_ban(m.chat.id) is None:
+        leader = False
+    else:
+        try:
+            for hz in get_db_ban(m.chat.id):
+                if u == hz[0]:
+                    leader = True
+        except Exception as e:
+            print("ban group" + str(e))
+            return
+    return leader
+
+
+@use_chat_lang()
+async def kickrep(c: Client, m: Message, strings):
+    try:
+        n = c.iter_chat_members(m.chat.id, filter="Administrators")
+        if m.reply_to_message.from_user.id == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى طرد مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if m.reply_to_message.from_user.id == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/36",
+                                        caption=f"✪ لايمكننى طرد مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if m.reply_to_message.from_user.id == get_bot_information()[0]:
+                    await m.reply_animation("https://t.me/UURTBOT/36",
+                                            caption=f"✪ لايمكننى طرد البوت\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo(m.reply_to_message.from_user.id):
+                        await m.reply_animation("https://t.me/UURTBOT/36",
+                                                caption=f"✪ لايمكننى طرد المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if sudooo2(m.reply_to_message.from_user.id):
+                            await m.reply_animation("https://t.me/UURTBOT/36",
+                                                    caption=f"✪ لايمكننى طرد المطور\n🇾🇪", parse_mode="Markdown")
+                            return
+                        else:
+                            if specialll(m.reply_to_message.from_user.id, m):
+                                await m.reply_animation("https://t.me/UURTBOT/36",
+                                                        caption=f"✪ لايمكننى طرد الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                                return
+                            else:
+                                async for member in n:
+                                    if m.reply_to_message.from_user.id == member.user.id:
+                                        await m.reply_text("✪ العضو ادمن فى الجروب يرجى تنزيله اولا",
+                                                       reply_to_message_id=m.message_id)
+                                        return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await c.ban_chat_member(m.chat.id, m.reply_to_message.from_user.id)
+        await m.chat.unban_member(m.reply_to_message.from_user.id)
+        del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+        await m.reply_text(
+            strings("kick_success").format(
+                user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                admin=html_user(m.from_user.first_name, m.from_user.id)
+            ),
+            reply_to_message_id=m.message_id
+        )
+        await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def kickuser(c: Client, m: Message, strings):
+    m.text = m.text[4:]
+    result = await check_username(m, c)
+    chat_id_foruser = result[0]
+    chat_name_foruser = result[1]
+    n = c.iter_chat_members(m.chat.id, filter="Administrators")
+    try:
+        if chat_id_foruser == 5656828413:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى طرد مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if chat_id_foruser == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/36",
+                                        caption=f"✪ لايمكننى طرد مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if chat_id_foruser == get_bot_information()[0]:
+                    await m.reply_animation("https://t.me/UURTBOT/36",
+                                            caption=f"✪ لايمكننى طرد البوت\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo(chat_id_foruser):
+                        await m.reply_animation("https://t.me/UURTBOT/36",
+                                                caption=f"✪ لايمكننى طرد المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if sudooo2(chat_id_foruser):
+                            await m.reply_animation("https://t.me/UURTBOT/36",
+                                                    caption=f"✪ لايمكننى طرد المطور\n🇾🇪", parse_mode="Markdown")
+                            return
+                        else:
+                            if specialll(chat_id_foruser, m):
+                                await m.reply_animation("https://t.me/UURTBOT/36",
+                                                        caption=f"✪ لايمكننى طرد الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                                return
+                            else:
+                                async for member in n:
+                                    if chat_id_foruser == member.user.id:
+                                        await m.reply_text("✪ العضو ادمن فى الجروب يرجى تنزيله اولا\n🇾🇪",
+                                                       reply_to_message_id=m.message_id)
+                                        return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await c.ban_chat_member(m.chat.id, chat_id_foruser)
+        await m.chat.unban_member(chat_id_foruser)
+        del_db_manager(chat_id_foruser, m.chat.id)
+        del_db_constractors(chat_id_foruser, m.chat.id)
+        del_db_admin(chat_id_foruser, m.chat.id)
+        del_db_special(chat_id_foruser, m.chat.id)
+        await m.reply_text(
+            strings("kick_success").format(
+                user=html_user(chat_name_foruser, chat_id_foruser),
+                admin=html_user(m.from_user.first_name, m.from_user.id)
+            ),
+            reply_to_message_id=m.message_id
+        )
+        await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def muterep(c: Client, m: Message, strings):
+    try:
+        if m.reply_to_message.from_user.id == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/38",
+                                    caption=f"✪ لايمكننى كتم مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if m.reply_to_message.from_user.id == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/38",
+                                        caption=f"✪ ²لايمكننى كتم مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if m.reply_to_message.from_user.id == get_bot_information()[0]:
+                    await m.reply_animation("https://t.me/UURTBOT/38",
+                                            caption=f"✪ لايمكننى كتم البوت\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo(m.reply_to_message.from_user.id):
+                        await m.reply_animation("https://t.me/UURTBOT/38",
+                                                caption=f"✪ لايمكننى كتم المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if sudooo2(m.reply_to_message.from_user.id):
+                            await m.reply_animation("https://t.me/UURTBOT/38",
+                                                    caption=f"✪ لايمكننى كتم المطور\n🇾🇪", parse_mode="Markdown")
+                            return
+                        else:
+                            if specialll(m.reply_to_message.from_user.id, m):
+                                await m.reply_animation("https://t.me/UURTBOT/38",
+                                                        caption=f"✪ لايمكننى كتم الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                                return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        if get_db_mute(m.chat.id) is None:
+            # await c.restrict_chat_member(m.chat.id,
+            # m.reply_to_message.from_user.id, ChatPermissions())
+            set_db_mute(m.reply_to_message.from_user.id, m.reply_to_message.from_user.first_name, m.chat.id)
+            del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+            await m.reply_animation("https://t.me/guikohg/4",caption= strings("mute_success").format(
+                    user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+        else:
+            for per in get_db_mute(m.chat.id):
+                if per[0] == m.reply_to_message.from_user.id:
+                    await m.reply_text("✪ العضو مكتوم بالفعل\n🇾🇪",
+                                       reply_to_message_id=m.message_id)
+                    return
+            set_db_mute(m.reply_to_message.from_user.id, m.reply_to_message.from_user.first_name, m.chat.id)
+            del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+            del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+            await m.reply_text(
+                strings("mute_success").format(
+                    user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+            await m.reply_animation("https://t.me/UURTBOT/39", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def muteuser(c: Client, m: Message, strings):
+    m.text = m.text[4:]
+    result = await check_username(m, c)
+    chat_id_foruser = result[0]
+    chat_name_foruser = result[1]
+    try:
+        if chat_id_foruser == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/38",
+                                    caption=f"✪ لايمكننى كتم مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if chat_id_foruser == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/38",
+                                        caption=f"✪ ²لايمكننى كتم مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if chat_id_foruser == get_bot_information()[0]:
+                    await m.reply_animation("https://t.me/UURTBOT/38",
+                                            caption=f"✪ لايمكننى كتم البوت\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo(chat_id_foruser):
+                        await m.reply_animation("https://t.me/UURTBOT/38",
+                                                caption=f"✪ لايمكننى كتم المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if sudooo2(chat_id_foruser):
+                            await m.reply_animation("https://t.me/UURTBOT/38",
+                                                    caption=f"✪ لايمكننى كتم المطور\n🇾🇪", parse_mode="Markdown")
+                            return
+                        else:
+                            if specialll(chat_id_foruser, m):
+                                await m.reply_animation("https://t.me/UURTBOT/38",
+                                                        caption=f"✪ لايمكننى كتم الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                                return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        if get_db_mute(m.chat.id) is None:
+            set_db_mute(chat_id_foruser, chat_name_foruser, m.chat.id)
+            del_db_manager(chat_id_foruser, m.chat.id)
+            del_db_constractors(chat_id_foruser, m.chat.id)
+            del_db_admin(chat_id_foruser, m.chat.id)
+            del_db_special(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("mute_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+            await m.reply_animation("https://t.me/guikohg/4", reply_to_message_id=m.message_id)
+        else:
+            for per in get_db_mute(m.chat.id):
+                if per[0] == chat_id_foruser:
+                    await m.reply_text("✪ العضو مكتوم بالفعل\n🇾🇪",
+                                       reply_to_message_id=m.message_id)
+                    return
+            set_db_mute(chat_id_foruser, chat_name_foruser, m.chat.id)
+            del_db_manager(chat_id_foruser, m.chat.id)
+            del_db_constractors(chat_id_foruser, m.chat.id)
+            del_db_admin(chat_id_foruser, m.chat.id)
+            del_db_special(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("mute_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+            await m.reply_animation("https://t.me/UURTBOT/39", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def unmuterep(c: Client, m: Message, strings):
+    try:
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        await m.chat.unban_member(m.reply_to_message.from_user.id)
+        del_db_mute(m.reply_to_message.from_user.id, m.chat.id)
+        await m.reply_text(
+            strings("unmute_success").format(
+                user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                admin=html_user(m.from_user.first_name, m.from_user.id)
+            ),
+            reply_to_message_id=m.message_id
+        )
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def unmuteuser(c: Client, m: Message, strings):
+    m.text = m.text[10:]
+    result = await check_username(m, c)
+    chat_id_foruser = result[0]
+    chat_name_foruser = result[1]
+    try:
+        if chat_name_foruser.startswith("id "):
+            del_db_mute(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("unmute_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+        else:
+            check = await get_available_bot(c, m)
+            if check[0] == "banFalse":
+                await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                                   reply_to_message_id=m.message_id)
+                return
+            await m.chat.unban_member(chat_id_foruser)
+            del_db_mute(chat_id_foruser, m.chat.id)
+            await m.reply_text(
+                strings("unmute_success").format(
+                    user=html_user(chat_name_foruser, chat_id_foruser),
+                    admin=html_user(m.from_user.first_name, m.from_user.id)
+                ),
+                reply_to_message_id=m.message_id
+            )
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+def mute_user_test(m: Message):
+    leader = False
+    if get_db_mute(m.chat.id) is None:
+        leader = False
+    else:
+        try:
+            for hz in get_db_mute(m.chat.id):
+                if m.from_user.id == hz[0]:
+                    leader = True
+        except Exception as e:
+            print("mute group" + str(e))
+            return
+    return leader
+
+
+def mute_user_test_byuser(m, u):
+    leader = False
+    if get_db_mute(m.chat.id) is None:
+        leader = False
+    else:
+        try:
+            for hz in get_db_mute(m.chat.id):
+                if u == hz[0]:
+                    leader = True
+        except Exception as e:
+            print("mute group user" + str(e))
+            return
+    return leader
+
+
+@use_chat_lang()
+async def tban(c: Client, m: Message, strings):
+    try:
+        n = c.iter_chat_members(m.chat.id, filter="Administrators")
+        if m.reply_to_message.from_user.id == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/36",
+                                    caption=f"✪ لايمكننى حظر مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if m.reply_to_message.from_user.id == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/36",
+                                        caption=f"✪ ²لايمكننى حظر مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if m.reply_to_message.from_user.id == get_bot_information()[0]:
+                    await m.reply_animation("https://t.me/UURTBOT/36",
+                                            caption=f"✪ لايمكننى حظر البوت\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo(m.reply_to_message.from_user.id):
+                        await m.reply_animation("https://t.me/UURTBOT/36",
+                                                caption=f"✪ لايمكننى حظر المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if sudooo2(m.reply_to_message.from_user.id):
+                            await m.reply_animation("https://t.me/UURTBOT/36",
+                                                    caption=f"✪ لايمكننى حظر المطور\n🇾🇪", parse_mode="Markdown")
+                            return
+                        else:
+                            if specialll(m.reply_to_message.from_user.id, m):
+                                await m.reply_animation("https://t.me/UURTBOT/36",
+                                                        caption=f"✪ لايمكننى حظر الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                                return
+                            else:
+                                async for member in n:
+                                    if m.reply_to_message.from_user.id == member.user.id:
+                                        await m.reply_text("✪ العضو ادمن فى الجروب يرجى تنزيله اولا\n🇾🇪",
+                                                       reply_to_message_id=m.message_id)
+                                        return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        m.text = m.text[4:]
+        split_time = m.text.split(None, 1)
+        ban_time = await time_extract(m, split_time[1])
+        if not ban_time:
+            return
+        await c.ban_chat_member(
+            m.chat.id,
+            m.reply_to_message.from_user.id,
+            until_date=ban_time
+        )
+        del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+
+        await m.reply_text(
+            strings("tban_success").format(
+                user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                admin=html_user(m.from_user.first_name, m.from_user.id),
+                time=split_time[1]
+            )
+        )
+        await m.reply_animation("https://t.me/UURTBOT/37", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def tmute(c: Client, m: Message, strings):
+    try:
+        n = c.iter_chat_members(m.chat.id, filter="Administrators")
+        if m.reply_to_message.from_user.id == 6250435647:
+            await m.reply_animation("https://t.me/UURTBOT/38",
+                                    caption=f"✪ لايمكننى كتم مطور السورس\n🇾🇪", parse_mode="Markdown")
+            return
+        else:
+            if m.reply_to_message.from_user.id == 6250435647:
+                await m.reply_animation("https://t.me/UURTBOT/38",
+                                        caption=f"✪ ²لايمكننى كتم مطور السورس\n🇾🇪", parse_mode="Markdown")
+                return
+            else:
+                if m.reply_to_message.from_user.id == get_bot_information()[0]:
+                    await m.reply_animation("https://t.me/UURTBOT/38",
+                                            caption=f"✪ لايمكننى كتم البوت\n🇾🇪", parse_mode="Markdown")
+                    return
+                else:
+                    if sudooo(m.reply_to_message.from_user.id):
+                        await m.reply_animation("https://t.me/UURTBOT/38",
+                                                caption=f"✪ لايمكننى كتم المطور الاساسي\n🇾🇪", parse_mode="Markdown")
+                        return
+                    else:
+                        if sudooo2(m.reply_to_message.from_user.id):
+                            await m.reply_animation("https://t.me/UURTBOT/38",
+                                                    caption=f"✪ لايمكننى كتم المطور\n🇾🇪", parse_mode="Markdown")
+                            return
+                        else:
+                            if specialll(m.reply_to_message.from_user.id, m):
+                                await m.reply_animation("https://t.me/UURTBOT/38",
+                                                        caption=f"✪ لايمكننى كتم الشخص بسبب رتبته\n🇾🇪", parse_mode="Markdown")
+                                return
+                            else:
+                                async for member in n:
+                                    if m.reply_to_message.from_user.id == member.user.id:
+                                        await m.reply_text("✪ العضو ادمن فى الجروب يرجى تنزيله اولا",
+                                                       reply_to_message_id=m.message_id)
+                                        return
+        check = await get_available_bot(c, m)
+        if check[0] == "banFalse":
+            await m.reply_text("✪ ليس لدي صلاحيه الحظر فى الجروب\n🇾🇪",
+                               reply_to_message_id=m.message_id)
+            return
+        m.text = m.text[4:]
+        split_time = m.text.split(None, 1)
+        mute_time = await time_extract(m, split_time[1])
+        if not mute_time:
+            return
+        await c.restrict_chat_member(
+            m.chat.id,
+            m.reply_to_message.from_user.id,
+            ChatPermissions(),
+            until_date=mute_time
+        )
+        del_db_manager(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_constractors(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_admin(m.reply_to_message.from_user.id, m.chat.id)
+        del_db_special(m.reply_to_message.from_user.id, m.chat.id)
+        await m.reply_text(
+            strings("tmute_success").format(
+                user=html_user(m.reply_to_message.from_user.first_name, m.reply_to_message.from_user.id),
+                admin=html_user(m.from_user.first_name, m.from_user.id),
+                time=split_time[1]
+            )
+        )
+        await m.reply_animation("https://t.me/UURTBOT/39", reply_to_message_id=m.message_id)
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+@use_chat_lang()
+async def purge(c: Client, m: Message, strings):
+    try:
+        """ purge upto the replied message """
+        status_message = await m.reply_text(strings("purge_in_progress"), quote=True)
+        await m.delete()
+        message_ids = []
+        count_del_etion_s = 0
+        if m.reply_to_message:
+            for a_s_message_id in range(
+                    m.reply_to_message.message_id,
+                    m.message_id
+            ):
+                message_ids.append(a_s_message_id)
+                if len(message_ids) == 100:
+                    await c.delete_messages(
+                        chat_id=m.chat.id,
+                        message_ids=message_ids,
+                        revoke=True
+                    )
+                    count_del_etion_s += len(message_ids)
+                    message_ids = []
+            if len(message_ids) > 0:
+                await c.delete_messages(
+                    chat_id=m.chat.id,
+                    message_ids=message_ids,
+                    revoke=True
+                )
+                count_del_etion_s += len(message_ids)
+        await status_message.edit_text(
+            strings("purge_success").format(
+                count=count_del_etion_s
+            )
+        )
+        await asyncio.sleep(5)
+        await status_message.delete()
+    except Exception as e:
+        await m.reply_text(str(e) + "\n\n" +
+                           "سبب ظهور هذا الخطأ لم يستطع البوت الوصول لايدي الشخص تاكد من ان هذا الحساب ليس مخفى وجرب مره اخرى",
+                           reply_to_message_id=m.message_id, parse_mode="Markdown")
+        return
+
+
+commands.add_command("ban", "admin")
+commands.add_command("kick", "admin")
+commands.add_command("mute", "admin")
+commands.add_command("pin", "admin")
+commands.add_command("purge", "admin")
+commands.add_command("tban", "admin")
+commands.add_command("tmute", "admin")
+commands.add_command("unban", "admin")
+commands.add_command("unmute", "admin")
+commands.add_command("unpin", "admin")
+commands.add_command("unpinall", "admin")

@@ -1,52 +1,48 @@
 import random
 import re
 
-from pyrogram import Client, filters
+from pyrogram import Client
 from pyrogram.types import Message
-from AarohiX import app
 
-@app.on_message(filters.command(["زخرفه",""], "")
-& filters.group
-)
+
 async def zahrafa(c: Client, m: Message):
-    text = m.text.split(None, 1)[1]
     if len(m.text) > 300:
-        await m.reply_text("◍ لا يمكنك زخرفه اكثر من 20 حرف ارسل مجددا\n√", reply_to_message_id=m.message_id)
+        await m.reply_text("✪ لا يمكنك زخرفه اكثر من 20 حرف ارسل مجددا\n√", reply_to_message_id=m.message_id)
         return
     else:
         if re.match("\n", str(m.text)):
-            await m.reply_text("◍ لا يمكن زخرفه نص يحتوي على اكثر من سطر\n√", reply_to_message_id=m.message_id)
+            await m.reply_text("✪ لا يمكن زخرفه نص يحتوي على اكثر من سطر\n√", reply_to_message_id=m.message_id)
             return
     EmojeS = [
         ' 𓁻',
         ' 𓏴  ',
-        ' 𓏶 ',
-        ' 𓏡',
+        ' ♡ ',
+        ' ☆',
         ' 𓏢',
         ' 𓏣',
         ' ☽‘',
-        ' 𖠱☂',
-        '◑',
-        ' ◌“',
-        ' ★℡',
-        ' ☆'
+        ' 𖠱²²',
+        '▽',
+        ' 𖡛“',
+        ' 𖡚℡',
+        ' 𖡨'
     ]
     Emoje = [
         ' ♕',
         ' 𖤍',
         '˛𖤓',
-        '✾ ☫',
+        ' ཻ ☫',
         ' ♫ ',
-        ' ❈ ',
-        ' ➽',
-        ' ✺',
-        '  ⚘',
+        ' 𖠶 ',
+        ' 𖠲',
+        ' 𖡥',
+        '  ☬',
         ' 𖤐',
-        ' ❣',
-        ' ❿  '
+        ' 𓇼',
+        ' ♘  '
     ]
 
-    zhrf = re.sub('ض', 'ضِٰـِۢ', text)
+    zhrf = re.sub('ض', 'ضِٰـِۢ', m.text)
     zhrf = re.sub('ص', 'صِٰـِۢ', zhrf)
     zhrf = re.sub('ث', 'ثِٰـِۢ', zhrf)
     zhrf = re.sub('ق', 'قِٰـِۢ', zhrf)
@@ -820,14 +816,14 @@ async def zahrafa(c: Client, m: Message):
     zhrf9 = re.sub('M', '𝕄', zhrf9)
 
     Text_Zhrfa = "1- `" + zhrf + random.choice(EmojeS) \
-                 + "`\n\n` " + zhrf2 + random.choice(EmojeS) \
-                 + "`\n\n` " + zhrf3 + random.choice(EmojeS) \
-                 + "•\n\n` " + zhrf4 + random.choice(EmojeS) \
-                 + "`\n\n` " + zhrf5 + random.choice(EmojeS) \
-                 + "`\n\n` " + zhrf6 + random.choice(EmojeS) \
-                 + "`\n\n` " + zhrf7 + random.choice(EmojeS) \
-                 + "`\n\n` " + zhrf8 + random.choice(Emoje) \
-                 + "`\n\n` " + zhrf9 + random.choice(Emoje) \
-                 + "`\n\n` " + zhrf5 + random.choice(Emoje)
-    Text_Zhrfa = Text_Zhrfa + "`\n\n اضغط علـي الاسـم ليـتم النـسخ \n│ \n└ʙʏ Almortagel"
+                 + "`\n\n2- `" + zhrf2 + random.choice(EmojeS) \
+                 + "`\n\n3- `" + zhrf3 + random.choice(EmojeS) \
+                 + "`\n\n4- `" + zhrf4 + random.choice(EmojeS) \
+                 + "`\n\n5- `" + zhrf5 + random.choice(EmojeS) \
+                 + "`\n\n6- `" + zhrf6 + random.choice(EmojeS) \
+                 + "`\n\n7- `" + zhrf7 + random.choice(EmojeS) \
+                 + "`\n\n8- `" + zhrf8 + random.choice(Emoje) \
+                 + "`\n\n9- `" + zhrf9 + random.choice(Emoje) \
+                 + "`\n\n10- `" + zhrf5 + random.choice(Emoje)
+    Text_Zhrfa = Text_Zhrfa + "`\n\n اضغط علـي الاسـم ليـتم النـسخ \n★"
     await m.reply_text(Text_Zhrfa, reply_to_message_id=m.message_id, parse_mode="Markdown")
