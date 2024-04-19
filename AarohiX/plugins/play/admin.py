@@ -4,8 +4,8 @@ from database import del_db_admin, del_db_constractors, del_db_manager, del_db_s
     get_db_ban, get_db_mute, set_db_mute, del_db_mute
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatPermissions, Message
-from plugins.developer import check_username
-from plugins.rtp_function import sudooo, sudooo2, specialll
+from AarohiX.plugins.play.developer import check_username
+from AarohiX.plugins.play.rtp_function import sudooo, sudooo2, specialll
 from utils import time_extract, html_user, commands
 from localization import use_chat_lang
 
