@@ -6,7 +6,6 @@ from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatPermissions, Message
 from AarohiX.plugins.play.developer import check_username
 from AarohiX.plugins.play.rtp_function import sudooo, sudooo2, specialll
-from utils import time_extract, html_user, commands
 from localization import use_chat_lang
 
 
