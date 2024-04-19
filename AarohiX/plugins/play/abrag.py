@@ -1,6 +1,5 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from config import get_bot_information
 
 
 async def abrag(c: Client, m: Message):
