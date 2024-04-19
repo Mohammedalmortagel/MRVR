@@ -1,6 +1,5 @@
 from pyrogram import Client
 from pyrogram.types import Message
-from config import developer
 import re
 from database import get_db_general_rtb, del_db_general_rtb, set_db_general_rtb
 
