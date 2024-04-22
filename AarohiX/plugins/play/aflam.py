@@ -7,7 +7,6 @@
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
-from config import get_bot_information
 
 
 #########################################################################################
