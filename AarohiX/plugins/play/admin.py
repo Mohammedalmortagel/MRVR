@@ -6,7 +6,6 @@ from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatPermissions, Message
 from AarohiX.plugins.play.developer import check_username
 from AarohiX.plugins.play.rtp_function import sudooo, sudooo2, specialll
-from localization import use_chat_lang
 
 
 async def get_available_bot(c: Client, m: Message):
