@@ -13,24 +13,24 @@ from AarohiX import app
 from random import  choice, randint
 
 @app.on_message(
-    filters.command(["سورس مين","سورس","السورس","سورسي", "Almortagel"], ""))
+    filters.command(["سورس مين","سورس","السورس","سورسي", "HMS"], ""))
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/14c7948ad180050fe16e4.jpg",
-        caption=f"""Welcome to ѕᴏụʀᴄᴇ ᴀʟᴍᴏʀᴛᴀɢᴇʟ""",
+        caption=f"""Welcome to ѕᴏụʀᴄᴇ ʜᴍѕ""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech"
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"
                         ),
            InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/AlmortagelTech2"
+                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"
             ),
         ],
         [
             InlineKeyboardButton(
-                text="✯ᴍʀ ᴇʟᴍᴏʀᴛᴀɢᴇʟ✯", url=f"https://t.me/Almortagel_12"
+                text="˛َِ ٰ𝖍𝑚ƨ 𓃠ㅤㅤㅤㅤㅤㅤ", url=f"https://t.me/hms_01"
             ),
   
                 ],
