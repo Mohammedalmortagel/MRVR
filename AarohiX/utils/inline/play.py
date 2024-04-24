@@ -55,11 +55,8 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech"
-                        ),
-            InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/AlmortagelTech2"
-            ),
+                       text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
+            InlineKeyboardButton(text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
         ],
         [
             InlineKeyboardButton(
@@ -84,11 +81,8 @@ def stream_markup(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/AlmortagelTech"
-                        ),
-            InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/AlmortagelTech2"
-            ),
+                       text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
+            InlineKeyboardButton(text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
         ],
         [
             InlineKeyboardButton(
