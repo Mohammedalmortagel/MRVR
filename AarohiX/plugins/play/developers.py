@@ -18,8 +18,8 @@ from random import  choice, randint
     filters.command(["المبرمج","همس","مبرمج السورس","المطورة همس"], "")
 )
 async def huhh(client: Client, message: Message):
-    await message.reply_vedio(
-        photo=f"https://te.legra.ph/file/1bca80aef3f0f052da728.mp4",
+    await message.reply_photo(
+        photo=f"https://te.legra.ph/file/891a235a9f5c0ca81becf.jpg",
         caption=f"""**⩹━★⊷━⌞ ѕᴏụʀᴄᴇ ʜᴍѕ ⌝━⊶★━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم المبرمج\nللتحدث مع مبرمج السورس اضغط علي الازرار بالاسفل👇\n**⩹━★⊷━⌞ ѕᴏụʀᴄᴇ ʜᴍѕ ⌝━⊶★━⩺**""",
         reply_markup=InlineKeyboardMarkup(
             [
