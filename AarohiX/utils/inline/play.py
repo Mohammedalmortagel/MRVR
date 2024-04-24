@@ -1,5 +1,6 @@
 
 import math
+import config
 from config import SUPPORT_CHAT, OWNER_ID
 from pyrogram.types import InlineKeyboardButton
 
@@ -54,13 +55,12 @@ def stream_markup_timer(_, chat_id, played, dur):
             InlineKeyboardButton(text="𝚂𝚃𝙾𝙿", callback_data=f"ADMIN Stop|{chat_id}"),
         ],
         [
-            InlineKeyboardButton(
-                       text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
-            InlineKeyboardButton(text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
+            InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHANNEL),
+            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
         ],
         [
             InlineKeyboardButton(
-                        text=_["S_B_5"], user_id=config.OWNER_ID
+                text="✯ᴍʀ ᴇʟᴍᴏʀᴛᴀɢᴇʟ✯", url=f"https://t.me/Almortagel_12"
             )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -80,13 +80,12 @@ def stream_markup(_, chat_id):
             InlineKeyboardButton(text="𝚂𝚃𝙾𝙿", callback_data=f"ADMIN Stop|{chat_id}"),
         ],
         [
-            InlineKeyboardButton(
-                       text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
-            InlineKeyboardButton(text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
+            InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHANNEL),
+            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
         ],
         [
             InlineKeyboardButton(
-                        text=_["S_B_5"], user_id=config.OWNER_ID
+                text="✯ᴍʀ ᴇʟᴍᴏʀᴛᴀɢᴇʟ✯", url=f"https://t.me/Almortagel_12"
             )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
