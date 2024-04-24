@@ -19,7 +19,6 @@ MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "همس")
 
 Muntazer = getenv("muntazer", "botatiiii")
 
-
 MONGO_DB_URI = getenv("MONGO_DB_URI", "")
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 2097152))
