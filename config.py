@@ -19,6 +19,8 @@ MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "المرتجل")
 
 Muntazer = getenv("muntazer", "AlmortagelTech")
 
+OWNER_NAME = getenv("OWNER_NAME", "")
+
 MONGO_DB_URI = getenv("MONGO_DB_URI", "")
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 2097152))
