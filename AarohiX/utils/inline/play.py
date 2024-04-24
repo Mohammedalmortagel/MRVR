@@ -1,4 +1,3 @@
-
 import math
 import config
 from config import SUPPORT_CHAT, OWNER_ID
@@ -59,8 +58,7 @@ def stream_markup_timer(_, chat_id, played, dur):
             InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
         ],
         [
-            InlineKeyboardButton(
-                text="✯ᴍʀ ᴇʟᴍᴏʀᴛᴀɢᴇʟ✯", url=f"https://t.me/Almortagel_12"
+            InlineKeyboardButton(message.from_owner_id.first_name, url=config.OWNER_ID
             )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -84,8 +82,7 @@ def stream_markup(_, chat_id):
             InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
         ],
         [
-            InlineKeyboardButton(
-                text="✯ᴍʀ ᴇʟᴍᴏʀᴛᴀɢᴇʟ✯", url=f"https://t.me/Almortagel_12"
+            InlineKeyboardButton(message.from_owner_id.first_name, url=config.OWNER_ID
             )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
