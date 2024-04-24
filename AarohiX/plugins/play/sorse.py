@@ -15,7 +15,7 @@ from random import  choice, randint
 @app.on_message(
     filters.command(["سورس مين","سورس","السورس","سورسي", "HMS"], ""))
 async def huhh(client: Client, message: Message):
-    await message.reply_vedio(
+    await message.reply_photo(
         photo=f"https://t.me/botatiiii",
         caption=f"""Welcome to ѕᴏụʀᴄᴇ ʜᴍѕ""",
         reply_markup=InlineKeyboardMarkup(
