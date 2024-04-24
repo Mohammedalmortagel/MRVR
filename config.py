@@ -15,9 +15,9 @@ BOT_IMAGE = getenv("BOT_IMAGE", "https://graph.org/file/8882cbd7cc786826d9ecb.jp
 
 BOT_TOKEN = getenv("BOT_TOKEN", "")
 
-MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "المرتجل")
+MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "همس")
 
-Muntazer = getenv("muntazer", "AlmortagelTech")
+Muntazer = getenv("muntazer", "botatiiii")
 
 OWNER_NAME = getenv("OWNER_NAME", "")
 
@@ -31,7 +31,7 @@ SONG_DOWNLOAD_DURATION = int(
 
 LOGGER_ID = int(getenv("LOGGER_ID", ""))
 
-OWNER_ID = int(getenv("OWNER_ID", "5089553588"))
+OWNER_ID = int(getenv("OWNER_ID", "916165019"))
 
 BOT_USERNAME = getenv("BOT_USERNAME" , "")
 
