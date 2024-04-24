@@ -1,6 +1,6 @@
 import math
 import config
-from config import SUPPORT_CHAT, OWNER_ID
+from config import SUPPORT_CHAT, OWNER_ID , OWNER_NAME
 from pyrogram.types import InlineKeyboardButton
 
 from AarohiX.utils.formatters import time_to_seconds
@@ -58,7 +58,7 @@ def stream_markup_timer(_, chat_id, played, dur):
             InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT)
         ],
         [
-            InlineKeyboardButton(text=_["{OWNER_NAME}"], url=f"tg://openmessage?user_id={OWNER_ID}",
+            InlineKeyboardButton(text=f"{OWNER_NAME}", user_id=config.OWNER_ID
         )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -82,7 +82,7 @@ def stream_markup(_, chat_id):
             InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT)
         ],
         [
-            InlineKeyboardButton(text=_["{OWNER_NAME}"], url=f"tg://openmessage?user_id={OWNER_ID}",
+            InlineKeyboardButton(text=f"{OWNER_NAME}", user_id=config.OWNER_ID
         )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
