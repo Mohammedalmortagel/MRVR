@@ -19,7 +19,6 @@ MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "همس")
 
 Muntazer = getenv("muntazer", "botatiiii")
 
-OWNER_NAME = getenv("OWNER_NAME", "")
 
 MONGO_DB_URI = getenv("MONGO_DB_URI", "")
 
