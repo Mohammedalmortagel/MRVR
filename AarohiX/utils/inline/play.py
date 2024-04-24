@@ -82,7 +82,7 @@ def stream_markup(_, chat_id):
             InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT)
         ],
         [
-        InlineKeyboardButton(text="{OWNER_NAME}", url=f"tg://openmessage?user_id={OWNER_ID}",
+        InlineKeyboardButton(text=f"{OWNER_NAME}", url=f"tg://openmessage?user_id={OWNER_ID}",
         )
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
