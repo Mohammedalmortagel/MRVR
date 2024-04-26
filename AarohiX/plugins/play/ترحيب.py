@@ -12,7 +12,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, 
 
 @app.on_message(command(["الاوامر"]))
 async def khalid(client: Client, message: Message):
-       await message.reply_photo(photo=f"https://te.legra.ph/file/7899c7987cee4c1287963.jpg",
+     await message.reply_photo(photo=f"https://te.legra.ph/file/7899c7987cee4c1287963.jpg",
         caption=f"""**⩹━⊷⌯⌞ 𖧊 ѕᴏụʀᴄᴇ ʜᴍѕ 𖧊 ⌝⌯⊶━⩺**\nمرحبا بك عزيزي {message.from_user.mention}\nهذا قسم الاوامر الخاص بسورس همس \nلمعرفة الاوامر اضغط على الأزرار بالأسفل👇\n**⩹━⊷⌯⌞ 𖧊 ѕᴏụʀᴄᴇ ʜᴍѕ 𖧊 ⌝⌯⊶━⩺**""", reply_markup=ReplyKeyboardMarkup(
                     [
                         ["اوامر 1","اوامر 2"],
