@@ -9,7 +9,7 @@ from pyrogram.types import (InlineKeyboardButton,CallbackQuery,
                             InlineKeyboardMarkup, Message)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardRemove, ReplyKeyboardMarkup     
 
-@app.on_message(filters.command(["الاوامر"], ""))
+@app.on_message(command(["الاوامر"]))
 async def khalid(client: Client, message: Message):
     if message.from_user.id in OWNER_ID:
        await message.reply_text(
