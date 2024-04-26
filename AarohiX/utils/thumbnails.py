@@ -127,18 +127,18 @@ async def get_thumb(videoid):
 
             # title
             title1 = truncate(title)
-            image4.text((670, 200), text=title1[0], fill="white", stroke_width=1, stroke_fill="white",font = font3, align ="left") 
-            image4.text((670, 250), text=title1[1], fill="white", stroke_width=1, stroke_fill="white", font = font3, align ="left") 
+            image4.text((670, 250), text=title1[0], fill="white", stroke_width=1, stroke_fill="white",font = font3, align ="left") 
+            image4.text((670, 300), text=title1[1], fill="white", stroke_width=1, stroke_fill="white", font = font3, align ="left") 
 
             # description
             views = f"Views : {views}"
             duration = f"Duration : {duration} Mins"
             channel = f"Channel : {channel}"
 
-            image4.text((670, 300), text=views, fill="white", font = font4, align ="left") 
-            image4.text((670, 350), text=duration, fill="white", font = font4, align ="left") 
-            image4.text((670, 400), text=channel, fill="white", font = font4, align ="left")
-            image4.text((670, 450), "DEV : HMS", fill="white", font = font4, align ="left")
+            image4.text((670, 350), text=views, fill="white", font = font4, align ="left") 
+            image4.text((670, 400), text=duration, fill="white", font = font4, align ="left") 
+            image4.text((670, 450), text=channel, fill="white", font = font4, align ="left")
+            image4.text((670, 500), "DEV : HMS", fill="white", font = font4, align ="left")
             
             image2 = ImageOps.expand(image2,border=20,fill=make_col())
             image2 = image2.convert('RGB')
