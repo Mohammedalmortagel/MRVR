@@ -12,30 +12,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, 
 
 @app.on_message(command(["الاوامر"]))
 async def khalid(client: Client, message: Message):
-    if message.from_user.id in OWNER_ID:
-       await message.reply_text(
-                "اليك اوامر البوت عزيزي المطور",
-                reply_markup=ReplyKeyboardMarkup(
+       await message.reply_photo(
+        photo=f"https://te.legra.ph/file/7899c7987cee4c1287963.jpg",
+        caption=f"""**⩹━⊷⌯⌞ 𖧊 ѕᴏụʀᴄᴇ ʜᴍѕ 𖧊 ⌝⌯⊶━⩺**\nمرحبا بك عزيزي {message.from_user.mention}\nهذا قسم الاوامر الخاص بسورس همس \nلمعرفة الاوامر اضغط على الأزرار بالأسفل👇\n**⩹━⊷⌯⌞ 𖧊 ѕᴏụʀᴄᴇ ʜᴍѕ 𖧊 ⌝⌯⊶━⩺**""", reply_markup=ReplyKeyboardMarkup(
                     [
                         ["اوامر 1","اوامر 2"],
                         ["اوامر 3","المطور"],
                         ["❎ ¦ حذف الاوامر"], 
                     ],
-                    resize_keyboard=True
-                )
-            )
-    else:
-       await message.reply_text(
-                "اليك اوامر البوت عزيزي العضو",
-                reply_markup=ReplyKeyboardMarkup(
-                    [
-                        ["اوامر 1","اوامر 2"],
-                        ["اوامر 3","المطور"],
-                        ["❎ ¦ حذف الاوامر"]
-                    ],
-                    resize_keyboard=True
-                )
-            )  
+                    resize_keyboard=True)
                
 @app.on_message(filters.text, group=39)
 async def almortagel(client, message):
