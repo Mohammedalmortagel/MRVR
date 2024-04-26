@@ -3,6 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from strings.filters import command
 from AarohiX import app
 import config
+from pyrogram.types import CallbackQuery
 
 @app.on_message(
     command(["المطور", "السورس", "المصنع"])
