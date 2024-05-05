@@ -55,18 +55,16 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"
-                        ),
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"),
             InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"
-            ),
+                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"),
         ],
         [
             InlineKeyboardButton(
-                text="˛َِ ٰ𝖍𝑚ƨ 𓃠", url=f"https://t.me/hms_01"
-            )
+                text="DEVHMS", url=f"https://t.me/hms_01")
         ],
-        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
+        [
+            InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
     return buttons
 
@@ -84,18 +82,16 @@ def stream_markup(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"
-                        ),
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"),
             InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"
-            ),
+                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"),
         ],
         [
             InlineKeyboardButton(
-                text="DEVHMS", url=f"https://t.me/hms_01"
-            )
+                text="DEVHMS", url=f"https://t.me/hms_01")
         ],
-        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
+        [
+            InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
     return buttons
 
