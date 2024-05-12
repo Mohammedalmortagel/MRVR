@@ -1,4 +1,4 @@
-import asyncio
+ربimport asyncio
 from pyrogram import Client, filters
 from random import choice
 from pyrogram import filters
@@ -183,17 +183,4 @@ async def upbkgt(client: Client, message: Message):
         ),
     )
 
-@app.on_message(filters.command(["ذكاء الاصطناعي"], ""))
-async def upbkgt(client: Client, message: Message):
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/c544b771eeed7dbdc51a9.jpg",
-        caption=f"""• اليك طريقه معرفه سرعه البوت .\n\n• قم بـ استخدام الامر هكذا : /gpt\n\n• ѕᴏụʀᴄᴇ ᴀʟᴍᴏʀᴛᴀɢᴇʟ » @AlmortagelTech .\n•⊶⊶★─⊶『[Almortagel](https://t.me/AlmortagelTech)』⊶⊶★─⊶•""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "• ѕᴏụʀᴄᴇ ᴀʟᴍᴏʀᴛᴀɢᴇʟ .", url=f"https://t.me/AlmortagelTech"),
-            ],
-            ]
-        ),
-)
+
