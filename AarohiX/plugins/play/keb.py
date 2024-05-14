@@ -1,4 +1,4 @@
-ربimport asyncio
+import asyncio
 from pyrogram import Client, filters
 from random import choice
 from pyrogram import filters
