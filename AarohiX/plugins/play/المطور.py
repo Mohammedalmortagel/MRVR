@@ -38,20 +38,6 @@ async def maker(client: Client, message: Message):
 
 @app.on_message(filters.command(["الاوامر"], ""))
 async def khalid(client: Client, message: Message):
-    if message.from_user.id in OWNER_ID:
-       await message.reply_text(
-                "اليك اوامر البوت عزيزي المطور",
-                reply_markup=ReplyKeyboardMarkup(
-                    [
-                        ["اوامر 1","اوامر 2"],
-                        ["اوامر 3","اوامر 4"],
-                        ["اوامر 5","اوامر 6"],
-                        ["❎ ¦ حذف الاوامر"], 
-                    ],
-                    resize_keyboard=True
-                )
-            )
-    else:
        await message.reply_text(
                 "اليك اوامر البوت عزيزي العضو",
                 reply_markup=ReplyKeyboardMarkup(
