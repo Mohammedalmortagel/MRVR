@@ -1,4 +1,3 @@
-
 import math
 from config import SUPPORT_CHAT, OWNER_ID
 from pyrogram.types import InlineKeyboardButton
@@ -55,9 +54,9 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/Jaithon"),
             InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
+                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/Source_MRVR"),
         ],
         [
             InlineKeyboardButton(
@@ -82,9 +81,9 @@ def stream_markup(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/Jaithon"),
             InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
+                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/Source_MRVR"),
         ],
         [
             InlineKeyboardButton(
