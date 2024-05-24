@@ -122,8 +122,8 @@ async def get_thumb(videoid):
             font4 = ImageFont.truetype('AarohiX/assets/font2.ttf', 35)
 
             image4 = ImageDraw.Draw(image2)
-            image4.text((10, 10), "live quran", fill="white", font = font1, align ="left") 
-            image4.text((670, 150), "Hms PLAYING", fill="white", font = font2, stroke_width=2, stroke_fill="white", align ="left") 
+            image4.text((10, 10), "VR MUSICE", fill="white", font = font1, align ="left") 
+            image4.text((670, 150), "VR PLAYING", fill="white", font = font2, stroke_width=2, stroke_fill="white", align ="left") 
 
             # title
             title1 = truncate(title)
@@ -138,7 +138,7 @@ async def get_thumb(videoid):
             image4.text((670, 350), text=views, fill="white", font = font4, align ="left") 
             image4.text((670, 400), text=duration, fill="white", font = font4, align ="left") 
             image4.text((670, 450), text=channel, fill="white", font = font4, align ="left")
-            image4.text((670, 500), "DEV : HMS", fill="white", font = font4, align ="left")
+            image4.text((670, 500), "DEV : VR", fill="white", font = font4, align ="left")
             
             image2 = ImageOps.expand(image2,border=20,fill=make_col())
             image2 = image2.convert('RGB')
