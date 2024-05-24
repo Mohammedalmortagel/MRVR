@@ -36,12 +36,12 @@ from random import  choice, randint
 
 
 @app.on_message(
-    filters.command(["مميزات","مميزات المرتجل"], "")
+    filters.command(["مميزات","مميزات فير"], "")
 & filters.group
  )
 async def mmmezat(client, message):
-        await message.reply_text(f"""**مرحبآ بك عزيزي » {message.from_user.mention}**في قسم مميزات سورس همس\n
-⩹━★⊷⌯⌞ ѕᴏụʀᴄᴇ ʜᴍѕ ⌝⌯⊶★━⩺
+        await message.reply_text(f"""**مرحبآ بك عزيزي » {message.from_user.mention}**في قسم مميزات سورس فير\n
+⩹━★⊷⌯⌞ SOURCE VR ⌝⌯⊶★━⩺
 
 ★قايمه مميزات سورس همس 
 
@@ -91,12 +91,12 @@ async def mmmezat(client, message):
 ★ميزه ⦂ فنان+اكتب اسم فنان و هتجبلك اغانيه
 ★ميزه ⦂ اصدار+حول
 
-⩹━★⊷⌯⌞ ѕᴏụʀᴄᴇ ᴀʟᴍᴏʀᴛᴀɢᴇʟ ⌝⌯⊶★━⩺""",
+⩹━★⊷⌯⌞ SOURCE VR ⌝⌯⊶★━⩺""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "★⌞ ѕᴏụʀᴄᴇ ʜᴍѕ ⌝⚡", url=f"https://t.me/botatiiii"),                        
+                        "★⌞ SOURCE VR ⌝⚡", url=f"https://t.me/Jaithon"),                        
                  ],[
                 InlineKeyboardButton(
                         "close", callback_data="close"),
