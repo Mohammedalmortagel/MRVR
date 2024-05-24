@@ -55,13 +55,13 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"),
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
             InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"),
+                text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
         ],
         [
             InlineKeyboardButton(
-                text="DEVHMS", url=f"https://t.me/hms_01")
+                text="MRVR", url=f"https://t.me/D_Z_J_C")
         ],
         [
             InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -82,13 +82,13 @@ def stream_markup(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=f"https://t.me/botatiiii"),
+                text="𝚂𝙾𝚄𝚁𝙲𝙴⁩", url=config.SUPPORT_CHANNEL),
             InlineKeyboardButton(
-                text="𝙶𝚁𝙾𝚄𝙿", url=f"https://t.me/brmjeatt"),
+                text="𝙶𝚁𝙾𝚄𝙿", url=config.SUPPORT_CHAT),
         ],
         [
             InlineKeyboardButton(
-                text="DEVHMS", url=f"https://t.me/hms_01")
+                text="MRVR", url=f"https://t.me/D_Z_J_C")
         ],
         [
             InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
